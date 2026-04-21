@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jody Jeremi Hadrian Ritonga</title>
+    <meta
+      name="description"
+      content="Portfolio of Jody Jeremi Hadrian Ritonga, web application security researcher and penetration tester."
+    >
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='white'/%3E%3Crect x='6' y='6' width='20' height='20' fill='black'/%3E%3Crect x='10' y='10' width='4' height='12' fill='white'/%3E%3Crect x='14' y='18' width='8' height='4' fill='white'/%3E%3C/svg%3E"
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    >
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #ffffff;
+        --surface-soft: #f7f7f7;
+        --text: #111111;
+        --muted: #5e5e5e;
+        --line: #111111;
+        --soft-line: rgba(17, 17, 17, 0.18);
+        --max-width: 1120px;
+        --shadow: 8px 8px 0 #111111;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        font-family: "Space Grotesk", sans-serif;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+          repeating-linear-gradient(
+            90deg,
+            transparent 0 48px,
+            rgba(17, 17, 17, 0.03) 48px 49px
+          ),
+          var(--bg);
+      }
+
+      ::selection {
+        color: #fff;
+        background: #111;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        width: min(calc(100% - 32px), var(--max-width));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(243, 241, 235, 0.94);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--soft-line);
+      }
+
+      .topbar-inner {
+        width: min(calc(100% - 32px), var(--max-width));
+        margin: 0 auto;
+        padding: 18px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand,
+      .eyebrow,
+      .section-kicker,
+      .chip,
+      .mini-title,
+      .button,
+      .timeline-date {
+        font-family: "Silkscreen", monospace;
+      }
+
+      .brand {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .nav a {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .nav a:hover,
+      .nav a:focus-visible,
+      .contact-row a:hover,
+      .contact-row a:focus-visible {
+        text-decoration: underline;
+        text-underline-offset: 0.18em;
+        outline: none;
+      }
+
+      main {
+        padding: 34px 0 56px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(290px, 0.8fr);
+        gap: 24px;
+        align-items: start;
+      }
+
+      .hero-copy h1,
+      .section-title {
+        margin: 0;
+        line-height: 0.95;
+      }
+
+      .eyebrow,
+      .section-kicker {
+        display: inline-block;
+        padding: 7px 10px;
+        margin-bottom: 18px;
+        border: 2px solid var(--line);
+        background: #fff;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.6rem, 8vw, 5.8rem);
+        letter-spacing: -0.04em;
+      }
+
+      .hero-copy p {
+        max-width: 42rem;
+        margin: 20px 0 0;
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+        margin-top: 24px;
+        color: var(--muted);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 18px;
+        border: 2px solid var(--line);
+        background: #111;
+        color: #fff;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .button.alt {
+        background: #fff;
+        color: #111;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        transform: translate(-2px, -2px);
+        box-shadow: 4px 4px 0 #111;
+        outline: none;
+      }
+
+      .hero-side {
+        display: grid;
+        gap: 16px;
+      }
+
+      .card {
+        padding: 22px;
+        border: 2px solid var(--line);
+        background: var(--surface);
+      }
+
+      .card.accent {
+        box-shadow: var(--shadow);
+      }
+
+      .mini-title {
+        margin: 0 0 14px;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .stat {
+        padding: 14px;
+        border: 1px solid var(--soft-line);
+        background: var(--surface-soft);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.4rem;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .cve-card h3 {
+        margin: 0;
+        font-size: 1.6rem;
+        line-height: 1.1;
+      }
+
+      .cve-card p {
+        margin: 12px 0 0;
+        line-height: 1.8;
+        color: #242424;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .chip {
+        padding: 8px 10px;
+        border: 1px solid var(--line);
+        font-size: 0.64rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .section {
+        margin-top: 64px;
+      }
+
+      .section-header {
+        margin-bottom: 22px;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 5vw, 3.4rem);
+        letter-spacing: -0.05em;
+      }
+
+      .section-subtitle {
+        max-width: 40rem;
+        margin: 12px 0 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .about-grid,
+      .skills-grid,
+      .highlights-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .about-grid {
+        grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .highlights-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .prose {
+        line-height: 1.9;
+      }
+
+      .list {
+        margin: 0;
+        padding-left: 20px;
+        line-height: 1.9;
+      }
+
+      .list li + li {
+        margin-top: 6px;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 16px;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 170px minmax(0, 1fr);
+        gap: 18px;
+        padding: 22px;
+        border: 2px solid var(--line);
+        background: #fff;
+      }
+
+      .timeline-date {
+        font-size: 0.7rem;
+        line-height: 1.8;
+        text-transform: uppercase;
+      }
+
+      .timeline-content h3 {
+        margin: 0;
+        font-size: 1.3rem;
+      }
+
+      .timeline-content .role {
+        margin: 6px 0 0;
+        color: var(--muted);
+      }
+
+      .footer {
+        padding: 48px 0 12px;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 940px) {
+        .hero,
+        .about-grid,
+        .skills-grid,
+        .highlights-grid,
+        .timeline-item {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .topbar-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .nav {
+          gap: 12px;
+        }
+
+        .stat-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy h1 {
+          font-size: clamp(2.35rem, 14vw, 4rem);
+        }
+
+        .card,
+        .timeline-item {
+          padding: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">Jody Jeremi Hadrian Ritonga</div>
+        <nav class="nav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#highlights">Highlights</a>
+          <a href="#blog">Blog</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">AppSec + Browser Security</div>
+          <h1>Jody Jeremi<br>Hadrian Ritonga</h1>
+          <p>
+            I’m a 23-year-old web application and browser security researcher.
+            My primary focus is on server-side vulnerabilities, while I’m also
+            expanding my expertise in client-side security. Currently, I’m
+            particularly interested in browser spoofing and related security
+            issues.
+          </p>
+          <div class="contact-row">
+            <a href="mailto:jodyritonga@gmail.com">jodyritonga@gmail.com</a>
+            <span>Tangerang, Indonesia</span>
+            <a href="https://www.linkedin.com/in/jodyritonga" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+          <div class="actions">
+            <a class="button alt" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-33119" target="_blank" rel="noreferrer">View CVE</a>
+            <a class="button" href="https://medium.com/@jodyritonga" target="_blank" rel="noreferrer">Read Blog</a>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <article class="card accent">
+            <p class="mini-title">Quick Facts</p>
+            <div class="stat-grid">
+              <div class="stat">
+                <strong>2+ years</strong>
+                <span>Hands-on web application security work through bug bounty, research, and client testing.</span>
+              </div>
+              <div class="stat">
+                <strong>3.92</strong>
+                <span>Informatics GPA from Universitas Advent Indonesia.</span>
+              </div>
+              <div class="stat">
+                <strong>Mentor</strong>
+                <span>Cybersecurity mentor at IT Verse, teaching from recon to post-exploitation basics.</span>
+              </div>
+              <div class="stat">
+                <strong>Browser + AppSec</strong>
+                <span>Primary focus on server-side vulnerabilities, with growing depth in client-side and browser security research.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card cve-card">
+            <p class="mini-title">Research Highlight</p>
+            <h3>CVE-2026-33119</h3>
+            <p>
+              Reported Microsoft Edge spoofing issue tracked as
+              <strong>CVE-2026-33119</strong>. Public records describe it as a
+              Microsoft Edge (Chromium-based) UI misrepresentation issue with a
+              <strong>5.4 medium</strong> CVSS score, published on
+              <strong>April 10, 2026</strong>.
+            </p>
+            <div class="chips">
+              <span class="chip">Spoofing</span>
+              <span class="chip">Microsoft Edge</span>
+              <span class="chip">Android</span>
+              <span class="chip">CWE-451</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="section-header">
+          <div class="section-kicker">About</div>
+          <h2 class="section-title">What I work on</h2>
+          <p class="section-subtitle">
+            The page content below is based on my CV and current public work,
+            trimmed into a more direct portfolio format.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="card prose">
+            I am a dedicated security professional with experience in bug bounty,
+            freelance penetration testing, internship consulting, and cloud-based
+            side projects. My background combines web security testing,
+            vulnerability validation, developer-facing reporting, and enough
+            engineering context to work comfortably with APIs, Docker, and cloud
+            environments.
+            <br><br>
+            My main focus remains on impactful server-side findings, while I am
+            steadily expanding into client-side security and browser research.
+            In particular, I am interested in browser spoofing, domain
+            presentation issues, origin confusion, and UI flows that can
+            mislead users about what they are seeing or trusting.
+          </article>
+
+          <article class="card">
+            <p class="mini-title">Selected Credentials</p>
+            <ul class="list">
+              <li>Practical Ethical Hacking, TCM Security</li>
+              <li>Mobile Application Penetration Testing, TCM Security</li>
+              <li>NSE 1, Fortinet</li>
+              <li>ISO/IEC 27001 Information Security Associate, SkillFront</li>
+              <li>Alibaba Cloud Associate</li>
+              <li>EF SET C1 Advanced</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="section-header">
+          <div class="section-kicker">Experience</div>
+          <h2 class="section-title">Recent work</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">Jan 2025<br>to Present</div>
+            <div class="timeline-content">
+              <h3>Bug Hunter</h3>
+              <p class="role">Independent Research</p>
+              <ul class="list">
+                <li>Actively research and validate security issues across modern web and browser attack surfaces.</li>
+                <li>Reported vulnerabilities through responsible disclosure and bug bounty workflows.</li>
+                <li>Found high-severity vulnerabilities affecting Microsoft and Opera products.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">May 2024<br>to Jul 2024</div>
+            <div class="timeline-content">
+              <h3>TruVisor.io</h3>
+              <p class="role">Technical Consultant Intern · Jakarta</p>
+              <ul class="list">
+                <li>Assessed project needs and translated them into technical solutions.</li>
+                <li>Tested client software and hardware systems.</li>
+                <li>Supported maintenance and ongoing system reliability.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Jul 2023<br>to Dec 2023</div>
+            <div class="timeline-content">
+              <h3>Freelance Web Application Pentester</h3>
+              <p class="role">Confidential Client · Indonesia</p>
+              <ul class="list">
+                <li>Performed black-box penetration testing using Burp Suite and Nuclei.</li>
+                <li>Identified critical and medium vulnerabilities and validated false positives manually.</li>
+                <li>Delivered remediation advice and technical recommendations to clients.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Jun 2023<br>to Jul 2023</div>
+            <div class="timeline-content">
+              <h3>PT. Lucky Indah Keramik</h3>
+              <p class="role">Web Application Pentester Intern · Jakarta Pusat</p>
+              <ul class="list">
+                <li>Assessed vulnerabilities against OWASP Top 10 and SANS 25.</li>
+                <li>Performed secure code review, gray-box testing, and remediation planning.</li>
+                <li>Prepared technical reports for developer teams.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="section-header">
+          <div class="section-kicker">Skills</div>
+          <h2 class="section-title">Tools and focus areas</h2>
+        </div>
+
+        <div class="skills-grid">
+          <article class="card">
+            <p class="mini-title">Security</p>
+            <ul class="list">
+              <li>Penetration testing</li>
+              <li>Bug bounty workflows</li>
+              <li>Vulnerability assessment with Nuclei</li>
+              <li>Wazuh SIEM</li>
+              <li>Manual validation of findings</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <p class="mini-title">Tooling</p>
+            <ul class="list">
+              <li>Burp Suite</li>
+              <li>Linux: Kali and Ubuntu</li>
+              <li>Docker</li>
+              <li>Frida</li>
+              <li>Bash automation</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <p class="mini-title">Engineering</p>
+            <ul class="list">
+              <li>Python, JavaScript, PHP</li>
+              <li>Express.js and Laravel</li>
+              <li>Google Cloud Platform</li>
+              <li>Alibaba Cloud</li>
+              <li>Browser security research</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="highlights" class="section">
+        <div class="section-header">
+          <div class="section-kicker">Highlights</div>
+          <h2 class="section-title">Recognition and activity</h2>
+        </div>
+
+        <div class="highlights-grid">
+          <article class="card">
+            <p class="mini-title">Security</p>
+            <ul class="list">
+              <li>Found critical vulnerabilities in Gameqoo and other Indonesian companies and startups.</li>
+              <li>Hall of fame recognition at <code>bpk.go.id</code>.</li>
+              <li>Reported CVE-2026-33119 affecting Microsoft Edge.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <p class="mini-title">Community</p>
+            <ul class="list">
+              <li>Speaker at RentInd Academy on “Mastering Cyber Security: An In-depth Exploration of OSINT”.</li>
+              <li>Cybersecurity mentor at IT Verse.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <p class="mini-title">Academic</p>
+            <ul class="list">
+              <li>Highest GPA in 3rd semester: 4.00.</li>
+              <li>2nd place in Cyber Cup IT competition, startup category.</li>
+              <li>S1 Teknik Informatika, Universitas Advent Indonesia, 2021–2025.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="blog" class="section">
+        <div class="section-header">
+          <div class="section-kicker">Blog</div>
+          <h2 class="section-title">Writing on Medium</h2>
+          <p class="section-subtitle">
+            Selected posts pulled from my Medium feed. Most of them are
+            write-up style articles around web vulnerabilities and bug hunting.
+          </p>
+        </div>
+
+        <div class="highlights-grid">
+          <article class="card">
+            <p class="mini-title">Jun 17, 2024</p>
+            <h3>
+              <a href="https://jodyritonga.medium.com/breaking-into-the-vip-club-a-tale-of-parameter-tampering-exploits-83df7b6b9691?source=rss-77238181c0e7------2" target="_blank" rel="noreferrer">
+                Breaking into the VIP Club: A Tale of Parameter Tampering Exploits
+              </a>
+            </h3>
+          </article>
+
+          <article class="card">
+            <p class="mini-title">Nov 19, 2023</p>
+            <h3>
+              <a href="https://systemweakness.com/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank-fdb4fbfed355?source=rss-77238181c0e7------2" target="_blank" rel="noreferrer">
+                Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}
+              </a>
+            </h3>
+          </article>
+
+          <article class="card">
+            <p class="mini-title">Jul 20, 2023</p>
+            <h3>
+              <a href="https://systemweakness.com/catch-that-response-a-tale-of-leaked-reset-password-in-url-1cb8bcdf29ae?source=rss-77238181c0e7------2" target="_blank" rel="noreferrer">
+                Catch that response! (A tale of leaked reset password in URL)
+              </a>
+            </h3>
+          </article>
+
+          <article class="card">
+            <p class="mini-title">Jul 9, 2023</p>
+            <h3>
+              <a href="https://systemweakness.com/account-takeover-through-changing-id-in-reset-password-2a9bd7d38c14?source=rss-77238181c0e7------2" target="_blank" rel="noreferrer">
+                Account takeover through changing id in reset password
+              </a>
+            </h3>
+          </article>
+
+          <article class="card">
+            <p class="mini-title">Profile</p>
+            <h3>
+              <a href="https://medium.com/@jodyritonga" target="_blank" rel="noreferrer">
+                Visit my full Medium profile
+              </a>
+            </h3>
+          </article>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>Jody Jeremi Hadrian Ritonga</span>
+        <span>Simple portfolio, rebuilt with CV-backed content.</span>
+      </footer>
+    </main>
+  </body>
+</html>
