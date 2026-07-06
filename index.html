@@ -3,48 +3,40 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jody Jeremi Hadrian Ritonga</title>
+    <title>Jody Jeremi Hadrian Ritonga | Security Research Portfolio</title>
     <meta
       name="description"
-      content="Portfolio of Jody Jeremi Hadrian Ritonga, web application security researcher and penetration tester."
+      content="Portfolio of Jody Jeremi Hadrian Ritonga, web application and browser security researcher with public CVEs across Edge, Firefox, and Safari."
     >
+    <meta name="theme-color" content="#080a0d">
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='white'/%3E%3Crect x='6' y='6' width='20' height='20' fill='black'/%3E%3Crect x='10' y='10' width='4' height='12' fill='white'/%3E%3Crect x='14' y='18' width='8' height='4' fill='white'/%3E%3C/svg%3E"
-    >
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bangers&amp;family=Pirata+One&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
-      rel="stylesheet"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23080a0d'/%3E%3Cpath d='M8 10h16v3H11v6h13v3H8z' fill='%23d8ff3e'/%3E%3C/svg%3E"
     >
     <style>
       :root {
-        color-scheme: light;
-        --bg: #e9f7ff;
-        --bg-2: #0f6fa8;
-        --surface: rgba(255, 247, 218, 0.88);
-        --surface-strong: rgba(255, 252, 239, 0.96);
-        --surface-soft: rgba(22, 82, 121, 0.08);
-        --text: #102033;
-        --muted: #53606e;
-        --line: rgba(16, 32, 51, 0.16);
-        --soft-line: rgba(16, 32, 51, 0.1);
-        --cyan: #0ea5c6;
-        --blue: #1769aa;
-        --rose: #d62828;
-        --amber: #f2b705;
-        --violet: #7c3aed;
-        --paper: #fff4c7;
-        --ink: #172033;
-        --sea: #0f6fa8;
-        --straw: #f6cf5b;
-        --max-width: 1180px;
-        --scroll-progress: 0;
-        --mouse-x: 50vw;
-        --mouse-y: 50vh;
-        --stage-tilt-x: 0deg;
-        --stage-tilt-y: 0deg;
+        color-scheme: dark;
+        --bg: #080a0d;
+        --bg-2: #0f1318;
+        --surface: #151b22;
+        --surface-2: #10151b;
+        --surface-3: #1b222b;
+        --text: #f4f6f8;
+        --muted: #aab4bf;
+        --quiet: #7f8b98;
+        --line: rgba(230, 236, 243, 0.12);
+        --line-strong: rgba(230, 236, 243, 0.22);
+        --green: #d8ff3e;
+        --green-ink: #182000;
+        --blue: #6bb7ff;
+        --amber: #ffb86b;
+        --red: #ff6b6b;
+        --max: 1180px;
+        --radius: 8px;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+        --progress: 0;
+        --mx: 50%;
+        --my: 35%;
       }
 
       * {
@@ -57,45 +49,46 @@
 
       body {
         margin: 0;
-        overflow-x: hidden;
         color: var(--text);
-        font-family: "Space Grotesk", sans-serif;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
         background:
-          radial-gradient(circle at 16% 13%, rgba(246, 207, 91, 0.9) 0 5rem, transparent 14rem),
-          radial-gradient(circle at 84% 10%, rgba(214, 40, 40, 0.24), transparent 18rem),
-          linear-gradient(180deg, #c9efff 0 18%, #50bfe6 42%, var(--sea) 70%, #063357 100%);
+          linear-gradient(180deg, rgba(216, 255, 62, 0.035), transparent 26rem),
+          linear-gradient(135deg, #080a0d 0%, #0d1117 48%, #0a0c10 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
       }
 
-      body::before,
-      body::after {
+      body::before {
         position: fixed;
         inset: 0;
         z-index: -2;
         pointer-events: none;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: linear-gradient(to bottom, black, transparent 84%);
         content: "";
       }
 
-      body::before {
-        background:
-          radial-gradient(ellipse at 50% 0%, transparent 0 58%, rgba(255, 255, 255, 0.32) 60% 63%, transparent 65%),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
-        background-size: 160px 64px, 96px 96px;
-        mask-image: linear-gradient(to bottom, transparent 0, black 18%, black 92%);
-        animation: background-pan 24s linear infinite;
-      }
-
       body::after {
+        position: fixed;
+        inset: 0;
         z-index: -1;
+        pointer-events: none;
         background:
-          radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 244, 199, 0.45), transparent 18rem),
-          repeating-linear-gradient(-12deg, rgba(255, 255, 255, 0.12) 0 2px, transparent 2px 18px);
-        background-size: auto, 100% 100%;
-        mix-blend-mode: soft-light;
+          linear-gradient(120deg, transparent 0 18%, rgba(107, 183, 255, 0.08) 18% 19%, transparent 19% 100%),
+          linear-gradient(65deg, transparent 0 62%, rgba(255, 184, 107, 0.08) 62% 63%, transparent 63% 100%),
+          radial-gradient(circle at var(--mx) var(--my), rgba(216, 255, 62, 0.06), transparent 20rem);
+        opacity: 0.9;
+        content: "";
       }
 
       ::selection {
-        color: #07182b;
-        background: var(--straw);
+        color: var(--green-ink);
+        background: var(--green);
       }
 
       a {
@@ -103,42 +96,29 @@
         text-decoration: none;
       }
 
-      .background-canvas {
-        position: fixed;
-        inset: 0;
-        z-index: -3;
-        width: 100%;
-        height: 100%;
-        opacity: 0.2;
-      }
-
-      .shell,
-      .topbar-inner {
-        width: min(calc(100% - 32px), var(--max-width));
-        margin: 0 auto;
-      }
-
-      .scroll-progress {
+      .progress {
         position: fixed;
         top: 0;
         left: 0;
         z-index: 50;
         width: 100%;
         height: 3px;
-        background: linear-gradient(90deg, var(--rose), var(--amber), #ffffff, var(--blue));
-        box-shadow: 0 0 18px rgba(242, 183, 5, 0.5);
-        transform: scaleX(var(--scroll-progress));
+        background: linear-gradient(90deg, var(--green), var(--blue), var(--amber));
+        transform: scaleX(var(--progress));
         transform-origin: left center;
+      }
+
+      .wrap {
+        width: min(calc(100% - 32px), var(--max));
+        margin: 0 auto;
       }
 
       .topbar {
         position: sticky;
         top: 0;
         z-index: 40;
-        border-bottom: 1px solid var(--soft-line);
-        background:
-          linear-gradient(90deg, rgba(214, 40, 40, 0.08), transparent 22%, rgba(242, 183, 5, 0.12)),
-          rgba(255, 247, 218, 0.82);
+        border-bottom: 1px solid var(--line);
+        background: rgba(8, 10, 13, 0.78);
         backdrop-filter: blur(18px) saturate(1.2);
       }
 
@@ -147,804 +127,667 @@
         align-items: center;
         justify-content: space-between;
         gap: 16px;
-        padding: 18px 0;
-      }
-
-      .brand,
-      .eyebrow,
-      .section-kicker,
-      .chip,
-      .mini-title,
-      .button,
-      .timeline-date {
-        font-family: "Pirata One", "Space Grotesk", serif;
+        min-height: 72px;
       }
 
       .brand {
-        font-size: 1.1rem;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        color: var(--ink);
-        text-shadow: 0 2px 0 rgba(246, 207, 91, 0.7), 0 4px 0 rgba(214, 40, 40, 0.22);
-        animation: brand-bob 5s ease-in-out infinite;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text);
+        font-size: 0.9rem;
+        font-weight: 760;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+
+      .brand-mark {
+        display: inline-grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        background: var(--green);
+        color: var(--green-ink);
+        font-size: 0.78rem;
+        font-weight: 900;
       }
 
       .nav {
         display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
+        align-items: center;
+        gap: 6px;
       }
 
       .nav a {
-        position: relative;
-        overflow: hidden;
-        padding: 9px 12px;
+        padding: 9px 11px;
         border: 1px solid transparent;
         border-radius: 999px;
         color: var(--muted);
-        font-size: 0.92rem;
+        font-size: 0.9rem;
         transition:
-          color 180ms ease,
-          border-color 180ms ease,
-          background 180ms ease,
-          transform 180ms ease;
-      }
-
-      .nav a::before {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        content: "";
-        transform: translateX(-110%);
+          color 160ms ease,
+          border-color 160ms ease,
+          background 160ms ease;
       }
 
       .nav a:hover,
       .nav a:focus-visible,
       .nav a.is-active {
         color: var(--text);
-        border-color: rgba(214, 40, 40, 0.38);
-        background: rgba(246, 207, 91, 0.24);
+        border-color: var(--line-strong);
+        background: rgba(255, 255, 255, 0.06);
         outline: none;
-        transform: translateY(-1px);
-      }
-
-      .nav a:hover::before,
-      .nav a:focus-visible::before {
-        animation: sweep 680ms ease;
       }
 
       main {
-        padding: 42px 0 72px;
+        padding-bottom: 72px;
       }
 
       .hero {
         display: grid;
-        grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
-        gap: 28px;
-        align-items: start;
-        min-height: calc(100vh - 120px);
-        perspective: 1200px;
+        grid-template-columns: minmax(0, 1.04fr) minmax(340px, 0.96fr);
+        gap: 34px;
+        align-items: center;
+        min-height: calc(100vh - 72px);
+        padding: 54px 0 46px;
       }
 
-      .hero-copy {
-        position: sticky;
-        top: 110px;
-        padding-top: 32px;
-      }
-
-      .hero-copy h1,
-      .section-title {
-        margin: 0;
-        line-height: 0.94;
-        letter-spacing: 0;
-      }
-
-      .eyebrow,
-      .section-kicker {
+      .eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        margin-bottom: 20px;
-        padding: 9px 12px;
-        border: 1px solid rgba(214, 40, 40, 0.34);
-        border-radius: 999px;
-        background: rgba(255, 244, 199, 0.82);
-        color: #9b1d20;
-        box-shadow: 0 8px 24px rgba(15, 111, 168, 0.12);
+        margin-bottom: 22px;
+        color: var(--green);
         font-size: 0.78rem;
-        letter-spacing: 0.05em;
+        font-weight: 760;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
       }
 
-      .mini-straw-hat {
-        position: relative;
-        display: inline-block;
-        flex: 0 0 auto;
-        width: 36px;
-        height: 20px;
-        margin-left: 1px;
-      }
-
-      .mini-straw-hat::before {
-        position: absolute;
-        right: 7px;
-        bottom: 7px;
-        left: 7px;
-        height: 14px;
-        border: 2px solid var(--ink);
-        border-bottom: 0;
-        border-radius: 999px 999px 0 0;
-        background: linear-gradient(#f6cf5b 0 54%, #d62828 55% 70%, #f2b705 71%);
-        content: "";
-      }
-
-      .mini-straw-hat::after {
-        position: absolute;
-        right: 0;
-        bottom: 2px;
-        left: 0;
-        height: 9px;
-        border: 2px solid var(--ink);
+      .eyebrow::before {
+        width: 7px;
+        height: 7px;
         border-radius: 999px;
-        background: #f6cf5b;
+        background: var(--green);
+        box-shadow: 0 0 0 6px rgba(216, 255, 62, 0.1);
         content: "";
       }
 
-      .eyebrow::before,
-      .section-kicker::before {
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: var(--rose);
-        box-shadow: 0 0 0 4px rgba(246, 207, 91, 0.45);
-        content: "";
-        animation: pulse-dot 1.5s ease-in-out infinite;
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
       }
 
-      .hero-copy h1 {
+      h1 {
         max-width: 11ch;
-        font-family: "Bangers", "Space Grotesk", sans-serif;
-        font-size: clamp(3.15rem, 7.4vw, 6.35rem);
-        background: linear-gradient(115deg, #102033 0 38%, #d62828 48%, #f2b705 63%, #1769aa 100%);
-        background-size: 180% 100%;
-        background-clip: text;
-        color: transparent;
-        filter: drop-shadow(0 5px 0 rgba(255, 244, 199, 0.9));
-        animation: title-rise 740ms cubic-bezier(0.2, 0.8, 0.2, 1) both, title-sheen 7s ease-in-out infinite;
+        margin-bottom: 22px;
+        font-size: clamp(3.2rem, 8vw, 7.6rem);
+        line-height: 0.88;
+        letter-spacing: -0.065em;
       }
 
-      .hero-copy p {
-        max-width: 43rem;
-        margin: 24px 0 0;
-        color: #26384b;
-        font-size: 1.08rem;
-        line-height: 1.85;
+      .lede {
+        max-width: 48rem;
+        margin-bottom: 0;
+        color: #d9e0e8;
+        font-size: clamp(1.04rem, 1.6vw, 1.25rem);
+        line-height: 1.75;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 12px 16px;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        background: var(--surface);
+        color: var(--text);
+        font-size: 0.9rem;
+        font-weight: 720;
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease,
+          background 160ms ease;
+      }
+
+      .button.primary {
+        border-color: transparent;
+        background: var(--green);
+        color: var(--green-ink);
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        border-color: var(--green);
+        background: var(--surface-3);
+        outline: none;
+        transform: translateY(-2px);
+      }
+
+      .button.primary:hover,
+      .button.primary:focus-visible {
+        background: #f0ff9a;
       }
 
       .contact-row {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 26px;
-        color: var(--muted);
+        gap: 8px;
+        margin-top: 24px;
+        color: var(--quiet);
+        font-size: 0.92rem;
       }
 
       .contact-row a,
       .contact-row span {
-        padding: 8px 10px;
-        border: 1px solid var(--soft-line);
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 7px 10px;
+        border: 1px solid var(--line);
         border-radius: 999px;
-        background: rgba(255, 247, 218, 0.62);
+        background: rgba(255, 255, 255, 0.035);
       }
 
       .contact-row a:hover,
       .contact-row a:focus-visible {
-        color: #9b1d20;
-        border-color: rgba(214, 40, 40, 0.42);
+        color: var(--green);
+        border-color: rgba(216, 255, 62, 0.42);
         outline: none;
       }
 
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 28px;
-      }
-
-      .button {
+      .hero-visual {
         position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        min-height: 48px;
-        padding: 14px 18px;
-        border: 1px solid rgba(23, 105, 170, 0.38);
-        border-radius: 999px;
-        background: linear-gradient(135deg, rgba(255, 244, 199, 0.92), rgba(255, 255, 255, 0.74));
-        color: var(--ink);
-        box-shadow: 0 10px 28px rgba(15, 111, 168, 0.14);
-        font-size: 0.76rem;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        transition:
-          transform 180ms ease,
-          box-shadow 180ms ease,
-          border-color 180ms ease;
       }
 
-      .button::before {
+      .signal-panel {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent),
+          var(--surface-2);
+        box-shadow: var(--shadow);
+      }
+
+      .signal-panel::before {
         position: absolute;
         inset: 0;
-        background: linear-gradient(110deg, transparent 0 35%, rgba(255, 255, 255, 0.28) 45% 55%, transparent 65% 100%);
+        background:
+          linear-gradient(90deg, rgba(216, 255, 62, 0.12) 1px, transparent 1px),
+          linear-gradient(rgba(216, 255, 62, 0.08) 1px, transparent 1px);
+        background-size: 22px 22px;
+        mask-image: linear-gradient(to bottom, black, transparent 58%);
+        opacity: 0.45;
         content: "";
-        transform: translateX(-120%);
       }
 
-      .button.alt {
-        border-color: rgba(214, 40, 40, 0.42);
-        background: linear-gradient(135deg, rgba(214, 40, 40, 0.92), rgba(242, 183, 5, 0.88));
-        color: #fffdf2;
-      }
-
-      .button:hover,
-      .button:focus-visible {
-        border-color: rgba(255, 255, 255, 0.68);
-        box-shadow: 0 16px 44px rgba(15, 111, 168, 0.22);
-        outline: none;
-        transform: translateY(-3px);
-      }
-
-      .button:hover::before,
-      .button:focus-visible::before {
-        animation: sweep 680ms ease;
-      }
-
-      .hero-side {
-        display: grid;
-        gap: 18px;
-      }
-
-      .cyber-stage {
+      .window-bar {
         position: relative;
-        min-height: 430px;
-        overflow: hidden;
-        border: 1px solid rgba(16, 32, 51, 0.18);
-        border-radius: 8px;
-        background:
-          radial-gradient(circle at 22% 18%, rgba(255, 236, 140, 0.95) 0 3.8rem, transparent 8rem),
-          linear-gradient(180deg, rgba(130, 209, 236, 0.95) 0 40%, rgba(255, 244, 199, 0.82) 40% 43%, rgba(20, 122, 170, 0.96) 43% 100%);
-        box-shadow:
-          0 24px 70px rgba(8, 59, 103, 0.28),
-          inset 0 1px 0 rgba(255, 255, 255, 0.38);
-        isolation: isolate;
-        transform: perspective(900px) rotateX(var(--stage-tilt-y)) rotateY(var(--stage-tilt-x));
-        transition:
-          transform 180ms ease,
-          box-shadow 180ms ease,
-          border-color 180ms ease;
-      }
-
-      .cyber-stage::before {
-        position: absolute;
-        inset: -1px;
-        border-radius: inherit;
-        padding: 1px;
-        background: conic-gradient(from var(--spin, 0deg), var(--rose), var(--amber), #fffdf2, var(--blue), var(--rose));
-        content: "";
-        mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-        mask-composite: exclude;
-        animation: spin-border 7s linear infinite;
-      }
-
-      .cyber-stage::after {
-        position: absolute;
-        right: 10%;
-        bottom: 24%;
-        z-index: -1;
-        width: 190px;
-        height: 190px;
-        border: 2px dashed rgba(255, 244, 199, 0.72);
-        border-radius: 999px;
-        background:
-          linear-gradient(45deg, transparent 48%, rgba(255, 244, 199, 0.5) 49% 51%, transparent 52%),
-          linear-gradient(-45deg, transparent 48%, rgba(255, 244, 199, 0.5) 49% 51%, transparent 52%);
-        content: "";
-        opacity: 0.74;
-        animation: compass-turn 18s linear infinite;
-      }
-
-      .cyber-stage:hover {
-        border-color: rgba(214, 40, 40, 0.42);
-        box-shadow:
-          0 34px 90px rgba(8, 59, 103, 0.34),
-          0 0 60px rgba(246, 207, 91, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.22);
-      }
-
-      .matrix-canvas {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.18;
-      }
-
-      .stage-grid {
-        position: absolute;
-        inset: 40% -18% -34%;
-        background:
-          radial-gradient(ellipse at 50% 0%, transparent 0 58%, rgba(255, 255, 255, 0.38) 60% 63%, transparent 65%),
-          linear-gradient(90deg, rgba(255, 244, 199, 0.26) 1px, transparent 1px);
-        background-size: 82px 30px, 72px 72px;
-        transform: perspective(620px) rotateX(60deg);
-        transform-origin: center top;
-        animation: grid-drift 6s linear infinite;
-      }
-
-      .mugiwara-mark {
-        position: absolute;
-        top: 46%;
-        left: 50%;
-        z-index: 2;
-        width: min(78%, 360px);
-        transform: translate(-50%, -50%) rotate(-3deg);
-        filter: drop-shadow(0 24px 30px rgba(6, 51, 87, 0.32));
-        animation: wanted-float 4.8s ease-in-out infinite;
-      }
-
-      .hat-brim {
-        transform-origin: 170px 118px;
-        animation: hat-tip 5.4s ease-in-out infinite;
-      }
-
-      .stage-label {
-        position: absolute;
-        right: 18px;
-        bottom: 18px;
-        left: 18px;
+        z-index: 1;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        padding: 14px 16px;
-        border: 1px solid var(--soft-line);
-        border-radius: 8px;
-        background: rgba(255, 247, 218, 0.72);
-        backdrop-filter: blur(12px);
-        color: var(--ink);
-        font-family: "Pirata One", "Space Grotesk", serif;
-        font-size: 0.8rem;
-        letter-spacing: 0.04em;
+        padding: 14px;
+        border-bottom: 1px solid var(--line);
+        color: var(--quiet);
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
-      .stage-status {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
+      .dots {
+        display: flex;
+        gap: 6px;
       }
 
-      .stage-status::before {
-        width: 9px;
-        height: 9px;
+      .dots span {
+        width: 8px;
+        height: 8px;
         border-radius: 999px;
-        background: var(--rose);
-        box-shadow: 0 0 0 4px rgba(246, 207, 91, 0.4);
-        content: "";
-        animation: pulse-dot 1.2s ease-in-out infinite;
+        background: var(--line-strong);
+      }
+
+      .dots span:nth-child(1) { background: var(--red); }
+      .dots span:nth-child(2) { background: var(--amber); }
+      .dots span:nth-child(3) { background: var(--green); }
+
+      .signal-body {
+        position: relative;
+        z-index: 1;
+        padding: 24px;
+      }
+
+      .signal-title {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 22px;
+      }
+
+      .signal-title strong {
+        font-size: clamp(2rem, 5vw, 4.5rem);
+        line-height: 0.9;
+        letter-spacing: -0.055em;
+      }
+
+      .signal-title span {
+        max-width: 12rem;
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.5;
+        text-align: right;
+      }
+
+      .target-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .target-row {
+        display: grid;
+        grid-template-columns: 95px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .target-row b {
+        color: var(--text);
+        font-size: 0.92rem;
+      }
+
+      .cve-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .cve-links a,
+      .cve-links span,
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 5px 8px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: #cbd5df;
+        background: rgba(8, 10, 13, 0.38);
+        font-size: 0.78rem;
+        font-weight: 650;
+        white-space: nowrap;
+      }
+
+      .cve-links a:hover,
+      .cve-links a:focus-visible {
+        color: var(--green);
+        border-color: rgba(216, 255, 62, 0.44);
+        outline: none;
+      }
+
+      .scanline {
+        height: 84px;
+        margin-top: 22px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background:
+          linear-gradient(90deg, transparent, rgba(216, 255, 62, 0.22), transparent),
+          repeating-linear-gradient(90deg, rgba(216, 255, 62, 0.2) 0 2px, transparent 2px 18px);
+        background-size: 220px 100%, 100% 100%;
+        animation: sweep 4.6s linear infinite;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .metric {
+        min-height: 106px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .metric strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--text);
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+
+      .metric span {
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.45;
+      }
+
+      .section {
+        padding: 72px 0 0;
+        scroll-margin-top: 92px;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.68fr) minmax(0, 1fr);
+        gap: 24px;
+        align-items: end;
+        margin-bottom: 22px;
+      }
+
+      .kicker {
+        margin-bottom: 12px;
+        color: var(--green);
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-size: clamp(2.2rem, 5vw, 4.4rem);
+        line-height: 0.96;
+        letter-spacing: -0.055em;
+      }
+
+      .section-head p {
+        margin-bottom: 4px;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.72;
+      }
+
+      .grid-2,
+      .grid-3 {
+        display: grid;
+        gap: 14px;
+      }
+
+      .grid-2 {
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       .card,
       .timeline-item {
-        position: relative;
-        overflow: hidden;
         border: 1px solid var(--line);
-        border-radius: 8px;
+        border-radius: var(--radius);
         background:
-          linear-gradient(145deg, rgba(255, 247, 218, 0.94), rgba(255, 255, 255, 0.76)),
-          repeating-linear-gradient(0deg, rgba(16, 32, 51, 0.035) 0 1px, transparent 1px 12px);
-        box-shadow:
-          0 22px 60px rgba(8, 59, 103, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.68);
-        backdrop-filter: blur(16px) saturate(1.25);
-        transition:
-          transform 180ms ease,
-          border-color 180ms ease,
-          box-shadow 180ms ease,
-          background 180ms ease;
-        will-change: transform;
+          linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent),
+          var(--surface-2);
       }
 
       .card {
-        padding: 24px;
-      }
-
-      .cve-card {
-        border: 2px solid rgba(83, 50, 26, 0.34);
-        background:
-          linear-gradient(145deg, rgba(255, 239, 179, 0.98), rgba(255, 249, 221, 0.9)),
-          repeating-linear-gradient(0deg, rgba(83, 50, 26, 0.05) 0 1px, transparent 1px 10px);
-      }
-
-      .cve-card::after {
-        position: absolute;
-        top: 16px;
-        right: 20px;
-        z-index: 0;
-        color: rgba(214, 40, 40, 0.1);
-        content: "WANTED";
-        font-family: "Bangers", "Space Grotesk", sans-serif;
-        font-size: clamp(3rem, 7vw, 5.8rem);
-        transform: rotate(-6deg);
-      }
-
-      .card::before,
-      .timeline-item::after {
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(circle at var(--card-x, 50%) var(--card-y, 0%), rgba(246, 207, 91, 0.28), transparent 13rem),
-          linear-gradient(120deg, transparent, rgba(242, 183, 5, 0.16), transparent);
-        content: "";
-        opacity: 0;
-        transition: opacity 180ms ease;
+        padding: 22px;
       }
 
       .card:hover,
       .timeline-item:hover {
-        border-color: rgba(214, 40, 40, 0.3);
-        box-shadow:
-          0 28px 80px rgba(8, 59, 103, 0.24),
-          0 0 42px rgba(246, 207, 91, 0.16),
-          inset 0 1px 0 rgba(255, 255, 255, 0.78);
-      }
-
-      .card:hover::before,
-      .timeline-item:hover::after {
-        opacity: 1;
+        border-color: var(--line-strong);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.065), transparent),
+          var(--surface);
       }
 
       .mini-title {
-        position: relative;
-        z-index: 1;
-        margin: 0 0 16px;
-        color: #9b1d20;
-        font-size: 0.78rem;
-        letter-spacing: 0.05em;
+        margin-bottom: 14px;
+        color: var(--quiet);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-      }
-
-      .stat-grid {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .stat {
-        min-height: 142px;
-        padding: 16px;
-        border: 1px solid var(--soft-line);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.055);
-      }
-
-      .stat strong {
-        display: block;
-        font-size: 1.55rem;
-      }
-
-      .stat span {
-        display: block;
-        margin-top: 8px;
-        color: var(--muted);
-        line-height: 1.55;
-      }
-
-      .cve-card h3,
-      .timeline-content h3,
-      .highlights-grid h3 {
-        position: relative;
-        z-index: 1;
-      }
-
-      .cve-card h3 {
-        margin: 0;
-        font-size: 1.7rem;
-        line-height: 1.1;
-      }
-
-      .cve-card p {
-        position: relative;
-        z-index: 1;
-        margin: 14px 0 0;
-        color: #26384b;
-        line-height: 1.8;
-      }
-
-      .chips {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 18px;
-      }
-
-      .chip {
-        padding: 8px 10px;
-        border: 1px solid rgba(23, 105, 170, 0.28);
-        border-radius: 999px;
-        background: rgba(255, 244, 199, 0.68);
-        color: #0b4c73;
-        font-size: 0.68rem;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        transition:
-          background 160ms ease,
-          color 160ms ease,
-          transform 160ms ease,
-          border-color 160ms ease;
-      }
-
-      .chip:hover {
-        color: #fffdf2;
-        border-color: var(--rose);
-        background: var(--rose);
-        transform: translateY(-2px);
-      }
-
-      .section {
-        margin-top: 92px;
-        scroll-margin-top: 120px;
-      }
-
-      .section-header {
-        margin-bottom: 28px;
-      }
-
-      .section-title {
-        max-width: 12ch;
-        font-size: clamp(2.4rem, 5.2vw, 4.25rem);
-        font-family: "Bangers", "Space Grotesk", sans-serif;
-        background: linear-gradient(105deg, #102033, #d62828 46%, #1769aa);
-        background-clip: text;
-        color: transparent;
-      }
-
-      .section-subtitle {
-        max-width: 42rem;
-        margin: 14px 0 0;
-        color: var(--muted);
-        line-height: 1.8;
-      }
-
-      .about-grid,
-      .skills-grid,
-      .highlights-grid {
-        display: grid;
-        gap: 18px;
-      }
-
-      .about-grid {
-        grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
-      }
-
-      .skills-grid,
-      .highlights-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       .prose {
-        color: #26384b;
-        line-height: 1.9;
+        color: #d5dce4;
+        line-height: 1.82;
+      }
+
+      .prose p:last-child {
+        margin-bottom: 0;
       }
 
       .list {
-        position: relative;
-        z-index: 1;
         margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .list li {
+        position: relative;
         padding-left: 20px;
-        color: #26384b;
-        line-height: 1.9;
+        color: #d5dce4;
+        line-height: 1.72;
       }
 
       .list li + li {
-        margin-top: 6px;
+        margin-top: 9px;
       }
 
-      code {
-        color: #0b7894;
+      .list li::before {
+        position: absolute;
+        top: 0.72em;
+        left: 0;
+        width: 7px;
+        height: 7px;
+        border: 1px solid rgba(216, 255, 62, 0.72);
+        border-radius: 2px;
+        content: "";
+        transform: rotate(45deg);
+      }
+
+      .cve-card {
+        position: relative;
+        min-height: 232px;
+        overflow: hidden;
+      }
+
+      .cve-card::after {
+        position: absolute;
+        right: 18px;
+        bottom: 14px;
+        color: rgba(255, 255, 255, 0.035);
+        font-size: 5rem;
+        font-weight: 900;
+        letter-spacing: -0.08em;
+        content: attr(data-count);
+      }
+
+      .cve-card h3 {
+        margin-bottom: 10px;
+        font-size: 1.35rem;
+      }
+
+      .cve-card p {
+        margin-bottom: 18px;
+        color: var(--muted);
+        line-height: 1.65;
       }
 
       .timeline {
-        position: relative;
         display: grid;
-        gap: 18px;
-      }
-
-      .timeline::before {
-        position: absolute;
-        top: 16px;
-        bottom: 16px;
-        left: 92px;
-        width: 1px;
-        background: linear-gradient(180deg, var(--rose), var(--amber), var(--blue), #fffdf2);
-        content: "";
-        box-shadow: 0 0 18px rgba(242, 183, 5, 0.22);
+        gap: 12px;
       }
 
       .timeline-item {
         display: grid;
-        grid-template-columns: 185px minmax(0, 1fr);
+        grid-template-columns: 170px minmax(0, 1fr);
         gap: 18px;
-        padding: 24px;
+        padding: 22px;
       }
 
-      .timeline-item::before {
-        position: absolute;
-        top: 30px;
-        left: 85px;
-        width: 15px;
-        height: 15px;
-        border: 1px solid rgba(214, 40, 40, 0.72);
-        border-radius: 999px;
-        background: var(--paper);
-        box-shadow: 0 0 0 5px rgba(246, 207, 91, 0.34);
-        content: "";
-      }
-
-      .timeline-date {
-        position: relative;
-        z-index: 1;
-        color: #9b1d20;
-        font-size: 0.78rem;
-        line-height: 1.8;
+      .date {
+        color: var(--green);
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
-      .timeline-content {
-        position: relative;
-        z-index: 1;
+      .timeline-item h3 {
+        margin-bottom: 4px;
+        font-size: 1.25rem;
       }
 
-      .timeline-content h3 {
-        margin: 0;
-        font-size: 1.35rem;
+      .role {
+        margin-bottom: 14px;
+        color: var(--quiet);
       }
 
-      .timeline-content .role {
-        margin: 6px 0 0;
-        color: var(--muted);
+      .blog-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .blog-link {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr);
+        gap: 16px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface-2);
+      }
+
+      .blog-link:hover,
+      .blog-link:focus-visible {
+        border-color: rgba(216, 255, 62, 0.44);
+        outline: none;
+      }
+
+      .blog-link span {
+        color: var(--quiet);
+        font-size: 0.84rem;
+      }
+
+      .blog-link strong {
+        color: var(--text);
+        line-height: 1.45;
+      }
+
+      code {
+        color: var(--green);
       }
 
       .footer {
-        padding: 64px 0 12px;
-        color: var(--muted);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 74px;
+        padding: 24px 0;
+        border-top: 1px solid var(--line);
+        color: var(--quiet);
+        font-size: 0.92rem;
       }
 
-      .motion-ready .reveal {
+      .reveal {
         opacity: 0;
-        transform: translateY(34px) scale(0.985);
-        filter: blur(8px);
+        transform: translateY(22px);
         transition:
-          opacity 760ms ease,
-          transform 760ms cubic-bezier(0.2, 0.8, 0.2, 1),
-          filter 760ms ease;
+          opacity 520ms ease,
+          transform 520ms ease;
       }
 
-      .motion-ready .reveal.is-visible {
+      .reveal.visible {
         opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-      }
-
-      @property --spin {
-        syntax: "<angle>";
-        inherits: true;
-        initial-value: 0deg;
-      }
-
-      @keyframes background-pan {
-        to { background-position: 48px 48px; }
-      }
-
-      @keyframes brand-bob {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-2px); }
-      }
-
-      @keyframes compass-turn {
-        to { transform: rotate(360deg); }
-      }
-
-      @keyframes pulse-dot {
-        0%, 100% { opacity: 0.38; transform: scale(0.82); }
-        50% { opacity: 1; transform: scale(1.1); }
-      }
-
-      @keyframes title-rise {
-        from { opacity: 0; transform: translateY(24px) scale(0.98); }
-        to { opacity: 1; transform: translateY(0) scale(1); }
-      }
-
-      @keyframes title-sheen {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
+        transform: translateY(0);
       }
 
       @keyframes sweep {
-        from { transform: translateX(-120%); }
-        to { transform: translateX(120%); }
-      }
-
-      @keyframes spin-border {
-        to { --spin: 360deg; }
-      }
-
-      @keyframes grid-drift {
-        to { background-position: 0 36px, 36px 0; }
-      }
-
-      @keyframes wanted-float {
-        0%, 100% { transform: translate(-50%, -50%) rotate(-3deg) translateY(0); }
-        50% { transform: translate(-50%, -50%) rotate(2deg) translateY(-10px); }
-      }
-
-      @keyframes hat-tip {
-        0%, 100% { transform: rotate(0deg) translateY(0); }
-        50% { transform: rotate(-2deg) translateY(-3px); }
+        to { background-position: 220px 0, 0 0; }
       }
 
       @media (max-width: 980px) {
+        .topbar-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 16px 0;
+        }
+
+        .nav {
+          width: 100%;
+          overflow-x: auto;
+          padding-bottom: 2px;
+        }
+
         .hero,
-        .about-grid,
-        .skills-grid,
-        .highlights-grid,
+        .section-head,
+        .grid-2,
+        .grid-3,
         .timeline-item {
           grid-template-columns: 1fr;
         }
 
         .hero {
           min-height: auto;
+          padding-top: 42px;
         }
 
-        .hero-copy {
-          position: static;
-        }
-
-        .timeline::before,
-        .timeline-item::before {
-          display: none;
+        .metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
 
-      @media (max-width: 680px) {
-        .topbar-inner {
+      @media (max-width: 640px) {
+        .wrap {
+          width: min(calc(100% - 24px), var(--max));
+        }
+
+        h1 {
+          max-width: 12ch;
+          font-size: clamp(3rem, 18vw, 4.6rem);
+        }
+
+        .target-row,
+        .blog-link {
+          grid-template-columns: 1fr;
+        }
+
+        .signal-title {
           align-items: flex-start;
           flex-direction: column;
         }
 
-        .nav {
-          gap: 6px;
+        .signal-title span {
+          max-width: none;
+          text-align: left;
         }
 
-        .nav a {
-          padding: 7px 9px;
+        .metrics {
+          grid-template-columns: 1fr;
         }
 
-        main {
-          padding-top: 28px;
-        }
-
-        .hero-copy h1 {
-          font-size: clamp(2.7rem, 12vw, 3.55rem);
-        }
-
-        .hero-copy p {
-          font-size: 1rem;
+        .button {
+          width: 100%;
         }
 
         .contact-row a,
@@ -952,28 +795,9 @@
           width: 100%;
         }
 
-        .button {
-          flex: 1 1 160px;
-        }
-
-        .cyber-stage {
-          min-height: 320px;
-          border-radius: 8px;
-        }
-
-        .stage-label {
+        .footer {
           align-items: flex-start;
           flex-direction: column;
-        }
-
-        .stat-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .card,
-        .timeline-item {
-          padding: 20px;
-          border-radius: 8px;
         }
       }
 
@@ -990,160 +814,144 @@
           transition-duration: 1ms !important;
         }
 
-        .motion-ready .reveal {
+        .reveal {
           opacity: 1;
           transform: none;
-          filter: none;
         }
       }
     </style>
   </head>
   <body>
-    <canvas class="background-canvas" aria-hidden="true"></canvas>
-    <div class="scroll-progress" aria-hidden="true"></div>
+    <div class="progress" aria-hidden="true"></div>
     <header class="topbar">
-      <div class="topbar-inner">
-        <div class="brand">Jody Jeremi Hadrian Ritonga</div>
+      <div class="wrap topbar-inner">
+        <a class="brand" href="#top" aria-label="Jody Ritonga home">
+          <span class="brand-mark">JR</span>
+          <span>Jody Jeremi Hadrian Ritonga</span>
+        </a>
         <nav class="nav" aria-label="Primary">
           <a href="#about">About</a>
+          <a href="#cves">CVEs</a>
           <a href="#experience">Experience</a>
           <a href="#skills">Skills</a>
-          <a href="#highlights">Highlights</a>
-          <a href="#blog">Blog</a>
+          <a href="#writing">Writing</a>
         </nav>
       </div>
     </header>
 
-    <main class="shell">
-      <section class="hero">
+    <main id="top">
+      <section class="wrap hero">
         <div class="hero-copy">
-          <div class="eyebrow"><span class="mini-straw-hat" aria-hidden="true"></span>Grand Line AppSec + Browser Security</div>
-          <h1>Jody Jeremi<br>Hadrian Ritonga</h1>
-          <p>
-            I’m a 23-year-old web application and browser security researcher.
-            My primary focus is on server-side vulnerabilities, while I’m also
-            expanding my expertise in client-side security. Currently, I’m
-            particularly interested in browser spoofing and related security
-            issues.
+          <div class="eyebrow">Web AppSec / Browser Security / Vulnerability Research</div>
+          <h1>Jody Jeremi Hadrian Ritonga</h1>
+          <p class="lede">
+            Security researcher focused on server-side vulnerabilities, browser UI
+            trust boundaries, and practical exploit validation. I work across bug
+            bounty, penetration testing, and browser security research with public
+            CVE records across Edge, Firefox, and Safari.
           </p>
-          <div class="contact-row">
+          <div class="hero-actions">
+            <a class="button primary" href="#cves">View CVE record</a>
+            <a class="button" href="https://medium.com/@jodyritonga" target="_blank" rel="noreferrer">Read research notes</a>
+            <a class="button" href="https://www.linkedin.com/in/jodyritonga" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+          <div class="contact-row" aria-label="Contact details">
             <a href="mailto:jodyritonga@gmail.com">jodyritonga@gmail.com</a>
             <span>Tangerang, Indonesia</span>
-            <a href="https://www.linkedin.com/in/jodyritonga" target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
-          <div class="actions">
-            <a class="button alt" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-33119" target="_blank" rel="noreferrer">Open CVE Log</a>
-            <a class="button" href="https://medium.com/@jodyritonga" target="_blank" rel="noreferrer">Read Logbook</a>
+            <span>Universitas Advent Indonesia</span>
           </div>
         </div>
 
-        <div class="hero-side">
-          <div class="cyber-stage" aria-label="Animated Grand Line browser security map">
-            <canvas class="matrix-canvas" aria-hidden="true"></canvas>
-            <div class="stage-grid" aria-hidden="true"></div>
-            <svg class="mugiwara-mark" viewBox="0 0 340 260" role="img" aria-label="Straw hat pirate security mark">
-              <title>Straw hat pirate security mark</title>
-              <g fill="none" stroke="#172033" stroke-linecap="round" stroke-width="13">
-                <path d="M83 180 L33 230"></path>
-                <path d="M257 180 L307 230"></path>
-                <path d="M83 230 L33 180"></path>
-                <path d="M257 230 L307 180"></path>
-              </g>
-              <g fill="#fffdf2" stroke="#172033" stroke-width="9">
-                <circle cx="45" cy="178" r="13"></circle>
-                <circle cx="295" cy="178" r="13"></circle>
-                <circle cx="45" cy="232" r="13"></circle>
-                <circle cx="295" cy="232" r="13"></circle>
-              </g>
-              <path d="M96 104 C96 62 128 34 170 34 C212 34 244 62 244 104 C244 151 214 181 170 181 C126 181 96 151 96 104Z" fill="#fffdf2" stroke="#172033" stroke-width="9"></path>
-              <circle cx="142" cy="105" r="18" fill="#172033"></circle>
-              <circle cx="198" cy="105" r="18" fill="#172033"></circle>
-              <path d="M170 125 L157 148 H183 Z" fill="#172033"></path>
-              <path d="M127 153 C145 173 195 173 213 153" fill="none" stroke="#172033" stroke-linecap="round" stroke-width="7"></path>
-              <g class="hat-brim">
-                <path d="M62 91 C102 122 238 122 278 91 C245 142 95 142 62 91Z" fill="#f6cf5b" stroke="#172033" stroke-linejoin="round" stroke-width="9"></path>
-                <path d="M102 90 C109 44 136 17 170 17 C204 17 231 44 238 90 C205 111 135 111 102 90Z" fill="#f2b705" stroke="#172033" stroke-linejoin="round" stroke-width="9"></path>
-                <path d="M103 82 C134 98 206 98 237 82 L242 101 C203 120 137 120 98 101Z" fill="#d62828" stroke="#172033" stroke-linejoin="round" stroke-width="7"></path>
-                <path d="M84 97 C126 119 214 119 256 97" fill="none" stroke="#fff4c7" stroke-linecap="round" stroke-width="7" opacity="0.9"></path>
-              </g>
-              <path d="M104 198 C125 213 145 213 170 198 C195 213 215 213 236 198" fill="none" stroke="#172033" stroke-linecap="round" stroke-width="8"></path>
-            </svg>
-            <div class="stage-label">
-              <span>Grand Line attack surface</span>
-              <span class="stage-status">Research voyage</span>
+        <div class="hero-visual" aria-label="Public vulnerability record summary">
+          <div class="signal-panel">
+            <div class="window-bar">
+              <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span>public-vuln-record.json</span>
+            </div>
+            <div class="signal-body">
+              <div class="signal-title">
+                <strong>5 CVEs</strong>
+                <span>Browser security findings across Chromium-based Edge, Firefox, and Safari.</span>
+              </div>
+              <div class="target-list">
+                <div class="target-row">
+                  <b>Edge</b>
+                  <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-33119" target="_blank" rel="noreferrer">CVE-2026-33119</a>
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-35429" target="_blank" rel="noreferrer">CVE-2026-35429</a>
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-40416" target="_blank" rel="noreferrer">CVE-2026-40416</a>
+                  </div>
+                </div>
+                <div class="target-row">
+                  <b>Firefox</b>
+                  <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-12323" target="_blank" rel="noreferrer">CVE-2026-12323</a>
+                  </div>
+                </div>
+                <div class="target-row">
+                  <b>Safari</b>
+                  <div class="cve-links">
+                    <a href="https://www.cve.org/CVERecord?id=CVE-2026-43713" target="_blank" rel="noreferrer">CVE-2026-43713</a>
+                  </div>
+                </div>
+              </div>
+              <div class="scanline" aria-hidden="true"></div>
             </div>
           </div>
-
-          <article class="card accent">
-            <p class="mini-title">Crew Notes</p>
-            <div class="stat-grid">
-              <div class="stat">
-                <strong>2+ years</strong>
-                <span>Hands-on web application security work through bug bounty, research, and client testing.</span>
-              </div>
-              <div class="stat">
-                <strong>3.92</strong>
-                <span>Informatics GPA from Universitas Advent Indonesia.</span>
-              </div>
-              <div class="stat">
-                <strong>Mentor</strong>
-                <span>Cybersecurity mentor at IT Verse, teaching from recon to post-exploitation basics.</span>
-              </div>
-              <div class="stat">
-                <strong>Browser + AppSec</strong>
-                <span>Primary focus on server-side vulnerabilities, with growing depth in client-side and browser security research.</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card cve-card">
-            <p class="mini-title">Wanted Poster</p>
-            <h3>CVE-2026-33119</h3>
-            <p>
-              Reported Microsoft Edge spoofing issue tracked as
-              <strong>CVE-2026-33119</strong>. Public records describe it as a
-              Microsoft Edge (Chromium-based) UI misrepresentation issue with a
-              <strong>5.4 medium</strong> CVSS score, published on
-              <strong>April 10, 2026</strong>.
-            </p>
-            <div class="chips">
-              <span class="chip">Spoofing</span>
-              <span class="chip">Microsoft Edge</span>
-              <span class="chip">Android</span>
-              <span class="chip">CWE-451</span>
-            </div>
-          </article>
         </div>
       </section>
 
-      <section id="about" class="section">
-        <div class="section-header">
-          <div class="section-kicker">About</div>
-          <h2 class="section-title">What I work on</h2>
-          <p class="section-subtitle">
-            The page content below is based on my CV and current public work,
-            trimmed into a more direct portfolio format.
+      <section class="wrap metrics" aria-label="Portfolio summary">
+        <div class="metric">
+          <strong>5</strong>
+          <span>Public CVE identifiers across browser vendors.</span>
+        </div>
+        <div class="metric">
+          <strong>2+ yrs</strong>
+          <span>Hands-on application security and bug bounty work.</span>
+        </div>
+        <div class="metric">
+          <strong>3.92</strong>
+          <span>Informatics GPA, Universitas Advent Indonesia.</span>
+        </div>
+        <div class="metric">
+          <strong>Mentor</strong>
+          <span>Cybersecurity mentor at IT Verse.</span>
+        </div>
+      </section>
+
+      <section id="about" class="wrap section">
+        <div class="section-head">
+          <div>
+            <div class="kicker">About</div>
+            <h2>Security work with proof attached.</h2>
+          </div>
+          <p>
+            I focus on findings that survive scrutiny: clear attacker control,
+            source-to-sink analysis, reproducible PoCs, and reports a developer
+            can actually fix.
           </p>
         </div>
 
-        <div class="about-grid">
+        <div class="grid-2">
           <article class="card prose">
-            I am a dedicated security professional with experience in bug bounty,
-            freelance penetration testing, internship consulting, and cloud-based
-            side projects. My background combines web security testing,
-            vulnerability validation, developer-facing reporting, and enough
-            engineering context to work comfortably with APIs, Docker, and cloud
-            environments.
-            <br><br>
-            My main focus remains on impactful server-side findings, while I am
-            steadily expanding into client-side security and browser research.
-            In particular, I am interested in browser spoofing, domain
-            presentation issues, origin confusion, and UI flows that can
-            mislead users about what they are seeing or trusting.
+            <p>
+              I am a web application and browser security researcher with
+              experience in bug bounty, freelance penetration testing, internship
+              consulting, and cloud-based side projects. My primary focus is
+              impactful server-side security issues, backed by manual validation
+              and clear remediation guidance.
+            </p>
+            <p>
+              I am also actively expanding into client-side and browser security:
+              spoofing, origin confusion, permission prompts, fullscreen flows,
+              download attribution, and UI states that can mislead users about
+              what they are trusting.
+            </p>
           </article>
 
           <article class="card">
-            <p class="mini-title">Selected Credentials</p>
+            <div class="mini-title">Selected Credentials</div>
             <ul class="list">
               <li>Practical Ethical Hacking, TCM Security</li>
               <li>Mobile Application Penetration Testing, TCM Security</li>
@@ -1156,29 +964,80 @@
         </div>
       </section>
 
-      <section id="experience" class="section">
-        <div class="section-header">
-          <div class="section-kicker">Experience</div>
-          <h2 class="section-title">Recent work</h2>
+      <section id="cves" class="wrap section">
+        <div class="section-head">
+          <div>
+            <div class="kicker">CVE Record</div>
+            <h2>Browser findings across major engines.</h2>
+          </div>
+          <p>
+            Public identifiers are grouped by affected browser family. Details
+            are intentionally concise here; each vendor disclosure should be
+            read as the source of truth for final wording and impact.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card cve-card" data-count="3">
+            <div class="mini-title">Microsoft Edge</div>
+            <h3>Chromium-based browser security</h3>
+            <p>Three Edge CVEs covering browser security research findings.</p>
+            <div class="cve-links">
+              <a href="https://www.cve.org/CVERecord?id=CVE-2026-33119" target="_blank" rel="noreferrer">CVE-2026-33119</a>
+              <a href="https://www.cve.org/CVERecord?id=CVE-2026-35429" target="_blank" rel="noreferrer">CVE-2026-35429</a>
+              <a href="https://www.cve.org/CVERecord?id=CVE-2026-40416" target="_blank" rel="noreferrer">CVE-2026-40416</a>
+            </div>
+          </article>
+
+          <article class="card cve-card" data-count="1">
+            <div class="mini-title">Firefox</div>
+            <h3>Browser security research</h3>
+            <p>One Firefox CVE from vulnerability research and responsible disclosure.</p>
+            <div class="cve-links">
+              <a href="https://www.cve.org/CVERecord?id=CVE-2026-12323" target="_blank" rel="noreferrer">CVE-2026-12323</a>
+            </div>
+          </article>
+
+          <article class="card cve-card" data-count="1">
+            <div class="mini-title">Safari</div>
+            <h3>Apple browser security</h3>
+            <p>One Safari CVE from browser security research and coordinated disclosure.</p>
+            <div class="cve-links">
+              <a href="https://www.cve.org/CVERecord?id=CVE-2026-43713" target="_blank" rel="noreferrer">CVE-2026-43713</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="wrap section">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Experience</div>
+            <h2>Recent work.</h2>
+          </div>
+          <p>
+            A mix of independent research, client testing, consulting support,
+            and community teaching.
+          </p>
         </div>
 
         <div class="timeline">
           <article class="timeline-item">
-            <div class="timeline-date">Jan 2025<br>to Present</div>
-            <div class="timeline-content">
-              <h3>Bug Hunter</h3>
-              <p class="role">Independent Research</p>
+            <div class="date">Jan 2025<br>to Present</div>
+            <div>
+              <h3>Independent Bug Hunter</h3>
+              <p class="role">Browser and web application security research</p>
               <ul class="list">
-                <li>Actively research and validate security issues across modern web and browser attack surfaces.</li>
-                <li>Reported vulnerabilities through responsible disclosure and bug bounty workflows.</li>
-                <li>Found high-severity vulnerabilities affecting Microsoft and Opera products.</li>
+                <li>Research and validate issues across modern web and browser attack surfaces.</li>
+                <li>Build reproducible PoCs, source-to-sink traces, and responsible disclosure reports.</li>
+                <li>Reported security issues affecting Microsoft Edge, Firefox, Safari, Opera, and web targets.</li>
               </ul>
             </div>
           </article>
 
           <article class="timeline-item">
-            <div class="timeline-date">May 2024<br>to Jul 2024</div>
-            <div class="timeline-content">
+            <div class="date">May 2024<br>to Jul 2024</div>
+            <div>
               <h3>TruVisor.io</h3>
               <p class="role">Technical Consultant Intern · Jakarta</p>
               <ul class="list">
@@ -1190,8 +1049,8 @@
           </article>
 
           <article class="timeline-item">
-            <div class="timeline-date">Jul 2023<br>to Dec 2023</div>
-            <div class="timeline-content">
+            <div class="date">Jul 2023<br>to Dec 2023</div>
+            <div>
               <h3>Freelance Web Application Pentester</h3>
               <p class="role">Confidential Client · Indonesia</p>
               <ul class="list">
@@ -1203,8 +1062,8 @@
           </article>
 
           <article class="timeline-item">
-            <div class="timeline-date">Jun 2023<br>to Jul 2023</div>
-            <div class="timeline-content">
+            <div class="date">Jun 2023<br>to Jul 2023</div>
+            <div>
               <h3>PT. Lucky Indah Keramik</h3>
               <p class="role">Web Application Pentester Intern · Jakarta Pusat</p>
               <ul class="list">
@@ -1217,26 +1076,32 @@
         </div>
       </section>
 
-      <section id="skills" class="section">
-        <div class="section-header">
-          <div class="section-kicker">Skills</div>
-          <h2 class="section-title">Tools and focus areas</h2>
+      <section id="skills" class="wrap section">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Skills</div>
+            <h2>Tools and focus areas.</h2>
+          </div>
+          <p>
+            Practical testing stack, reporting workflow, and engineering context
+            for validating real impact.
+          </p>
         </div>
 
-        <div class="skills-grid">
+        <div class="grid-3">
           <article class="card">
-            <p class="mini-title">Security</p>
+            <div class="mini-title">Security</div>
             <ul class="list">
               <li>Penetration testing</li>
-              <li>Bug bounty workflows</li>
+              <li>Bug bounty triage and validation</li>
+              <li>Browser spoofing and UI trust boundaries</li>
               <li>Vulnerability assessment with Nuclei</li>
-              <li>Wazuh SIEM</li>
-              <li>Manual validation of findings</li>
+              <li>Manual false-positive reduction</li>
             </ul>
           </article>
 
           <article class="card">
-            <p class="mini-title">Tooling</p>
+            <div class="mini-title">Tooling</div>
             <ul class="list">
               <li>Burp Suite</li>
               <li>Linux: Kali and Ubuntu</li>
@@ -1247,312 +1112,120 @@
           </article>
 
           <article class="card">
-            <p class="mini-title">Engineering</p>
+            <div class="mini-title">Engineering</div>
             <ul class="list">
               <li>Python, JavaScript, PHP</li>
               <li>Express.js and Laravel</li>
               <li>Google Cloud Platform</li>
               <li>Alibaba Cloud</li>
-              <li>Browser security research</li>
+              <li>API and cloud deployment context</li>
             </ul>
           </article>
         </div>
       </section>
 
-      <section id="highlights" class="section">
-        <div class="section-header">
-          <div class="section-kicker">Highlights</div>
-          <h2 class="section-title">Recognition and activity</h2>
-        </div>
-
-        <div class="highlights-grid">
-          <article class="card">
-            <p class="mini-title">Security</p>
-            <ul class="list">
-              <li>Found critical vulnerabilities in Gameqoo and other Indonesian companies and startups.</li>
-              <li>Hall of fame recognition at <code>bpk.go.id</code>.</li>
-              <li>Reported CVE-2026-33119 affecting Microsoft Edge.</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <p class="mini-title">Community</p>
-            <ul class="list">
-              <li>Speaker at RentInd Academy on “Mastering Cyber Security: An In-depth Exploration of OSINT”.</li>
-              <li>Cybersecurity mentor at IT Verse.</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <p class="mini-title">Academic</p>
-            <ul class="list">
-              <li>Highest GPA in 3rd semester: 4.00.</li>
-              <li>2nd place in Cyber Cup IT competition, startup category.</li>
-              <li>S1 Teknik Informatika, Universitas Advent Indonesia, 2021–2025.</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="blog" class="section">
-        <div class="section-header">
-          <div class="section-kicker">Blog</div>
-          <h2 class="section-title">Writing on Medium</h2>
-          <p class="section-subtitle">
-            Selected posts pulled from my Medium feed. Most of them are
-            write-up style articles around web vulnerabilities and bug hunting.
+      <section id="writing" class="wrap section">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Writing</div>
+            <h2>Notes and write-ups.</h2>
+          </div>
+          <p>
+            Selected posts from Medium covering web vulnerabilities, bug hunting,
+            and hands-on exploitation stories.
           </p>
         </div>
 
-        <div class="highlights-grid">
-          <article class="card">
-            <p class="mini-title">Jun 17, 2024</p>
-            <h3>
-              <a href="https://jodyritonga.medium.com/breaking-into-the-vip-club-a-tale-of-parameter-tampering-exploits-83df7b6b9691?source=rss-77238181c0e7------2" target="_blank" rel="noreferrer">
-                Breaking into the VIP Club: A Tale of Parameter Tampering Exploits
-              </a>
-            </h3>
-          </article>
-
-          <article class="card">
-            <p class="mini-title">Nov 19, 2023</p>
-            <h3>
-              <a href="https://systemweakness.com/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank-fdb4fbfed355?source=rss-77238181c0e7------2" target="_blank" rel="noreferrer">
-                Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}
-              </a>
-            </h3>
-          </article>
-
-          <article class="card">
-            <p class="mini-title">Jul 20, 2023</p>
-            <h3>
-              <a href="https://systemweakness.com/catch-that-response-a-tale-of-leaked-reset-password-in-url-1cb8bcdf29ae?source=rss-77238181c0e7------2" target="_blank" rel="noreferrer">
-                Catch that response! (A tale of leaked reset password in URL)
-              </a>
-            </h3>
-          </article>
-
-          <article class="card">
-            <p class="mini-title">Jul 9, 2023</p>
-            <h3>
-              <a href="https://systemweakness.com/account-takeover-through-changing-id-in-reset-password-2a9bd7d38c14?source=rss-77238181c0e7------2" target="_blank" rel="noreferrer">
-                Account takeover through changing id in reset password
-              </a>
-            </h3>
-          </article>
-
-          <article class="card">
-            <p class="mini-title">Profile</p>
-            <h3>
-              <a href="https://medium.com/@jodyritonga" target="_blank" rel="noreferrer">
-                Visit my full Medium profile
-              </a>
-            </h3>
-          </article>
+        <div class="blog-list">
+          <a class="blog-link" href="https://jodyritonga.medium.com/breaking-into-the-vip-club-a-tale-of-parameter-tampering-exploits-83df7b6b9691" target="_blank" rel="noreferrer">
+            <span>Jun 17, 2024</span>
+            <strong>Breaking into the VIP Club: A Tale of Parameter Tampering Exploits</strong>
+          </a>
+          <a class="blog-link" href="https://systemweakness.com/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank-fdb4fbfed355" target="_blank" rel="noreferrer">
+            <span>Nov 19, 2023</span>
+            <strong>Negative value leads to infinity money {Intigriti CTF 2023-Bug Bank}</strong>
+          </a>
+          <a class="blog-link" href="https://systemweakness.com/catch-that-response-a-tale-of-leaked-reset-password-in-url-1cb8bcdf29ae" target="_blank" rel="noreferrer">
+            <span>Jul 20, 2023</span>
+            <strong>Catch that response! A tale of leaked reset password in URL</strong>
+          </a>
+          <a class="blog-link" href="https://systemweakness.com/account-takeover-through-changing-id-in-reset-password-2a9bd7d38c14" target="_blank" rel="noreferrer">
+            <span>Jul 9, 2023</span>
+            <strong>Account takeover through changing id in reset password</strong>
+          </a>
+          <a class="blog-link" href="https://medium.com/@jodyritonga" target="_blank" rel="noreferrer">
+            <span>Profile</span>
+            <strong>Visit the full Medium profile</strong>
+          </a>
         </div>
       </section>
 
-      <footer class="footer">
+      <footer class="wrap footer">
         <span>Jody Jeremi Hadrian Ritonga</span>
+        <span>Web AppSec · Browser Security · Responsible Disclosure</span>
       </footer>
     </main>
+
     <script>
       (() => {
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        document.body.classList.add("motion-ready");
+        const root = document.documentElement;
         const navLinks = [...document.querySelectorAll(".nav a")];
         const sections = navLinks
           .map((link) => document.querySelector(link.getAttribute("href")))
           .filter(Boolean);
 
+        const updateScroll = () => {
+          const max = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = max > 0 ? window.scrollY / max : 0;
+          root.style.setProperty("--progress", Math.min(progress, 1).toFixed(4));
+
+          let current = sections[0]?.id;
+          sections.forEach((section) => {
+            if (section.getBoundingClientRect().top <= 150) current = section.id;
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.toggle("is-active", link.getAttribute("href") === `#${current}`);
+          });
+        };
+
+        updateScroll();
+        window.addEventListener("scroll", updateScroll, { passive: true });
+        window.addEventListener("resize", updateScroll);
+
         const revealTargets = document.querySelectorAll(
-          ".section, .card, .timeline-item, .cyber-stage, .hero-copy p, .contact-row, .actions"
+          ".hero-copy, .hero-visual, .metric, .section-head, .card, .timeline-item, .blog-link"
         );
 
-        revealTargets.forEach((target) => target.classList.add("reveal"));
-
-        if ("IntersectionObserver" in window) {
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+          revealTargets.forEach((target) => target.classList.add("visible"));
+        } else {
+          revealTargets.forEach((target) => target.classList.add("reveal"));
           const observer = new IntersectionObserver(
             (entries) => {
               entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                  entry.target.classList.add("is-visible");
+                  entry.target.classList.add("visible");
                   observer.unobserve(entry.target);
                 }
               });
             },
-            { threshold: 0.16 }
+            { threshold: 0.14 }
           );
-
           revealTargets.forEach((target) => observer.observe(target));
-        } else {
-          revealTargets.forEach((target) => target.classList.add("is-visible"));
         }
 
-        const updateScrollState = () => {
-          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-          const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
-          document.documentElement.style.setProperty("--scroll-progress", Math.min(progress, 1).toFixed(4));
-
-          let currentId = sections[0]?.id;
-          sections.forEach((section) => {
-            if (section.getBoundingClientRect().top <= 150) {
-              currentId = section.id;
-            }
-          });
-
-          navLinks.forEach((link) => {
-            link.classList.toggle("is-active", link.getAttribute("href") === `#${currentId}`);
-          });
-        };
-
-        updateScrollState();
-        window.addEventListener("scroll", updateScrollState, { passive: true });
-        window.addEventListener("resize", updateScrollState);
-
-        if (reduceMotion) {
-          revealTargets.forEach((target) => target.classList.add("is-visible"));
-          return;
+        if (!reduceMotion) {
+          window.addEventListener(
+            "pointermove",
+            (event) => {
+              root.style.setProperty("--mx", `${event.clientX}px`);
+              root.style.setProperty("--my", `${event.clientY}px`);
+            },
+            { passive: true }
+          );
         }
-
-        const cards = document.querySelectorAll(".card, .timeline-item");
-        cards.forEach((card) => {
-          card.addEventListener("pointermove", (event) => {
-            const rect = card.getBoundingClientRect();
-            const x = (event.clientX - rect.left) / rect.width - 0.5;
-            const y = (event.clientY - rect.top) / rect.height - 0.5;
-            card.style.setProperty("--card-x", `${event.clientX - rect.left}px`);
-            card.style.setProperty("--card-y", `${event.clientY - rect.top}px`);
-            card.style.transform = `perspective(900px) rotateX(${y * -3}deg) rotateY(${x * 4}deg) translateY(-3px)`;
-          });
-
-          card.addEventListener("pointerleave", () => {
-            card.style.transform = "";
-          });
-        });
-
-        const stage = document.querySelector(".cyber-stage");
-        stage.addEventListener("pointermove", (event) => {
-          const rect = stage.getBoundingClientRect();
-          const x = (event.clientX - rect.left) / rect.width - 0.5;
-          const y = (event.clientY - rect.top) / rect.height - 0.5;
-          stage.style.setProperty("--stage-tilt-x", `${x * 7}deg`);
-          stage.style.setProperty("--stage-tilt-y", `${y * -5}deg`);
-        });
-
-        stage.addEventListener("pointerleave", () => {
-          stage.style.setProperty("--stage-tilt-x", "0deg");
-          stage.style.setProperty("--stage-tilt-y", "0deg");
-        });
-
-        const canvas = document.querySelector(".matrix-canvas");
-        const ctx = canvas.getContext("2d");
-        const glyphs = "LOGPOSEGRANDLINEORIGINCVEEDGEBUGAPI";
-        let columns = [];
-        let animationFrame = 0;
-
-        const resizeCanvas = () => {
-          const rect = canvas.getBoundingClientRect();
-          const ratio = window.devicePixelRatio || 1;
-          canvas.width = Math.floor(rect.width * ratio);
-          canvas.height = Math.floor(rect.height * ratio);
-          ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-          columns = Array.from({ length: Math.ceil(rect.width / 16) }, () => Math.random() * rect.height);
-        };
-
-        const drawMatrix = () => {
-          const width = canvas.clientWidth;
-          const height = canvas.clientHeight;
-          ctx.fillStyle = "rgba(8, 59, 103, 0.13)";
-          ctx.fillRect(0, 0, width, height);
-          ctx.fillStyle = "rgba(255, 244, 199, 0.72)";
-          ctx.font = "14px Pirata One, serif";
-
-          columns.forEach((y, index) => {
-            const glyph = glyphs[Math.floor(Math.random() * glyphs.length)];
-            const x = index * 16;
-            ctx.fillText(glyph, x, y);
-            columns[index] = y > height + Math.random() * 120 ? 0 : y + 16;
-          });
-
-          animationFrame = requestAnimationFrame(drawMatrix);
-        };
-
-        resizeCanvas();
-        drawMatrix();
-        window.addEventListener("resize", resizeCanvas);
-
-        const backgroundCanvas = document.querySelector(".background-canvas");
-        const backgroundCtx = backgroundCanvas.getContext("2d");
-        let backgroundFrame = 0;
-        let particles = [];
-
-        const resizeBackground = () => {
-          const ratio = window.devicePixelRatio || 1;
-          backgroundCanvas.width = Math.floor(window.innerWidth * ratio);
-          backgroundCanvas.height = Math.floor(window.innerHeight * ratio);
-          backgroundCtx.setTransform(ratio, 0, 0, ratio, 0, 0);
-          const count = Math.min(92, Math.max(42, Math.floor(window.innerWidth / 18)));
-          particles = Array.from({ length: count }, () => ({
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            vx: (Math.random() - 0.5) * 0.32,
-            vy: (Math.random() - 0.5) * 0.32,
-            r: Math.random() * 1.8 + 0.8
-          }));
-        };
-
-        const drawBackground = () => {
-          backgroundCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-          particles.forEach((point, index) => {
-            point.x += point.vx;
-            point.y += point.vy;
-
-            if (point.x < -20) point.x = window.innerWidth + 20;
-            if (point.x > window.innerWidth + 20) point.x = -20;
-            if (point.y < -20) point.y = window.innerHeight + 20;
-            if (point.y > window.innerHeight + 20) point.y = -20;
-
-            for (let next = index + 1; next < particles.length; next += 1) {
-              const other = particles[next];
-              const dx = point.x - other.x;
-              const dy = point.y - other.y;
-              const distance = Math.hypot(dx, dy);
-
-              if (distance < 128) {
-                const alpha = (1 - distance / 128) * 0.16;
-                backgroundCtx.strokeStyle = `rgba(255, 244, 199, ${alpha})`;
-                backgroundCtx.lineWidth = 1;
-                backgroundCtx.beginPath();
-                backgroundCtx.moveTo(point.x, point.y);
-                backgroundCtx.lineTo(other.x, other.y);
-                backgroundCtx.stroke();
-              }
-            }
-
-            backgroundCtx.fillStyle = "rgba(255, 255, 255, 0.42)";
-            backgroundCtx.beginPath();
-            backgroundCtx.arc(point.x, point.y, point.r, 0, Math.PI * 2);
-            backgroundCtx.fill();
-          });
-
-          backgroundFrame = requestAnimationFrame(drawBackground);
-        };
-
-        const updatePointerGlow = (event) => {
-          document.documentElement.style.setProperty("--mouse-x", `${event.clientX}px`);
-          document.documentElement.style.setProperty("--mouse-y", `${event.clientY}px`);
-        };
-
-        resizeBackground();
-        drawBackground();
-        window.addEventListener("pointermove", updatePointerGlow, { passive: true });
-        window.addEventListener("resize", resizeBackground);
-        window.addEventListener("pagehide", () => {
-          cancelAnimationFrame(animationFrame);
-          cancelAnimationFrame(backgroundFrame);
-        });
       })();
     </script>
   </body>
