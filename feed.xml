@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel><title>Jody Ritonga Security Research</title><link>https://jodyritonga.github.io/security/</link><description>Independent vulnerability research across browser, mobile, and web application trust boundaries.</description><item>
+  <title>Breaking into the VIP Club: A Tale of Parameter Tampering Exploits</title>
+  <link>https://jodyritonga.github.io/security/research/breaking-into-the-vip-club-a-tale-of-parameter-tampering-exploits/</link>
+  <guid>https://jodyritonga.github.io/security/research/breaking-into-the-vip-club-a-tale-of-parameter-tampering-exploits/</guid>
+  <pubDate>Mon, 17 Jun 2024 00:00:00 +0700</pubDate>
+  <description>Hello everyone! It’s been a year since I last wrote my write up. I’ve been busy with college life, but now that I’m almost finished with college, I’m trying to write more often and share my hacking journey. I’m a beginner myself, but I…</description>
+</item>
+<item>
+  <title>Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}</title>
+  <link>https://jodyritonga.github.io/security/research/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/</link>
+  <guid>https://jodyritonga.github.io/security/research/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/</guid>
+  <pubDate>Sun, 19 Nov 2023 00:00:00 +0700</pubDate>
+  <description>Hello friends ! in today blog, i will not share any bug bounty writeup. For today, i want share a CTF writeup about a unique bug, that i still found happen on some modern website. So without further a due lets jump into the detail and how…</description>
+</item>
+<item>
+  <title>Catch that response ! (A tale of leaked reset password in URL)</title>
+  <link>https://jodyritonga.github.io/security/research/catch-that-response-a-tale-of-leaked-reset-password-in-url/</link>
+  <guid>https://jodyritonga.github.io/security/research/catch-that-response-a-tale-of-leaked-reset-password-in-url/</guid>
+  <pubDate>Thu, 20 Jul 2023 00:00:00 +0700</pubDate>
+  <description>Hello everyone ! It’s good to update my medium blog, can’t wait to share with you guys another Bug that i’ve found ! So for all newcomers i hope you enjoy my writing. I hope this writeup can increase your skill and confidence in bug…</description>
+</item>
+<item>
+  <title>Account takeover through changing id in reset password</title>
+  <link>https://jodyritonga.github.io/security/research/account-takeover-through-changing-id-in-reset-password/</link>
+  <guid>https://jodyritonga.github.io/security/research/account-takeover-through-changing-id-in-reset-password/</guid>
+  <pubDate>Sun, 09 Jul 2023 00:00:00 +0700</pubDate>
+  <description>Hello everyone! I hope all of you who are reading this are in good health and having a wonderful day! My name is Jody ritonga from Indonesia. And for todays writing. I will share you my bug bounty writeup which i’ve found one week ago in…</description>
+</item>
+<item>
+  <title>Ultimate payload to find injection vulnerability</title>
+  <link>https://jodyritonga.github.io/security/research/ultimate-payload-to-find-injection-vulnerability/</link>
+  <guid>https://jodyritonga.github.io/security/research/ultimate-payload-to-find-injection-vulnerability/</guid>
+  <pubDate>Wed, 05 Apr 2023 00:00:00 +0700</pubDate>
+  <description>So hello everyone ! back again with me jody ritonga, and in this blog, i want to share to all of my reader. The most ultimate payload that ive found on internet that checking every injection vulnerability that we may miss. But first of all…</description>
+</item>
+<item>
+  <title>Finding Host header injection</title>
+  <link>https://jodyritonga.github.io/security/research/finding-host-header-injection/</link>
+  <guid>https://jodyritonga.github.io/security/research/finding-host-header-injection/</guid>
+  <pubDate>Mon, 20 Mar 2023 00:00:00 +0700</pubDate>
+  <description>Hello everyone! This is Jody Ritonga, back again with another bug bounty writeup! In this article, I want to tell you about Host Header Injection 101. I will show you some techniques that have been useful to me in my bug bounty journey.…</description>
+</item>
+<item>
+  <title>Let me takeover your account</title>
+  <link>https://jodyritonga.github.io/security/research/let-me-takeover-your-account/</link>
+  <guid>https://jodyritonga.github.io/security/research/let-me-takeover-your-account/</guid>
+  <pubDate>Tue, 21 Feb 2023 00:00:00 +0700</pubDate>
+  <description>Hello everyone ! Welcome back again to my medium post, its been a while… i miss all of my fellow bug hunter, or security enthusiast reader :D</description>
+</item>
+<item>
+  <title>My first HTML injection</title>
+  <link>https://jodyritonga.github.io/security/research/my-first-html-injection/</link>
+  <guid>https://jodyritonga.github.io/security/research/my-first-html-injection/</guid>
+  <pubDate>Wed, 01 Feb 2023 00:00:00 +0700</pubDate>
+  <description>Hello everyone! thankyou for spending your time reading my article, before we jumped into the story of my first HTML injection. Let me introduce myself. My name is jody jeremi hadrian ritonga, 19years old from indonesia. And ive been in 10…</description>
+</item>
+<item>
+  <title>How i get $100 in just 10 minutes !</title>
+  <link>https://jodyritonga.github.io/security/research/how-i-get-100-in-just-10-minutes/</link>
+  <guid>https://jodyritonga.github.io/security/research/how-i-get-100-in-just-10-minutes/</guid>
+  <pubDate>Sun, 13 Nov 2022 00:00:00 +0700</pubDate>
+  <description>Hello everyone ! this is my first medium write up, im very sorry if i have a bad grammar, because english is not my mother tongue. So a quick explaination about me, i am Jody Ritonga, 19 Y.O from indonesia and ill have interest in web…</description>
+</item>
+</channel></rss>

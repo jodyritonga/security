@@ -1,0 +1,18 @@
+<section class="archive-hero shell">
+  <span class="eyebrow">Research archive / <%= @research_articles.length %> entries</span>
+  <h1>Technical research, not a list of claims.</h1>
+  <p>Long-form vulnerability write-ups covering real targets, reproduction paths, payload reasoning, and lessons that survived validation.</p>
+</section>
+
+<section class="archive-layout shell">
+  <aside class="archive-aside">
+    <span class="mini-label">Index</span>
+    <p>Sorted by publication date. Original Medium links remain available inside every migrated article.</p>
+    <div class="archive-count"><strong><%= @research_articles.length %></strong><span>research write-ups</span></div>
+  </aside>
+  <div class="archive-list">
+    <% @research_articles.each_with_index do |article, index| %>
+      <%= article_card(article, index: index + 1) %>
+    <% end %>
+  </div>
+</section>

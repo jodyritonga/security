@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Method — Jody Ritonga</title>
+    <meta name="description" content="A human-led, LLM-accelerated vulnerability research workflow built around threat models, source-to-sink proof, and impact validation.">
+    <meta name="author" content="Jody Jeremi Hadrian Ritonga">
+    <meta name="theme-color" content="#080c0e">
+    <link rel="canonical" href="https://jodyritonga.github.io/security/method/">
+    <link rel="alternate" type="application/rss+xml" title="Jody Ritonga Security Research" href="/security/feed.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Method — Jody Ritonga">
+    <meta property="og:description" content="A human-led, LLM-accelerated vulnerability research workflow built around threat models, source-to-sink proof, and impact validation.">
+    <meta property="og:url" content="https://jodyritonga.github.io/security/method/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Method — Jody Ritonga">
+    <meta name="twitter:description" content="A human-led, LLM-accelerated vulnerability research workflow built around threat models, source-to-sink proof, and impact validation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/security/assets/css/site.css">
+    <script defer src="/security/assets/js/site.js"></script>
+  </head>
+  <body class="">
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="reading-progress" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="site-brand" href="/security/" aria-label="Jody Ritonga security research home">
+          <span class="brand-mark">JR</span>
+          <span class="brand-copy"><strong>Jody Ritonga</strong><small>Security Research</small></span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Menu</button>
+        <nav id="site-navigation" class="site-nav" aria-label="Primary navigation">
+          <a class="nav-link" href="/security/research/">Research</a>
+          <a class="nav-link" href="/security/discoveries/">Discoveries</a>
+          <a class="nav-link" href="/security/notes/">Notes</a>
+          <a class="nav-link is-active" href="/security/method/">Method</a>
+          <a class="nav-link" href="/security/about/">About</a>
+        </nav>
+      </div>
+    </header>
+    <main id="content"><section class="archive-hero shell method-hero">
+  <span class="eyebrow">Human-led / LLM-accelerated / evidence-gated</span>
+  <h1>The model proposes. The evidence decides.</h1>
+  <p>LLMs help navigate large systems and generate adversarial hypotheses. They do not decide whether a candidate is reachable, exploitable, impactful, or novel.</p>
+</section>
+
+<section class="method-detail shell">
+  <article><span>01 / Scope</span><h2>Start with the security promise.</h2><p>Define the target, authorized attacker, controlled inputs, protected assets, and concrete consequences that matter before searching for code.</p></article>
+  <article><span>02 / Threat model</span><h2>Rank boundaries, not buzzwords.</h2><p>Map product journeys, identities, capabilities, data lifetimes, and guard conditions. Select a narrow slice where failure would cross real authority.</p></article>
+  <article><span>03 / LLM assistance</span><h2>Use models for focused reasoning.</h2><p>Ask the model to trace one source, one guard, and one sensitive sink. Ground every claim in implementation evidence and keep disproved assumptions.</p></article>
+  <article><span>04 / Verification</span><h2>Build the cheapest decisive oracle.</h2><p>Reproduce on the exact version, include a positive control, test the direct boundary, and verify that the expected guard blocks a negative case.</p></article>
+  <article><span>05 / Impact</span><h2>Separate a primitive from a vulnerability.</h2><p>Require attacker-observable confidentiality, integrity, account, or code-execution consequences. UI oddities and hypothetical escalation remain explicitly limited.</p></article>
+  <article><span>06 / Disclosure</span><h2>Publish only after coordination.</h2><p>Give vendors time to investigate and patch. Public write-ups preserve the original target, evidence, root cause, remediation, and honest severity limits.</p></article>
+</section>
+
+<section class="principle-band">
+  <div class="shell principle-grid"><span>attacker source</span><b>→</b><span>trust boundary</span><b>→</b><span>missing guard</span><b>→</b><span>sensitive sink</span><b>→</b><span>proven impact</span></div>
+</section>
+</main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div>
+          <span class="eyebrow">Independent research archive</span>
+          <p>Browser, mobile, and web application security. LLM-accelerated, human-verified, impact-proven.</p>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:jodyritonga@gmail.com">Email</a>
+          <a href="https://github.com/jodyritonga" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/jodyritonga" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="/security/feed.xml">RSS</a>
+        </div>
+        <div class="footer-meta">Tangerang, Indonesia<br>Responsible disclosure</div>
+      </div>
+    </footer>
+  </body>
+</html>

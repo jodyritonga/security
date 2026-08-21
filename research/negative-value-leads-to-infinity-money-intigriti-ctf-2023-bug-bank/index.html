@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank} — Jody Ritonga</title>
+    <meta name="description" content="Hello friends ! in today blog, i will not share any bug bounty writeup. For today, i want share a CTF writeup about a unique bug, that i still found happen on some modern website. So without further a due lets jump into the detail and how…">
+    <meta name="author" content="Jody Jeremi Hadrian Ritonga">
+    <meta name="theme-color" content="#080c0e">
+    <link rel="canonical" href="https://jodyritonga.github.io/security/research/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/">
+    <link rel="alternate" type="application/rss+xml" title="Jody Ritonga Security Research" href="/security/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank} — Jody Ritonga">
+    <meta property="og:description" content="Hello friends ! in today blog, i will not share any bug bounty writeup. For today, i want share a CTF writeup about a unique bug, that i still found happen on some modern website. So without further a due lets jump into the detail and how…">
+    <meta property="og:url" content="https://jodyritonga.github.io/security/research/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank} — Jody Ritonga">
+    <meta name="twitter:description" content="Hello friends ! in today blog, i will not share any bug bounty writeup. For today, i want share a CTF writeup about a unique bug, that i still found happen on some modern website. So without further a due lets jump into the detail and how…">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/security/assets/css/site.css">
+    <script defer src="/security/assets/js/site.js"></script>
+  </head>
+  <body class="article-page">
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="reading-progress" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="site-brand" href="/security/" aria-label="Jody Ritonga security research home">
+          <span class="brand-mark">JR</span>
+          <span class="brand-copy"><strong>Jody Ritonga</strong><small>Security Research</small></span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Menu</button>
+        <nav id="site-navigation" class="site-nav" aria-label="Primary navigation">
+          <a class="nav-link is-active" href="/security/research/">Research</a>
+          <a class="nav-link" href="/security/discoveries/">Discoveries</a>
+          <a class="nav-link" href="/security/notes/">Notes</a>
+          <a class="nav-link" href="/security/method/">Method</a>
+          <a class="nav-link" href="/security/about/">About</a>
+        </nav>
+      </div>
+    </header>
+    <main id="content"><article class="article-shell shell">
+  <header class="article-header">
+    <a class="breadcrumb" href="/security/notes/">← Field notes</a>
+    <span class="eyebrow">Lab note</span>
+    <h1>Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}</h1>
+    <p>Hello friends ! in today blog, i will not share any bug bounty writeup. For today, i want share a CTF writeup about a unique bug, that i still found happen on some modern website. So without further a due lets jump into the detail and how…</p>
+    <div class="article-byline"><span>Jody Ritonga</span><span>Nov 19, 2023</span><span>3 min read</span></div>
+  </header>
+
+  <div class="article-layout">
+    <aside class="article-aside">
+      <span class="mini-label">Article record</span>
+      <div><small>Originally published</small><strong>systemweakness.com</strong></div>
+      <div><small>Archive status</small><strong>Locally preserved</strong></div>
+      <div class="tag-stack"><small>Tags</small><span>Bug Bounty Tips</span><span>Ctf Walkthrough</span><span>Ctf Writeup</span><span>Security</span><span>Web Security</span></div>
+      <a class="text-link" href="https://systemweakness.com/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank-fdb4fbfed355" target="_blank" rel="noreferrer">Original publication ↗</a>
+    </aside>
+    <div class="article-body"><figure><img alt="Figure from Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}" src="/security/assets/images/posts/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/01.png" loading="lazy" decoding="async"></figure><p>Hello friends ! in today blog, i will not share any bug bounty writeup. For today, i want share a CTF writeup about a unique bug, that i still found happen on some modern website. So without further a due lets jump into the detail and how can you apply it on your bug hunting journey.</p><p>So the challenge called Bug Bank. And the description of the challenge was something like this (Shout to fhantke for the awesome challenge :D)</p><figure><img alt="Figure from Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}" src="/security/assets/images/posts/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/02.png" loading="lazy" decoding="async"></figure><p>So of course by reading the description, Its already tingling your hacker mindset right? We need to transfer Bugs (Bugs is the currency of this website) from account A to B so that we can get enough bugs to get the premium member. So the main page of the website looks like this</p><figure><img alt="Figure from Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}" src="/security/assets/images/posts/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/03.png" loading="lazy" decoding="async"></figure><p>There is a feature of settings and transfer bugs. So according to the description we need to abuse transfer bugs. So that we can upgrade to premium account, and to upgrade we need arround 10000 bugs.</p><figure><img alt="Figure from Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}" src="/security/assets/images/posts/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/04.png" loading="lazy" decoding="async"></figure><p>So lets see what the transfer feature have to offer for us</p><figure><img alt="Figure from Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}" src="/security/assets/images/posts/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/05.png" loading="lazy" decoding="async"></figure><p>Okay. so we see here we need another account ID to do our transaction. So i will make my second account which we called Thepoor. So now we have two account</p><figure><img alt="Figure from Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}" src="/security/assets/images/posts/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/06.png" loading="lazy" decoding="async"><figcaption>This will be the attacker</figcaption></figure><figure><img alt="Figure from Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}" src="/security/assets/images/posts/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/07.png" loading="lazy" decoding="async"><figcaption>This will be the victim</figcaption></figure><p>Now the question is. We already have two account. but both of the bugs value is 0. So how to get 10000 bugs? We need to know the logic of how transaction works. In nutshell the logic will goes like this. The sender will get logic like (amount - money.Send) while the receiver logic ( amount + money.receive) right? So now with this logic knowledge. We can try to send a negative value. so that (amount - -money.send) (value - -value) will be positive. While the receiver (value + -value) will be negative. So lets try to send negative ammount to thepoor id.</p><figure><img alt="Figure from Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}" src="/security/assets/images/posts/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/08.png" loading="lazy" decoding="async"></figure><p>And when i send transfer. By the logic. Therich account will get 10000 while the poor will get -10000. So here’s the result.</p><figure><img alt="Figure from Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}" src="/security/assets/images/posts/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/09.png" loading="lazy" decoding="async"><figcaption>Success we got free bugs!</figcaption></figure><figure><img alt="Figure from Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}" src="/security/assets/images/posts/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/10.png" loading="lazy" decoding="async"><figcaption>While Thepoor get minus. oh poor guy :(</figcaption></figure><p>Yes ! our assumption about the logic of the transaction feature is correct ! For prevention developer must do rechecking of the amount or value that user input. Number 1 rules of security is that “Never trust user input” So as a developer u should check if the value that user input is already according to your plan. Anyway now let’s upgrade our account to premium with that free moneyy</p><figure><img alt="Figure from Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}" src="/security/assets/images/posts/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank/11.png" loading="lazy" decoding="async"><figcaption>INTIGRITI{h3y_wh0_541d_y0u_c0uld_cl0bb3r_7h3_d0m}</figcaption></figure><p>Tada ! we solve this challenge !</p><p>And that’s it for intrigrity CTF writeup. I have a lot of fun playing intigriti CTF 2023. Although im not a pro who solve and know all the challenge, but i learn alot from this CTF and having fun :D</p><p>I hope you get a piece of nugget by reading this writeup, and i hope u can apply this knowledge on your bug bounty journey ! See you on the next writeup</p><p>Shout to to Akhsay Inamdar for reporting a disclosure in my writeup <strong>:D</strong></p><p><a href="https://www.linkedin.com/in/itsmeai/" target="_blank" rel="noreferrer">https://www.linkedin.com/in/itsmeai/</a></p><hr></div>
+  </div>
+</article>
+
+<section class="related-section shell">
+  <div class="section-heading compact-heading"><div><span class="eyebrow">Continue reading</span><h2>More from the archive.</h2></div></div>
+  <div class="research-grid related-grid"><article class="research-card compact">
+  <div class="card-index">2024</div>
+  <div class="card-meta">
+    <span>Research write-up</span>
+    <span>Jun 17, 2024</span>
+    <span>4 min read</span>
+  </div>
+  <h3><a href="/security/research/breaking-into-the-vip-club-a-tale-of-parameter-tampering-exploits/">Breaking into the VIP Club: A Tale of Parameter Tampering Exploits</a></h3>
+  
+  <div class="tag-row"><span>Web</span><span>Bug Bounty</span></div>
+  <a class="text-link" href="/security/research/breaking-into-the-vip-club-a-tale-of-parameter-tampering-exploits/">Read the write-up <span aria-hidden="true">↗</span></a>
+</article>
+<article class="research-card compact">
+  <div class="card-index">2023</div>
+  <div class="card-meta">
+    <span>Research write-up</span>
+    <span>Jul 20, 2023</span>
+    <span>3 min read</span>
+  </div>
+  <h3><a href="/security/research/catch-that-response-a-tale-of-leaked-reset-password-in-url/">Catch that response ! (A tale of leaked reset password in URL)</a></h3>
+  
+  <div class="tag-row"><span>Bugs</span><span>Bug Bounty Tips</span></div>
+  <a class="text-link" href="/security/research/catch-that-response-a-tale-of-leaked-reset-password-in-url/">Read the write-up <span aria-hidden="true">↗</span></a>
+</article>
+<article class="research-card compact">
+  <div class="card-index">2023</div>
+  <div class="card-meta">
+    <span>Research write-up</span>
+    <span>Jul 09, 2023</span>
+    <span>3 min read</span>
+  </div>
+  <h3><a href="/security/research/account-takeover-through-changing-id-in-reset-password/">Account takeover through changing id in reset password</a></h3>
+  
+  <div class="tag-row"><span>Bounty Program</span><span>Web</span></div>
+  <a class="text-link" href="/security/research/account-takeover-through-changing-id-in-reset-password/">Read the write-up <span aria-hidden="true">↗</span></a>
+</article>
+</div>
+</section>
+</main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div>
+          <span class="eyebrow">Independent research archive</span>
+          <p>Browser, mobile, and web application security. LLM-accelerated, human-verified, impact-proven.</p>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:jodyritonga@gmail.com">Email</a>
+          <a href="https://github.com/jodyritonga" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/jodyritonga" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="/security/feed.xml">RSS</a>
+        </div>
+        <div class="footer-meta">Tangerang, Indonesia<br>Responsible disclosure</div>
+      </div>
+    </footer>
+  </body>
+</html>

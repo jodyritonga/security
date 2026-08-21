@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jodyritonga.github.io/security/sitemap.xml

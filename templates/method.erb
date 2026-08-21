@@ -1,0 +1,18 @@
+<section class="archive-hero shell method-hero">
+  <span class="eyebrow">Human-led / LLM-accelerated / evidence-gated</span>
+  <h1>The model proposes. The evidence decides.</h1>
+  <p>LLMs help navigate large systems and generate adversarial hypotheses. They do not decide whether a candidate is reachable, exploitable, impactful, or novel.</p>
+</section>
+
+<section class="method-detail shell">
+  <article><span>01 / Scope</span><h2>Start with the security promise.</h2><p>Define the target, authorized attacker, controlled inputs, protected assets, and concrete consequences that matter before searching for code.</p></article>
+  <article><span>02 / Threat model</span><h2>Rank boundaries, not buzzwords.</h2><p>Map product journeys, identities, capabilities, data lifetimes, and guard conditions. Select a narrow slice where failure would cross real authority.</p></article>
+  <article><span>03 / LLM assistance</span><h2>Use models for focused reasoning.</h2><p>Ask the model to trace one source, one guard, and one sensitive sink. Ground every claim in implementation evidence and keep disproved assumptions.</p></article>
+  <article><span>04 / Verification</span><h2>Build the cheapest decisive oracle.</h2><p>Reproduce on the exact version, include a positive control, test the direct boundary, and verify that the expected guard blocks a negative case.</p></article>
+  <article><span>05 / Impact</span><h2>Separate a primitive from a vulnerability.</h2><p>Require attacker-observable confidentiality, integrity, account, or code-execution consequences. UI oddities and hypothetical escalation remain explicitly limited.</p></article>
+  <article><span>06 / Disclosure</span><h2>Publish only after coordination.</h2><p>Give vendors time to investigate and patch. Public write-ups preserve the original target, evidence, root cause, remediation, and honest severity limits.</p></article>
+</section>
+
+<section class="principle-band">
+  <div class="shell principle-grid"><span>attacker source</span><b>→</b><span>trust boundary</span><b>→</b><span>missing guard</span><b>→</b><span>sensitive sink</span><b>→</b><span>proven impact</span></div>
+</section>

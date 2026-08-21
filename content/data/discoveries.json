@@ -1,0 +1,57 @@
+[
+  {
+    "id": "CVE-2026-43713",
+    "date": "2026-06-29",
+    "vendor": "Apple",
+    "product": "Safari and Apple platforms",
+    "class": "Permission boundary",
+    "title": "Permission restriction issue in Safari and Apple platforms",
+    "summary": "A permissions issue affecting Safari and multiple Apple platforms was addressed with additional restrictions.",
+    "reference": "https://support.apple.com/en-us/127594",
+    "cve_url": "https://www.cve.org/CVERecord?id=CVE-2026-43713"
+  },
+  {
+    "id": "CVE-2026-12323",
+    "date": "2026-06-16",
+    "vendor": "Mozilla",
+    "product": "Firefox and Thunderbird",
+    "class": "Browser spoofing",
+    "title": "DOM and HTML spoofing issue in Firefox",
+    "summary": "A spoofing issue in the DOM Core and HTML component was fixed in Firefox 152 and Thunderbird 152.",
+    "reference": "https://www.mozilla.org/security/advisories/mfsa2026-57/",
+    "cve_url": "https://www.cve.org/CVERecord?id=CVE-2026-12323"
+  },
+  {
+    "id": "CVE-2026-40416",
+    "date": "2026-05-12",
+    "vendor": "Microsoft",
+    "product": "Microsoft Edge",
+    "class": "UI misrepresentation",
+    "title": "UI misrepresentation and network spoofing in Microsoft Edge",
+    "summary": "A user-interface misrepresentation issue could allow an unauthenticated remote attacker to perform spoofing over a network.",
+    "reference": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-40416",
+    "cve_url": "https://www.cve.org/CVERecord?id=CVE-2026-40416"
+  },
+  {
+    "id": "CVE-2026-35429",
+    "date": "2026-05-12",
+    "vendor": "Microsoft",
+    "product": "Microsoft Edge for Android",
+    "class": "UI misrepresentation",
+    "title": "UI misrepresentation and network spoofing in Edge for Android",
+    "summary": "A user-interface misrepresentation issue in Edge for Android could allow an unauthenticated remote attacker to perform spoofing.",
+    "reference": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-35429",
+    "cve_url": "https://www.cve.org/CVERecord?id=CVE-2026-35429"
+  },
+  {
+    "id": "CVE-2026-33119",
+    "date": "2026-04-10",
+    "vendor": "Microsoft",
+    "product": "Microsoft Edge for Android",
+    "class": "UI misrepresentation",
+    "title": "UI misrepresentation and network spoofing in Edge for Android",
+    "summary": "A user-interface misrepresentation issue in Edge for Android could allow an unauthenticated remote attacker to perform spoofing.",
+    "reference": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-33119",
+    "cve_url": "https://www.cve.org/CVERecord?id=CVE-2026-33119"
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "slug": "breaking-into-the-vip-club-a-tale-of-parameter-tampering-exploits",
+    "title": "Breaking into the VIP Club: A Tale of Parameter Tampering Exploits",
+    "date": "2024-06-17",
+    "year": 2024,
+    "collection": "research",
+    "label": "Research write-up",
+    "excerpt": "Hello everyone! It’s been a year since I last wrote my write up. I’ve been busy with college life, but now that I’m almost finished with college, I’m trying to write more often and share my hacking journey. I’m a beginner myself, but I…",
+    "reading_time": 4,
+    "tags": [
+      "web",
+      "bug-bounty",
+      "hacking",
+      "bugs",
+      "bug-bounty-tips"
+    ],
+    "original_url": "https://jodyritonga.medium.com/breaking-into-the-vip-club-a-tale-of-parameter-tampering-exploits-83df7b6b9691",
+    "original_host": "jodyritonga.medium.com",
+    "content_file": "content/articles/breaking-into-the-vip-club-a-tale-of-parameter-tampering-exploits.html"
+  },
+  {
+    "slug": "negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank",
+    "title": "Negative value lead’s to infinity money {Intigriti CTF 2023-Bug Bank}",
+    "date": "2023-11-19",
+    "year": 2023,
+    "collection": "notes",
+    "label": "Lab note",
+    "excerpt": "Hello friends ! in today blog, i will not share any bug bounty writeup. For today, i want share a CTF writeup about a unique bug, that i still found happen on some modern website. So without further a due lets jump into the detail and how…",
+    "reading_time": 3,
+    "tags": [
+      "bug-bounty-tips",
+      "ctf-walkthrough",
+      "ctf-writeup",
+      "security",
+      "web-security"
+    ],
+    "original_url": "https://systemweakness.com/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank-fdb4fbfed355",
+    "original_host": "systemweakness.com",
+    "content_file": "content/articles/negative-value-leads-to-infinity-money-intigriti-ctf-2023-bug-bank.html"
+  },
+  {
+    "slug": "catch-that-response-a-tale-of-leaked-reset-password-in-url",
+    "title": "Catch that response ! (A tale of leaked reset password in URL)",
+    "date": "2023-07-20",
+    "year": 2023,
+    "collection": "research",
+    "label": "Research write-up",
+    "excerpt": "Hello everyone ! It’s good to update my medium blog, can’t wait to share with you guys another Bug that i’ve found ! So for all newcomers i hope you enjoy my writing. I hope this writeup can increase your skill and confidence in bug…",
+    "reading_time": 3,
+    "tags": [
+      "bugs",
+      "bug-bounty-tips",
+      "web",
+      "hacking",
+      "bug-bounty"
+    ],
+    "original_url": "https://systemweakness.com/catch-that-response-a-tale-of-leaked-reset-password-in-url-1cb8bcdf29ae",
+    "original_host": "systemweakness.com",
+    "content_file": "content/articles/catch-that-response-a-tale-of-leaked-reset-password-in-url.html"
+  },
+  {
+    "slug": "account-takeover-through-changing-id-in-reset-password",
+    "title": "Account takeover through changing id in reset password",
+    "date": "2023-07-09",
+    "year": 2023,
+    "collection": "research",
+    "label": "Research write-up",
+    "excerpt": "Hello everyone! I hope all of you who are reading this are in good health and having a wonderful day! My name is Jody ritonga from Indonesia. And for todays writing. I will share you my bug bounty writeup which i’ve found one week ago in…",
+    "reading_time": 3,
+    "tags": [
+      "bounty-program",
+      "web",
+      "hacking",
+      "bug-bounty-tips",
+      "bug-bounty"
+    ],
+    "original_url": "https://systemweakness.com/account-takeover-through-changing-id-in-reset-password-2a9bd7d38c14",
+    "original_host": "systemweakness.com",
+    "content_file": "content/articles/account-takeover-through-changing-id-in-reset-password.html"
+  },
+  {
+    "slug": "ultimate-payload-to-find-injection-vulnerability",
+    "title": "Ultimate payload to find injection vulnerability",
+    "date": "2023-04-05",
+    "year": 2023,
+    "collection": "notes",
+    "label": "Lab note",
+    "excerpt": "So hello everyone ! back again with me jody ritonga, and in this blog, i want to share to all of my reader. The most ultimate payload that ive found on internet that checking every injection vulnerability that we may miss. But first of all…",
+    "reading_time": 3,
+    "tags": [
+      "bug-bounty",
+      "bug-bounty-tips",
+      "hacking",
+      "bounty-program",
+      "bug-bounty-writeup"
+    ],
+    "original_url": "https://systemweakness.com/ultimate-payload-to-find-injection-vulnerability-77a102101b7d",
+    "original_host": "systemweakness.com",
+    "content_file": "content/articles/ultimate-payload-to-find-injection-vulnerability.html"
+  },
+  {
+    "slug": "finding-host-header-injection",
+    "title": "Finding Host header injection",
+    "date": "2023-03-20",
+    "year": 2023,
+    "collection": "research",
+    "label": "Research write-up",
+    "excerpt": "Hello everyone! This is Jody Ritonga, back again with another bug bounty writeup! In this article, I want to tell you about Host Header Injection 101. I will show you some techniques that have been useful to me in my bug bounty journey.…",
+    "reading_time": 3,
+    "tags": [
+      "web-penetration-testing",
+      "hacker",
+      "bug-bounty-tips",
+      "bug-bounty",
+      "bug-bounty-writeup"
+    ],
+    "original_url": "https://systemweakness.com/finding-host-header-injection-68f3b8f676bf",
+    "original_host": "systemweakness.com",
+    "content_file": "content/articles/finding-host-header-injection.html"
+  },
+  {
+    "slug": "let-me-takeover-your-account",
+    "title": "Let me takeover your account",
+    "date": "2023-02-21",
+    "year": 2023,
+    "collection": "research",
+    "label": "Research write-up",
+    "excerpt": "Hello everyone ! Welcome back again to my medium post, its been a while… i miss all of my fellow bug hunter, or security enthusiast reader :D",
+    "reading_time": 3,
+    "tags": [
+      "hacking",
+      "bug-bounty",
+      "red-team",
+      "bug-bounty-tips",
+      "cybersecurity"
+    ],
+    "original_url": "https://systemweakness.com/let-me-takeover-your-account-dbfdf1eed268",
+    "original_host": "systemweakness.com",
+    "content_file": "content/articles/let-me-takeover-your-account.html"
+  },
+  {
+    "slug": "my-first-html-injection",
+    "title": "My first HTML injection",
+    "date": "2023-02-01",
+    "year": 2023,
+    "collection": "research",
+    "label": "Research write-up",
+    "excerpt": "Hello everyone! thankyou for spending your time reading my article, before we jumped into the story of my first HTML injection. Let me introduce myself. My name is jody jeremi hadrian ritonga, 19years old from indonesia. And ive been in 10…",
+    "reading_time": 3,
+    "tags": [
+      "hacking",
+      "bug-bounty-tips",
+      "bugbounty-writeup",
+      "technology",
+      "security"
+    ],
+    "original_url": "https://systemweakness.com/my-first-html-injection-ba962b2e3c20",
+    "original_host": "systemweakness.com",
+    "content_file": "content/articles/my-first-html-injection.html"
+  },
+  {
+    "slug": "how-i-get-100-in-just-10-minutes",
+    "title": "How i get $100 in just 10 minutes !",
+    "date": "2022-11-13",
+    "year": 2022,
+    "collection": "research",
+    "label": "Research write-up",
+    "excerpt": "Hello everyone ! this is my first medium write up, im very sorry if i have a bad grammar, because english is not my mother tongue. So a quick explaination about me, i am Jody Ritonga, 19 Y.O from indonesia and ill have interest in web…",
+    "reading_time": 2,
+    "tags": [
+      "web-security-testing",
+      "bug-bounty-tips",
+      "cybersecurity",
+      "bug-bounty",
+      "website"
+    ],
+    "original_url": "https://jodyritonga.medium.com/how-i-get-100-in-just-10-minutes-b018b28645ce",
+    "original_host": "jodyritonga.medium.com",
+    "content_file": "content/articles/how-i-get-100-in-just-10-minutes.html"
+  }
+]

@@ -1,0 +1,18 @@
+<section class="archive-hero shell">
+  <span class="eyebrow">Coordinated disclosure / public record</span>
+  <h1>Discoveries across major browser engines.</h1>
+  <p>Public CVE records are linked to vendor advisories and the canonical CVE entry. Vendor wording remains the source of truth.</p>
+</section>
+
+<section class="archive-layout shell">
+  <aside class="archive-aside">
+    <span class="mini-label">Record</span>
+    <div class="archive-count"><strong><%= @discoveries.length %></strong><span>public CVEs</span></div>
+    <p>Microsoft Edge, Mozilla Firefox, Safari, and related Apple platforms.</p>
+  </aside>
+  <div class="discovery-list full-list">
+    <% @discoveries.each_with_index do |discovery, index| %>
+      <%= discovery_row(discovery, index: index + 1) %>
+    <% end %>
+  </div>
+</section>

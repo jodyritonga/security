@@ -1,0 +1,17 @@
+<section class="archive-hero shell">
+  <span class="eyebrow">Field notes / experiments</span>
+  <h1>Training, payloads, and smaller observations.</h1>
+  <p>CTF walkthroughs and practical notes stay separate from original vulnerability research so the archive remains honest about what each result represents.</p>
+</section>
+
+<section class="archive-layout shell">
+  <aside class="archive-aside">
+    <span class="mini-label">Notebook</span>
+    <div class="archive-count"><strong><%= @note_articles.length %></strong><span>published notes</span></div>
+  </aside>
+  <div class="archive-list">
+    <% @note_articles.each_with_index do |article, index| %>
+      <%= article_card(article, index: index + 1) %>
+    <% end %>
+  </div>
+</section>
