@@ -1,13 +1,12 @@
-# Jody Ritonga Security Research
+# RETAK Security
 
-Static GitHub Pages publication site for browser, mobile, and web application security research.
+Static GitHub Pages publication site for RETAK, an independent browser and mobile security research studio. The public site contains coordinated CVE records only.
 
-## Update the archive
+## Update the CVE record
 
-The Medium feed is imported into local article HTML and local image assets:
+Edit `content/data/discoveries.json`, then rebuild the static pages:
 
 ```sh
-rtk ruby scripts/import_medium.rb
 rtk ruby scripts/build.rb
 ```
 
@@ -20,4 +19,4 @@ rtk python3 -m http.server 8000
 
 Open `http://127.0.0.1:8000/security/`.
 
-Articles live under `content/articles/`, metadata under `content/data/`, and the publication templates under `templates/`. The original Medium URL remains in every article's record page.
+CVE metadata lives in `content/data/discoveries.json`, and the publication templates live under `templates/`.

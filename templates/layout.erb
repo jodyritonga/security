@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= h(@page_title) %></title>
     <meta name="description" content="<%= h(@page_description) %>">
-    <meta name="author" content="Jody Jeremi Hadrian Ritonga">
-    <meta name="theme-color" content="#080c0e">
+    <meta name="author" content="RETAK Security">
+    <meta name="theme-color" content="#f2efe8">
+    <link rel="icon" type="image/svg+xml" href="<%= base('/assets/images/favicon.svg') %>">
     <link rel="canonical" href="<%= absolute(@canonical_path) %>">
-    <link rel="alternate" type="application/rss+xml" title="Jody Ritonga Security Research" href="<%= base('/feed.xml') %>">
+    <link rel="alternate" type="application/rss+xml" title="RETAK Security CVE Record" href="<%= base('/feed.xml') %>">
     <meta property="og:type" content="<%= @body_class == 'article-page' ? 'article' : 'website' %>">
     <meta property="og:title" content="<%= h(@page_title) %>">
     <meta property="og:description" content="<%= h(@page_description) %>">
@@ -16,9 +17,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<%= h(@page_title) %>">
     <meta name="twitter:description" content="<%= h(@page_description) %>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<%= base('/assets/css/site.css') %>">
     <script defer src="<%= base('/assets/js/site.js') %>"></script>
   </head>
@@ -27,15 +28,13 @@
     <div class="reading-progress" aria-hidden="true"></div>
     <header class="site-header">
       <div class="shell header-inner">
-        <a class="site-brand" href="<%= base('/') %>" aria-label="Jody Ritonga security research home">
-          <span class="brand-mark">JR</span>
-          <span class="brand-copy"><strong>Jody Ritonga</strong><small>Security Research</small></span>
+        <a class="site-brand" href="<%= base('/') %>" aria-label="RETAK Security home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
+          <span class="brand-copy"><strong>RETAK</strong><small>Security Research</small></span>
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Menu</button>
         <nav id="site-navigation" class="site-nav" aria-label="Primary navigation">
-          <%= nav_link('Research', '/research/', 'research') %>
-          <%= nav_link('Discoveries', '/discoveries/', 'discoveries') %>
-          <%= nav_link('Notes', '/notes/', 'notes') %>
+          <%= nav_link('CVEs', '/discoveries/', 'discoveries') %>
           <%= nav_link('Method', '/method/', 'method') %>
           <%= nav_link('About', '/about/', 'about') %>
         </nav>
@@ -45,16 +44,16 @@
     <footer class="site-footer">
       <div class="shell footer-grid">
         <div>
-          <span class="eyebrow">Independent research archive</span>
-          <p>Browser, mobile, and web application security. LLM-accelerated, human-verified, impact-proven.</p>
+          <span class="eyebrow">RETAK Security</span>
+          <p>An independent security research studio with a public record of coordinated browser and mobile CVEs.</p>
         </div>
         <div class="footer-links">
           <a href="mailto:jodyritonga@gmail.com">Email</a>
           <a href="https://github.com/jodyritonga" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://www.linkedin.com/in/jodyritonga" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="<%= base('/feed.xml') %>">RSS</a>
+          <a href="<%= base('/discoveries/') %>">CVE record</a>
         </div>
-        <div class="footer-meta">Tangerang, Indonesia<br>Responsible disclosure</div>
+        <div class="footer-meta">Tangerang, Indonesia<br>Independent · Responsible disclosure</div>
       </div>
     </footer>
   </body>

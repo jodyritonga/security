@@ -11,7 +11,7 @@ require "uri"
 ROOT = File.expand_path("..", __dir__)
 FEED_URL = "https://medium.com/feed/@jodyritonga"
 BASE_PATH = "/security"
-USER_AGENT = "JodyResearchArchive/1.0"
+USER_AGENT = "RetakResearchArchive/1.0"
 
 def slugify(value)
   value

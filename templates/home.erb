@@ -1,88 +1,83 @@
-<section class="hero shell">
-  <div class="hero-copy">
-    <span class="eyebrow"><i></i> Independent vulnerability research</span>
-    <h1>Where software stops keeping its promise.</h1>
-    <p class="hero-lede">I research browser, mobile, and web application trust boundaries. LLMs accelerate the search; reproducible evidence decides what is real.</p>
-    <div class="hero-actions">
-      <a class="button primary" href="<%= base('/research/') %>">Explore research</a>
-      <a class="button" href="<%= base('/discoveries/') %>">View disclosures</a>
+<section class="hero">
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><i></i> Independent security research studio</span>
+      <h1>We find the <em>crack</em> before it becomes the breach.</h1>
+      <p class="hero-lede">RETAK investigates browser, mobile, and web trust boundaries. Every published claim is backed by reproducible evidence and an honest account of impact.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="<%= base('/discoveries/') %>">View the CVE record <span>↗</span></a>
+        <a class="button ghost" href="<%= base('/method/') %>">How we verify</a>
+      </div>
+      <div class="hero-footnote"><span>Based in Indonesia</span><span>Coordinated disclosure only</span></div>
     </div>
-    <div class="focus-row" aria-label="Research focus areas">
-      <span>Browser security</span>
-      <span>Android &amp; mobile</span>
-      <span>Web AppSec</span>
-      <span>LLM-assisted research</span>
+    <div class="fracture-stage" aria-label="An abstract glass fracture representing a security boundary under examination">
+      <span class="stage-word" aria-hidden="true">trust<br>boundary</span>
+      <span class="glass-plane glass-plane-one" aria-hidden="true"></span>
+      <span class="glass-plane glass-plane-two" aria-hidden="true"></span>
+      <span class="glass-shard glass-shard-one" aria-hidden="true"></span>
+      <span class="glass-shard glass-shard-two" aria-hidden="true"></span>
+      <span class="glass-shard glass-shard-three" aria-hidden="true"></span>
+      <div class="fracture-orb" aria-hidden="true">
+        <span class="orb-light"></span>
+        <svg viewBox="0 0 640 640" role="presentation">
+          <g fill="none" stroke="currentColor" stroke-linecap="round">
+            <path d="M321 318 181 92M321 318 468 71M321 318 579 251M321 318 542 491M321 318 356 612M321 318 113 548M321 318 46 292"/>
+            <path d="m181 92 84 117-72 47 128 62M468 71l-67 139 53 48-133 60M579 251l-136 31-22 74-100-38M542 491l-121-135-80 72-20-110M356 612l-15-184-89-32 69-78M113 548l139-152-47-86 116 8M46 292l159 18 48-70 68 78"/>
+          </g>
+        </svg>
+        <span class="orb-core">R</span>
+      </div>
+      <span class="fracture-label fracture-label-source">source</span>
+      <span class="fracture-label fracture-label-guard">missing guard</span>
+      <span class="fracture-label fracture-label-impact">impact</span>
+      <div class="stage-record"><small>Public record</small><strong>05 CVEs</strong><span>Edge · Firefox · Safari</span></div>
     </div>
   </div>
-  <aside class="research-console" aria-label="Public research archive summary">
-    <div class="console-bar"><span><i></i><i></i><i></i></span><b>PUBLIC-RESEARCH-INDEX.json</b></div>
-    <div class="console-body">
-      <div class="console-stat"><strong><%= @discoveries.length %></strong><span>public CVEs</span></div>
-      <div class="console-stat"><strong><%= @articles.length %></strong><span>archived articles</span></div>
-      <div class="console-lines">
-        <div><span>browser.engine</span><b>Edge / Firefox / Safari</b></div>
-        <div><span>research.mode</span><b>human-led + LLM-accelerated</b></div>
-        <div><span>validation.gate</span><b>reproduction + impact</b></div>
-        <div><span>status</span><b class="status-live">PUBLIC</b></div>
-      </div>
-      <div class="signal-grid" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-    </div>
-  </aside>
 </section>
 
 <section class="metric-strip">
   <div class="shell metric-grid">
+    <div class="metric-definition"><strong>re·tak</strong><span>Indonesian · a crack or fracture</span></div>
     <div><strong>05</strong><span>Public CVEs</span></div>
-    <div><strong>03</strong><span>Browser engines</span></div>
-    <div><strong>09</strong><span>Research articles</span></div>
-    <div><strong>01</strong><span>Rule: proof over suspicion</span></div>
+    <div><strong>03</strong><span>Vendors</span></div>
+    <div><strong>03</strong><span>Browser families</span></div>
   </div>
 </section>
 
-<section class="section shell">
-  <div class="section-heading">
-    <div><span class="eyebrow">Selected research</span><h2>Work with the proof attached.</h2></div>
-    <p>Root cause, attacker control, trust-boundary crossing, and demonstrated consequence—not a scanner dump.</p>
-  </div>
-  <div class="research-grid featured-grid">
-    <% @featured_articles.each_with_index do |article, index| %>
-      <%= article_card(article, index: index + 1) %>
-    <% end %>
-  </div>
-  <a class="section-link" href="<%= base('/research/') %>">Browse the full research archive <span>↗</span></a>
-</section>
-
-<section class="section section-ruled">
+<section class="section research-section cve-section">
   <div class="shell">
-    <div class="section-heading compact-heading">
-      <div><span class="eyebrow">Coordinated disclosure</span><h2>Public discoveries.</h2></div>
-      <a class="button small" href="<%= base('/discoveries/') %>">All discoveries</a>
+    <div class="section-heading">
+      <div><span class="eyebrow">Coordinated disclosure</span><h2>Public<br><em>CVE record.</em></h2></div>
+      <p>Five fixed vulnerabilities across major browser families. Every entry links directly to its canonical CVE and vendor advisory.</p>
     </div>
-    <div class="discovery-list">
-      <% @discoveries.first(3).each_with_index do |discovery, index| %>
-        <%= discovery_row(discovery, index: index + 1) %>
-      <% end %>
+    <div class="cve-ledger">
+<% @discoveries.each_with_index do |discovery, index| %>
+<%= discovery_row(discovery, index: index + 1) %>
+<% end %>
     </div>
+    <a class="section-link" href="<%= base('/discoveries/') %>">Open the canonical CVE archive <span>↗</span></a>
   </div>
 </section>
 
-<section class="section shell method-preview">
-  <div class="section-heading">
-    <div><span class="eyebrow">Research method</span><h2>LLMs widen the search. Controls keep it honest.</h2></div>
-    <p>The method separates a plausible code path from a vulnerability that deserves a report.</p>
+<section class="section method-preview">
+  <div class="shell">
+    <div class="section-heading">
+      <div><span class="eyebrow">Research method</span><h2>Follow the <em>fracture.</em></h2></div>
+      <p>The workflow separates an interesting code path from a vulnerability worth reporting.</p>
+    </div>
+    <div class="method-grid">
+      <article><span>01</span><h3>Model the boundary</h3><p>Map actors, data, authority, expected guards, and the security promise under test.</p></article>
+      <article><span>02</span><h3>Trace source to sink</h3><p>Use focused LLM-assisted review to connect attacker control to a sensitive operation.</p></article>
+      <article><span>03</span><h3>Build the oracle</h3><p>Test the earliest unknown edge with exact artifacts, positive controls, and guarded negatives.</p></article>
+      <article><span>04</span><h3>Prove the impact</h3><p>Promote only reproducible, attacker-observable consequences with honest limitations.</p></article>
+    </div>
+    <a class="section-link" href="<%= base('/method/') %>">Read the complete method <span>↗</span></a>
   </div>
-  <div class="method-grid">
-    <article><span>01</span><h3>Model the boundary</h3><p>Map actors, data, authority, expected guards, and the security promise under test.</p></article>
-    <article><span>02</span><h3>Trace source to sink</h3><p>Use focused LLM-assisted review to connect attacker control to a sensitive operation.</p></article>
-    <article><span>03</span><h3>Build the oracle</h3><p>Test the earliest unknown edge with exact artifacts, positive controls, and guarded negatives.</p></article>
-    <article><span>04</span><h3>Prove the impact</h3><p>Promote only reproducible, attacker-observable consequences with honest limitations.</p></article>
-  </div>
-  <a class="section-link" href="<%= base('/method/') %>">Read the complete method <span>↗</span></a>
 </section>
 
 <section class="contact-band">
   <div class="shell contact-grid">
-    <div><span class="eyebrow">Contact</span><h2>Have a difficult trust boundary worth investigating?</h2></div>
+    <div><span class="eyebrow">Work with RETAK</span><h2>Found a trust boundary worth a <em>closer look?</em></h2></div>
     <div><p>Available for authorized security research, source review, and research collaboration.</p><a class="button primary" href="mailto:jodyritonga@gmail.com">jodyritonga@gmail.com</a></div>
   </div>
 </section>
