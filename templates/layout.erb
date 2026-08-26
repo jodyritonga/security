@@ -6,7 +6,7 @@
     <title><%= h(@page_title) %></title>
     <meta name="description" content="<%= h(@page_description) %>">
     <meta name="author" content="RETAK Security">
-    <meta name="theme-color" content="#f2efe8">
+    <meta name="theme-color" content="#07070c">
     <link rel="icon" type="image/svg+xml" href="<%= base('/assets/images/favicon.svg') %>">
     <link rel="canonical" href="<%= absolute(@canonical_path) %>">
     <link rel="alternate" type="application/rss+xml" title="RETAK Security CVE Record" href="<%= base('/feed.xml') %>">
@@ -19,18 +19,22 @@
     <meta name="twitter:description" content="<%= h(@page_description) %>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<%= base('/assets/css/site.css') %>">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<%= base('/assets/css/abyss.css') %>">
     <script defer src="<%= base('/assets/js/site.js') %>"></script>
   </head>
   <body class="<%= h(@body_class) %>">
     <a class="skip-link" href="#content">Skip to content</a>
     <div class="reading-progress" aria-hidden="true"></div>
+    <div class="ambient-field" aria-hidden="true"><i></i><i></i><i></i></div>
     <header class="site-header">
       <div class="shell header-inner">
         <a class="site-brand" href="<%= base('/') %>" aria-label="RETAK Security home">
-          <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
-          <span class="brand-copy"><strong>RETAK</strong><small>Security Research</small></span>
+          <svg class="brand-mark" viewBox="0 0 72 72" aria-hidden="true">
+            <path class="mark-stone" d="M13 7 34 2l22 6 10 18-4 25-18 16-24-3L7 47 5 23Z"/>
+            <path class="mark-crack" d="M35 0 29 20 33 28 22 43 27 51 18 72h8l8-21-6-8 11-14-5-9 7-20ZM31 18 18 12l-2 5 15 7ZM36 25l18-8 2 5-18 10ZM25 39 9 36l-1 5 17 5ZM28 48l22 11-3 6-21-12Z"/>
+          </svg>
+          <span class="brand-copy"><strong>RETAK</strong><small>Security / Indonesia</small></span>
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Menu</button>
         <nav id="site-navigation" class="site-nav" aria-label="Primary navigation">
@@ -44,8 +48,8 @@
     <footer class="site-footer">
       <div class="shell footer-grid">
         <div>
-          <span class="eyebrow">RETAK Security</span>
-          <p>An independent security research studio with a public record of coordinated browser and mobile CVEs.</p>
+          <span class="eyebrow">RETAK / Security Research</span>
+          <p>Independent security research from the edge of the trust boundary.</p>
         </div>
         <div class="footer-links">
           <a href="mailto:jodyritonga@gmail.com">Email</a>

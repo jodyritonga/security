@@ -17,6 +17,15 @@
         toggle.textContent = 'Menu';
       });
     });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && navigation.classList.contains('is-open')) {
+        navigation.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = 'Menu';
+        toggle.focus();
+      }
+    });
   }
 
   const updateProgress = () => {
@@ -38,6 +47,11 @@
       const pointerY = ((event.clientY - bounds.top) / bounds.height) - 0.5;
       hero.style.setProperty('--pointer-x', pointerX.toFixed(3));
       hero.style.setProperty('--pointer-y', pointerY.toFixed(3));
+    });
+
+    hero.addEventListener('pointerleave', () => {
+      hero.style.setProperty('--pointer-x', '0');
+      hero.style.setProperty('--pointer-y', '0');
     });
   }
 
