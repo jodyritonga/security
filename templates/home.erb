@@ -1,40 +1,33 @@
-<section class="hero">
+<section class="hero hero-spatial">
   <div class="shell hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow"><i></i> Independent security research / Indonesia</span>
+      <div class="hero-kicker"><span class="eyebrow"><i></i> Independent security research / Indonesia</span><span>SYS.RTK / 05</span></div>
       <h1>Every system has <em>a fracture.</em></h1>
       <p class="hero-lede">RETAK goes into the dark space between what a system promises and what it actually protects—then returns with reproducible proof.</p>
       <div class="hero-actions">
         <a class="button primary" href="<%= base('/discoveries/') %>">Enter the CVE record <span>↗</span></a>
         <a class="button ghost" href="<%= base('/method/') %>">Trace the method</a>
       </div>
-      <div class="hero-footnote"><span>05 public CVEs</span><span>Evidence over theatre</span></div>
-    </div>
-    <div class="fracture-stage" aria-label="A glowing natural fissure opening into an abstract abyss">
-      <span class="stage-coordinate coordinate-one" aria-hidden="true">06°10′S</span>
-      <span class="stage-coordinate coordinate-two" aria-hidden="true">fracture / 05</span>
-      <span class="orbit orbit-one" aria-hidden="true"></span>
-      <span class="orbit orbit-two" aria-hidden="true"></span>
-      <span class="orbit orbit-three" aria-hidden="true"></span>
-      <div class="abyss-disc" aria-hidden="true">
-        <span class="disc-aura"></span>
-        <span class="disc-shadow"></span>
-        <svg class="hero-crack" viewBox="0 0 600 700" role="presentation">
-          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path class="crack-glow" d="M329-10 300 101l18 70-52 79 29 61-70 105 31 76-74 121 19 98"/>
-            <path class="crack-core" d="M329-10 300 101l18 70-52 79 29 61-70 105 31 76-74 121 19 98"/>
-            <path class="crack-branch" d="m300 101-104-51M318 171l116-83M266 250l-143 22M295 311l132 58M225 416 92 15 77-55M256 492l-129 65M182 613l-91 11M201 711l81-76 99-14"/>
-            <path class="crack-hairline" d="m196 50-37 8-42-22m317 52 31 4 28-30M123 272l-43-35-50 7m397 125 54-13 44 27M127 557l-51 43-50 2m356 19 39 30 61-7"/>
-          </g>
-        </svg>
-        <span class="disc-word">RETAK</span>
+      <div class="hero-telemetry">
+        <div><small>Signal</small><strong>05 / CVE</strong></div>
+        <div><small>Vector</small><strong>Browser · Mobile</strong></div>
+        <div><small>Standard</small><strong>Proof over theatre</strong></div>
       </div>
-      <span class="fracture-label fracture-label-source">attacker source</span>
-      <span class="fracture-label fracture-label-guard">broken assumption</span>
-      <span class="fracture-label fracture-label-impact">proven impact</span>
-      <div class="stage-record"><small>Current signal</small><strong>Boundary open</strong><span>Edge · Firefox · Safari</span></div>
+    </div>
+    <div class="fracture-stage" id="fracture-viewport" aria-label="An interactive three-dimensional fractured monolith representing a broken trust boundary">
+      <canvas id="fracture-canvas" class="fracture-canvas" aria-hidden="true"></canvas>
+      <div class="stage-grid" aria-hidden="true"></div>
+      <span class="stage-corner corner-tl" aria-hidden="true"></span>
+      <span class="stage-corner corner-tr" aria-hidden="true"></span>
+      <span class="stage-corner corner-bl" aria-hidden="true"></span>
+      <span class="stage-corner corner-br" aria-hidden="true"></span>
+      <div class="object-label label-origin"><small>Origin</small><strong>06°10′S / ID</strong></div>
+      <div class="object-label label-state"><small>Boundary state</small><strong>OPEN / VERIFIED</strong></div>
+      <div class="object-index" aria-hidden="true"><span>R</span><span>05</span></div>
+      <div class="stage-record"><small>Live research record</small><strong>5 fixed fractures</strong><span>Edge · Firefox · Safari</span></div>
     </div>
   </div>
+  <div class="hero-marquee" aria-hidden="true"><span>ATTACKER SOURCE</span><i></i><span>TRUST BOUNDARY</span><i></i><span>MISSING GUARD</span><i></i><span>SENSITIVE SINK</span><i></i><span>PROVEN IMPACT</span></div>
 </section>
 
 <section class="metric-strip">
