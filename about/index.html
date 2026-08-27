@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/security/assets/css/abyss.css">
     <script defer src="/security/assets/js/site.js"></script>
     <script defer src="/security/assets/js/fracture-3d.js"></script>
+    <script defer src="/security/assets/js/dragon-3d.js"></script>
   </head>
   <body class="">
     <a class="skip-link" href="#content">Skip to content</a>
@@ -30,29 +31,13 @@
     <div class="ambient-field" aria-hidden="true"><i></i><i></i><i></i></div>
     <header class="site-header">
       <div class="shell header-inner">
-        <div class="site-brand">
-          <button class="brand-relic" type="button" data-crack-level="0" aria-label="Cracked stone. Open three fractures to wake what is inside." aria-controls="dragon-reveal" aria-expanded="false">
-            <svg class="brand-mark" viewBox="0 0 72 72" aria-hidden="true">
-              <defs>
-                <clipPath id="relic-stone-clip"><path d="M13 7 34 2l22 6 10 18-4 25-18 16-24-3L7 47 5 23Z"/></clipPath>
-              </defs>
-              <path class="mark-stone" d="M13 7 34 2l22 6 10 18-4 25-18 16-24-3L7 47 5 23Z"/>
-              <g class="mark-fragments" clip-path="url(#relic-stone-clip)">
-                <path class="mark-fragment fragment-nw" d="M-4-5h40l-7 25-13-7L4 24Z"/>
-                <path class="mark-fragment fragment-ne" d="M36-5h42v24L39 31l-6-11Z"/>
-                <path class="mark-fragment fragment-w" d="M-4 14l33 6 5 9-12 14 6 9-32-5Z"/>
-                <path class="mark-fragment fragment-e" d="m39 29 39-13v36l-44-1-6-8Z"/>
-                <path class="mark-fragment fragment-sw" d="m-4 46 32 6-10 27H-4Z"/>
-                <path class="mark-fragment fragment-se" d="m34 51 44-2v30H18Z"/>
-              </g>
-              <path class="mark-fissure-glow" d="M36 1 30 20l4 9-11 14 5 9-8 19M30 20 16 14M39 29l17-9M23 43 8 39M28 52l20 11"/>
-              <path class="mark-crack" d="M35 0 29 20 33 28 22 43 27 51 18 72h8l8-21-6-8 11-14-5-9 7-20ZM31 18 18 12l-2 5 15 7ZM36 25l18-8 2 5-18 10ZM25 39 9 36l-1 5 17 5ZM28 48l22 11-3 6-21-12Z"/>
-            </svg>
-            <span class="relic-counter" aria-hidden="true">0 / 3</span>
-          </button>
-          <a class="brand-copy" href="/security/" aria-label="RETAK Security home"><strong>RETAK</strong><small>Security / Indonesia</small></a>
-          <span class="relic-status" aria-live="polite"></span>
-        </div>
+        <a class="site-brand" href="/security/" aria-label="RETAK Security home">
+          <svg class="brand-mark" viewBox="0 0 72 72" aria-hidden="true">
+            <path class="mark-stone" d="M13 7 34 2l22 6 10 18-4 25-18 16-24-3L7 47 5 23Z"/>
+            <path class="mark-crack" d="M35 0 29 20 33 28 22 43 27 51 18 72h8l8-21-6-8 11-14-5-9 7-20ZM31 18 18 12l-2 5 15 7ZM36 25l18-8 2 5-18 10ZM25 39 9 36l-1 5 17 5ZM28 48l22 11-3 6-21-12Z"/>
+          </svg>
+          <span class="brand-copy"><strong>RETAK</strong><small>Security / Indonesia</small></span>
+        </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Menu</button>
         <nav id="site-navigation" class="site-nav" aria-label="Primary navigation">
           <a class="nav-link" href="/security/discoveries/">CVEs</a>
@@ -65,11 +50,11 @@
       <button class="dragon-dismiss" type="button" aria-label="Reseal the fracture">Reseal <span>×</span></button>
       <div class="dragon-reveal__field" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="dragon-portal" aria-hidden="true"><i></i><i></i><i></i></div>
-      <img class="dragon-figure" src="/security/assets/images/retak-dragon-3d.webp" width="1280" height="853" alt="A horned obsidian and violet dragon with glowing aqua fractures, spread wings, claws, and a serpentine tail">
+      <canvas class="dragon-figure dragon-canvas" id="dragon-canvas" width="1200" height="800" role="img" aria-label="An interactive low-poly 3D dragon that turns toward the cursor">Interactive 3D dragon</canvas>
       <div class="dragon-reveal__copy">
         <span>Fracture sequence · 03 / 03</span>
         <strong id="dragon-reveal-title">The boundary is awake.</strong>
-        <small>Click the void or press Esc to reseal.</small>
+        <small>Move your cursor—the dragon tracks it. Press Esc to reseal.</small>
       </div>
     </div>
     <main id="content"><section class="archive-hero shell about-hero">

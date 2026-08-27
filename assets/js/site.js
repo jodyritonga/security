@@ -40,39 +40,46 @@
   const hero = document.querySelector('.hero');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const relic = document.querySelector('.brand-relic');
-  const relicCounter = relic?.querySelector('.relic-counter');
-  const relicStatus = document.querySelector('.relic-status');
+  const fractureTrigger = document.querySelector('#fracture-trigger');
+  const fractureViewport = document.querySelector('#fracture-viewport');
+  const fractureCount = fractureTrigger?.querySelector('.fracture-count');
+  const fractureState = fractureViewport?.querySelector('.fracture-state');
   const dragonReveal = document.querySelector('#dragon-reveal');
   const dragonDismiss = dragonReveal?.querySelector('.dragon-dismiss');
 
-  if (relic && relicCounter && relicStatus && dragonReveal && dragonDismiss) {
+  if (fractureTrigger && fractureViewport && fractureCount && fractureState && dragonReveal && dragonDismiss) {
     let crackLevel = 0;
-    let statusTimer = 0;
     let revealTimer = 0;
+    let strikeTimer = 0;
+    const fractureStates = ['SEALED / 00', 'HAIRLINE / 01', 'WIDENING / 02', 'BREACHED / 03'];
 
-    const announceFracture = (message) => {
-      window.clearTimeout(statusTimer);
-      relicStatus.textContent = message;
-      relicStatus.classList.add('is-visible');
-      statusTimer = window.setTimeout(() => relicStatus.classList.remove('is-visible'), 1250);
+    const pulseFracture = () => {
+      window.clearTimeout(strikeTimer);
+      fractureViewport.classList.remove('is-struck');
+      void fractureViewport.offsetWidth;
+      fractureViewport.classList.add('is-struck');
+      strikeTimer = window.setTimeout(() => fractureViewport.classList.remove('is-struck'), 420);
     };
 
-    const setCrackLevel = (level) => {
+    const setCrackLevel = (level, { strike = false } = {}) => {
       crackLevel = level;
-      relic.dataset.crackLevel = String(level);
-      relicCounter.textContent = `${level} / 3`;
-      relic.setAttribute('aria-label', level === 3
-        ? 'The cracked stone is fully open. The dragon is awake.'
-        : `Cracked stone. ${level} of 3 fractures open.`);
+      fractureTrigger.dataset.crackLevel = String(level);
+      fractureViewport.dataset.crackLevel = String(level);
+      fractureCount.textContent = `${level} / 3`;
+      fractureState.textContent = fractureStates[level];
+      fractureTrigger.setAttribute('aria-label', level === 3
+        ? 'The large fracture is fully open. The dragon is awake.'
+        : `Large fractured object. ${level} of 3 fractures open. Click again.`);
+      if (strike) pulseFracture();
     };
 
     const wakeDragon = () => {
       window.clearTimeout(revealTimer);
       dragonReveal.classList.add('is-awake');
       dragonReveal.setAttribute('aria-hidden', 'false');
-      relic.setAttribute('aria-expanded', 'true');
+      fractureTrigger.setAttribute('aria-expanded', 'true');
       document.body.classList.add('dragon-awake');
+      window.dispatchEvent(new CustomEvent('dragon:wake'));
       revealTimer = window.setTimeout(() => dragonDismiss.focus({ preventScroll: true }), reducedMotion ? 80 : 720);
     };
 
@@ -81,24 +88,20 @@
       window.clearTimeout(revealTimer);
       dragonReveal.classList.remove('is-awake');
       dragonReveal.setAttribute('aria-hidden', 'true');
-      relic.setAttribute('aria-expanded', 'false');
+      fractureTrigger.setAttribute('aria-expanded', 'false');
       document.body.classList.remove('dragon-awake');
+      window.dispatchEvent(new CustomEvent('dragon:sleep'));
       window.setTimeout(() => {
         setCrackLevel(0);
-        relic.focus();
+        fractureTrigger.focus();
       }, reducedMotion ? 0 : 380);
     };
 
-    relic.addEventListener('click', () => {
+    fractureTrigger.addEventListener('click', () => {
       if (dragonReveal.classList.contains('is-awake')) return;
       const nextLevel = Math.min(3, crackLevel + 1);
-      setCrackLevel(nextLevel);
-      if (nextLevel < 3) {
-        announceFracture(`Fracture ${nextLevel} of 3 opened`);
-        return;
-      }
-      announceFracture('Third fracture opened');
-      revealTimer = window.setTimeout(wakeDragon, reducedMotion ? 0 : 260);
+      setCrackLevel(nextLevel, { strike: true });
+      if (nextLevel === 3) revealTimer = window.setTimeout(wakeDragon, reducedMotion ? 0 : 440);
     });
 
     dragonDismiss.addEventListener('click', resealFracture);

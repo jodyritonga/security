@@ -46,6 +46,7 @@
   let pointerY = 0;
   let targetX = 0;
   let targetY = 0;
+  let crackOpen = 0;
   let animationFrame = 0;
 
   const resize = () => {
@@ -89,16 +90,22 @@
     return n.map((value) => value / length);
   };
 
-  const drawPolyhedron = (time, rotationX, rotationY) => {
+  const drawPolyhedron = (time, rotationX, rotationY, openness) => {
     const vertices = sourceVertices.map((vertex) => rotate(vertex, rotationX, rotationY, time * .00008));
     const orderedFaces = faces.map((indices) => ({
       indices,
-      depth: indices.reduce((sum, index) => sum + vertices[index][2], 0) / 3
+      depth: indices.reduce((sum, index) => sum + vertices[index][2], 0) / 3,
+      split: indices.reduce((sum, index) => sum + sourceVertices[index][0], 0) >= 0 ? 1 : -1
     })).sort((a, b) => a.depth - b.depth);
 
-    orderedFaces.forEach(({ indices, depth }) => {
+    orderedFaces.forEach(({ indices, depth, split }) => {
       const points3d = indices.map((index) => vertices[index]);
-      const points2d = points3d.map((point) => project(point));
+      const splitOffset = split * openness * Math.min(width, height) * .026;
+      const points2d = points3d.map((point) => {
+        const projected = project(point);
+        projected[0] += splitOffset;
+        return projected;
+      });
       const faceNormal = normal(...points3d);
       const light = Math.max(0, faceNormal[0] * -.35 + faceNormal[1] * .45 + faceNormal[2] * .82);
       const front = Math.max(0, Math.min(1, (depth + 1) / 2));
@@ -126,9 +133,11 @@
       const [a, b] = edge.split(':').map(Number);
       const start = project(vertices[a]);
       const end = project(vertices[b]);
+      const split = sourceVertices[a][0] + sourceVertices[b][0] >= 0 ? 1 : -1;
+      const splitOffset = split * openness * Math.min(width, height) * .026;
       context.beginPath();
-      context.moveTo(start[0], start[1]);
-      context.lineTo(end[0], end[1]);
+      context.moveTo(start[0] + splitOffset, start[1]);
+      context.lineTo(end[0] + splitOffset, end[1]);
       context.strokeStyle = 'rgba(117,230,212,.16)';
       context.lineWidth = .55;
       context.stroke();
@@ -136,18 +145,29 @@
     context.restore();
   };
 
-  const drawCrack = (rotationX, rotationY) => {
+  const drawCrack = (rotationX, rotationY, openness) => {
     const points = crack.map((point) => project(rotate(point, rotationX * .45, rotationY * .12, 0)));
     context.save();
-    context.globalCompositeOperation = 'screen';
     context.lineCap = 'round';
     context.lineJoin = 'round';
-    [18, 7, 1.7].forEach((lineWidth, index) => {
+    context.beginPath();
+    points.forEach(([x, y], pointIndex) => pointIndex ? context.lineTo(x, y) : context.moveTo(x, y));
+    context.strokeStyle = `rgba(1,1,6,${.68 + openness * .3})`;
+    context.lineWidth = 3 + openness * 38;
+    context.shadowBlur = openness * 28;
+    context.shadowColor = '#030307';
+    context.stroke();
+    context.globalCompositeOperation = 'screen';
+    [18 + openness * 34, 7 + openness * 14, 1.7 + openness * 1.1].forEach((lineWidth, index) => {
       context.beginPath();
       points.forEach(([x, y], pointIndex) => pointIndex ? context.lineTo(x, y) : context.moveTo(x, y));
-      context.strokeStyle = index === 0 ? 'rgba(116,73,255,.09)' : index === 1 ? 'rgba(157,124,255,.23)' : 'rgba(248,245,255,.95)';
+      context.strokeStyle = index === 0
+        ? `rgba(116,73,255,${.09 + openness * .08})`
+        : index === 1
+          ? `rgba(157,124,255,${.23 + openness * .12})`
+          : `rgba(248,245,255,${.95 - openness * .2})`;
       context.lineWidth = lineWidth;
-      context.shadowBlur = index === 2 ? 16 : 0;
+      context.shadowBlur = index === 2 ? 16 + openness * 20 : 0;
       context.shadowColor = '#c6afff';
       context.stroke();
     });
@@ -155,20 +175,25 @@
       const direction = index % 2 ? 1 : -1;
       context.beginPath();
       context.moveTo(x, y);
-      context.lineTo(x + direction * (32 + index * 9), y - 18 + index * 7);
-      context.strokeStyle = 'rgba(117,230,212,.68)';
-      context.lineWidth = .8;
+      context.lineTo(x + direction * (32 + index * 9) * (1 + openness * .42), y + (-18 + index * 7) * (1 + openness * .3));
+      context.strokeStyle = `rgba(117,230,212,${.55 + openness * .28})`;
+      context.lineWidth = .8 + openness * .7;
       context.stroke();
     });
     context.restore();
   };
 
-  const drawShards = (time, rotationX, rotationY) => {
+  const drawShards = (time, rotationX, rotationY, openness) => {
     shards.forEach((shard, shardIndex) => {
       const localRotation = time * .00035 * shard.spin;
-      const center = rotate(shard.offset, rotationX * .6, rotationY * .6, localRotation);
+      const expandedOffset = [
+        shard.offset[0] + Math.sign(shard.offset[0]) * openness * .42,
+        shard.offset[1] + Math.sign(shard.offset[1]) * openness * .12,
+        shard.offset[2] + openness * .14
+      ];
+      const center = rotate(expandedOffset, rotationX * .6, rotationY * .6, localRotation);
       const projectedCenter = project(center);
-      const size = Math.min(width, height) * shard.scale * projectedCenter[3];
+      const size = Math.min(width, height) * shard.scale * projectedCenter[3] * (1 + openness * .18);
       context.save();
       context.translate(projectedCenter[0], projectedCenter[1]);
       context.rotate(localRotation + shardIndex);
@@ -207,13 +232,16 @@
   const render = (time = 0) => {
     pointerX += (targetX - pointerX) * .055;
     pointerY += (targetY - pointerY) * .055;
+    const targetOpen = Math.max(0, Math.min(1, Number(viewport.dataset.crackLevel || 0) / 3));
+    crackOpen += (targetOpen - crackOpen) * (reducedMotion ? 1 : .09);
+    canvas.dataset.crackOpen = crackOpen.toFixed(3);
     context.clearRect(0, 0, width, height);
     const rotationX = -.16 + pointerY * .42 + (reducedMotion ? 0 : Math.sin(time * .00027) * .035);
     const rotationY = .38 + pointerX * .52 + (reducedMotion ? 0 : time * .00014);
     drawParticles(time);
-    drawShards(time, rotationX, rotationY);
-    drawPolyhedron(time, rotationX, rotationY);
-    drawCrack(rotationX, rotationY);
+    drawShards(time, rotationX, rotationY, crackOpen);
+    drawPolyhedron(time, rotationX, rotationY, crackOpen);
+    drawCrack(rotationX, rotationY, crackOpen);
     if (!reducedMotion) animationFrame = requestAnimationFrame(render);
   };
 
@@ -225,6 +253,9 @@
 
   viewport.addEventListener('pointermove', updatePointer, { passive: true });
   viewport.addEventListener('pointerleave', () => { targetX = 0; targetY = 0; });
+  new MutationObserver(() => {
+    if (reducedMotion) render(performance.now());
+  }).observe(viewport, { attributes: true, attributeFilter: ['data-crack-level'] });
   window.addEventListener('resize', resize, { passive: true });
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden && !reducedMotion && !animationFrame) animationFrame = requestAnimationFrame(render);

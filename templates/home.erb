@@ -14,7 +14,10 @@
         <div><small>Standard</small><strong>Proof over theatre</strong></div>
       </div>
     </div>
-    <div class="fracture-stage" id="fracture-viewport" aria-label="An interactive three-dimensional fractured monolith representing a broken trust boundary">
+    <div class="fracture-stage" id="fracture-viewport" data-crack-level="0">
+      <button class="fracture-trigger" id="fracture-trigger" type="button" data-crack-level="0" aria-label="Large fractured object. Click three times to open the breach." aria-controls="dragon-reveal" aria-expanded="false">
+        <span class="fracture-trigger-copy"><small>Interactive breach</small><strong><b class="fracture-count">0 / 3</b> · click the fracture</strong></span>
+      </button>
       <canvas id="fracture-canvas" class="fracture-canvas" aria-hidden="true"></canvas>
       <div class="stage-grid" aria-hidden="true"></div>
       <span class="stage-corner corner-tl" aria-hidden="true"></span>
@@ -22,7 +25,7 @@
       <span class="stage-corner corner-bl" aria-hidden="true"></span>
       <span class="stage-corner corner-br" aria-hidden="true"></span>
       <div class="object-label label-origin"><small>Origin</small><strong>06°10′S / ID</strong></div>
-      <div class="object-label label-state"><small>Boundary state</small><strong>OPEN / VERIFIED</strong></div>
+      <div class="object-label label-state"><small>Boundary state</small><strong class="fracture-state">SEALED / 00</strong></div>
       <div class="object-index" aria-hidden="true"><span>R</span><span>05</span></div>
       <div class="stage-record"><small>Live research record</small><strong>5 fixed fractures</strong><span>Edge · Firefox · Safari</span></div>
     </div>
