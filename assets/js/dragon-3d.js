@@ -1,8 +1,8 @@
 (() => {
   const canvas = document.querySelector('#dragon-canvas');
-  const reveal = document.querySelector('#dragon-reveal');
+  const stage = document.querySelector('#fracture-viewport');
 
-  if (!canvas || !reveal || !canvas.getContext) return;
+  if (!canvas || !stage || !canvas.getContext) return;
 
   const context = canvas.getContext('2d', { alpha: true });
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -489,7 +489,7 @@
   };
 
   const updatePointer = (event) => {
-    const bounds = reveal.getBoundingClientRect();
+    const bounds = stage.getBoundingClientRect();
     const x = ((event.clientX - bounds.left) / bounds.width - .5) * 2;
     const y = ((event.clientY - bounds.top) / bounds.height - .5) * 2;
     targetYaw = Math.max(-1, Math.min(1, x)) * .46;
@@ -503,8 +503,8 @@
     }
   };
 
-  reveal.addEventListener('pointermove', updatePointer, { passive: true });
-  reveal.addEventListener('pointerleave', () => {
+  stage.addEventListener('pointermove', updatePointer, { passive: true });
+  stage.addEventListener('pointerleave', () => {
     targetYaw = 0;
     targetPitch = 0;
   });
@@ -526,10 +526,10 @@
   }
 
   new MutationObserver(() => {
-    if (reveal.classList.contains('is-awake')) start();
+    if (stage.classList.contains('is-dragon-awake')) start();
     else stop();
-  }).observe(reveal, { attributes: true, attributeFilter: ['class'] });
+  }).observe(stage, { attributes: true, attributeFilter: ['class'] });
 
   resize();
-  if (reveal.classList.contains('is-awake')) start();
+  if (stage.classList.contains('is-dragon-awake')) start();
 })();

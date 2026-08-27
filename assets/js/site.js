@@ -43,14 +43,16 @@
   const fractureTrigger = document.querySelector('#fracture-trigger');
   const fractureViewport = document.querySelector('#fracture-viewport');
   const fractureCount = fractureTrigger?.querySelector('.fracture-count');
+  const fractureAction = fractureTrigger?.querySelector('.fracture-action');
+  const fractureMode = fractureTrigger?.querySelector('.fracture-trigger-copy small');
   const fractureState = fractureViewport?.querySelector('.fracture-state');
-  const dragonReveal = document.querySelector('#dragon-reveal');
-  const dragonDismiss = dragonReveal?.querySelector('.dragon-dismiss');
+  const dragonCanvas = document.querySelector('#dragon-canvas');
 
-  if (fractureTrigger && fractureViewport && fractureCount && fractureState && dragonReveal && dragonDismiss) {
+  if (fractureTrigger && fractureViewport && fractureCount && fractureAction && fractureMode && fractureState && dragonCanvas) {
     let crackLevel = 0;
     let revealTimer = 0;
     let strikeTimer = 0;
+    let transforming = false;
     const fractureStates = ['SEALED / 00', 'HAIRLINE / 01', 'WIDENING / 02', 'BREACHED / 03'];
 
     const pulseFracture = () => {
@@ -66,54 +68,59 @@
       fractureTrigger.dataset.crackLevel = String(level);
       fractureViewport.dataset.crackLevel = String(level);
       fractureCount.textContent = `${level} / 3`;
+      fractureAction.textContent = 'click the fracture';
+      fractureMode.textContent = 'Interactive breach';
       fractureState.textContent = fractureStates[level];
       fractureTrigger.setAttribute('aria-label', level === 3
-        ? 'The large fracture is fully open. The dragon is awake.'
+        ? 'The large fracture is fully open and transforming into a dragon.'
         : `Large fractured object. ${level} of 3 fractures open. Click again.`);
       if (strike) pulseFracture();
     };
 
     const wakeDragon = () => {
       window.clearTimeout(revealTimer);
-      dragonReveal.classList.add('is-awake');
-      dragonReveal.setAttribute('aria-hidden', 'false');
+      transforming = false;
+      fractureViewport.classList.add('is-dragon-awake');
+      dragonCanvas.setAttribute('aria-hidden', 'false');
       fractureTrigger.setAttribute('aria-expanded', 'true');
-      document.body.classList.add('dragon-awake');
+      fractureTrigger.setAttribute('aria-label', 'Interactive 3D dragon. Move the cursor to make it follow you. Click to reseal.');
+      fractureCount.textContent = 'AWAKE';
+      fractureAction.textContent = 'move cursor · click to reseal';
+      fractureMode.textContent = 'Tracking entity';
+      fractureState.textContent = 'ENTITY / TRACKING';
       window.dispatchEvent(new CustomEvent('dragon:wake'));
-      revealTimer = window.setTimeout(() => dragonDismiss.focus({ preventScroll: true }), reducedMotion ? 80 : 720);
     };
 
     const resealFracture = () => {
-      if (!dragonReveal.classList.contains('is-awake')) return;
+      if (!fractureViewport.classList.contains('is-dragon-awake')) return;
       window.clearTimeout(revealTimer);
-      dragonReveal.classList.remove('is-awake');
-      dragonReveal.setAttribute('aria-hidden', 'true');
+      fractureViewport.classList.remove('is-dragon-awake');
       fractureTrigger.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('dragon-awake');
-      window.dispatchEvent(new CustomEvent('dragon:sleep'));
+      fractureAction.textContent = 'resealing';
       window.setTimeout(() => {
+        dragonCanvas.setAttribute('aria-hidden', 'true');
+        window.dispatchEvent(new CustomEvent('dragon:sleep'));
         setCrackLevel(0);
         fractureTrigger.focus();
-      }, reducedMotion ? 0 : 380);
+      }, reducedMotion ? 0 : 560);
     };
 
     fractureTrigger.addEventListener('click', () => {
-      if (dragonReveal.classList.contains('is-awake')) return;
+      if (fractureViewport.classList.contains('is-dragon-awake')) {
+        resealFracture();
+        return;
+      }
+      if (transforming) return;
       const nextLevel = Math.min(3, crackLevel + 1);
       setCrackLevel(nextLevel, { strike: true });
-      if (nextLevel === 3) revealTimer = window.setTimeout(wakeDragon, reducedMotion ? 0 : 440);
+      if (nextLevel === 3) {
+        transforming = true;
+        revealTimer = window.setTimeout(wakeDragon, reducedMotion ? 0 : 440);
+      }
     });
 
-    dragonDismiss.addEventListener('click', resealFracture);
-    dragonReveal.addEventListener('click', (event) => {
-      if (event.target === dragonReveal) resealFracture();
-    });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') resealFracture();
-      if (event.key === 'Tab' && dragonReveal.classList.contains('is-awake')) {
-        event.preventDefault();
-        dragonDismiss.focus();
-      }
     });
   }
 
