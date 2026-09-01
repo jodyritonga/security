@@ -5,44 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= h(@page_title) %></title>
     <meta name="description" content="<%= h(@page_description) %>">
-    <meta name="author" content="RETAK Security">
-    <meta name="theme-color" content="#07070c">
+    <meta name="author" content="Jody Ritonga">
+    <meta name="theme-color" content="#f7f5ef">
     <link rel="icon" type="image/svg+xml" href="<%= base('/assets/images/favicon.svg') %>">
     <link rel="canonical" href="<%= absolute(@canonical_path) %>">
-    <link rel="alternate" type="application/rss+xml" title="RETAK Security CVE Record" href="<%= base('/feed.xml') %>">
-    <meta property="og:type" content="<%= @body_class == 'article-page' ? 'article' : 'website' %>">
+    <link rel="alternate" type="application/rss+xml" title="Jody Ritonga — Selected Work" href="<%= base('/feed.xml') %>">
+    <meta property="og:type" content="website">
     <meta property="og:title" content="<%= h(@page_title) %>">
     <meta property="og:description" content="<%= h(@page_description) %>">
     <meta property="og:url" content="<%= absolute(@canonical_path) %>">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="<%= h(@page_title) %>">
     <meta name="twitter:description" content="<%= h(@page_description) %>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<%= base('/assets/css/abyss.css') %>">
     <script defer src="<%= base('/assets/js/site.js') %>"></script>
-    <script defer src="<%= base('/assets/js/fracture-3d.js') %>"></script>
-    <script defer src="<%= base('/assets/js/dragon-3d.js') %>"></script>
   </head>
   <body class="<%= h(@body_class) %>">
     <a class="skip-link" href="#content">Skip to content</a>
-    <div class="reading-progress" aria-hidden="true"></div>
-    <div class="ambient-field" aria-hidden="true"><i></i><i></i><i></i></div>
     <header class="site-header">
       <div class="shell header-inner">
-        <a class="site-brand" href="<%= base('/') %>" aria-label="RETAK Security home">
-          <svg class="brand-mark" viewBox="0 0 72 72" aria-hidden="true">
-            <path class="mark-stone" d="M13 7 34 2l22 6 10 18-4 25-18 16-24-3L7 47 5 23Z"/>
-            <path class="mark-crack" d="M35 0 29 20 33 28 22 43 27 51 18 72h8l8-21-6-8 11-14-5-9 7-20ZM31 18 18 12l-2 5 15 7ZM36 25l18-8 2 5-18 10ZM25 39 9 36l-1 5 17 5ZM28 48l22 11-3 6-21-12Z"/>
-          </svg>
-          <span class="brand-copy"><strong>RETAK</strong><small>Security / Indonesia</small></span>
+        <a class="site-brand" href="<%= base('/') %>" aria-label="Jody Ritonga home">
+          <span class="brand-scribble" aria-hidden="true">JR</span>
+          <span class="brand-copy"><strong>Jody Ritonga</strong><small>security researcher + builder</small></span>
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Menu</button>
         <nav id="site-navigation" class="site-nav" aria-label="Primary navigation">
-          <%= nav_link('CVEs', '/discoveries/', 'discoveries') %>
-          <%= nav_link('Method', '/method/', 'method') %>
+          <%= nav_link('Work', '/discoveries/', 'discoveries') %>
+          <%= nav_link('Process', '/method/', 'method') %>
           <%= nav_link('About', '/about/', 'about') %>
+          <a class="nav-link nav-contact" href="mailto:jodyritonga@gmail.com">Say hello ↗</a>
         </nav>
       </div>
     </header>
@@ -50,16 +44,15 @@
     <footer class="site-footer">
       <div class="shell footer-grid">
         <div>
-          <span class="eyebrow">RETAK / Security Research</span>
-          <p>Independent security research from the edge of the trust boundary.</p>
+          <span class="hand-note">Thanks for stopping by.</span>
+          <p>Built by Jody, with curiosity and too many browser tabs.</p>
         </div>
         <div class="footer-links">
           <a href="mailto:jodyritonga@gmail.com">Email</a>
-          <a href="https://github.com/jodyritonga" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/jodyritonga" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="<%= base('/discoveries/') %>">CVE record</a>
+          <a href="https://github.com/jodyritonga" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/jodyritonga" target="_blank" rel="noreferrer">LinkedIn ↗</a>
         </div>
-        <div class="footer-meta">Tangerang, Indonesia<br>Independent · Responsible disclosure</div>
+        <div class="footer-meta">Tangerang, Indonesia<br>© <%= Time.now.year %> Jody Ritonga</div>
       </div>
     </footer>
   </body>

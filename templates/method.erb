@@ -1,18 +1,17 @@
-<section class="archive-hero shell method-hero">
-  <span class="eyebrow">Human-led / LLM-accelerated / evidence-gated</span>
-  <h1>Intuition finds the dark. Evidence lights the path.</h1>
-  <p>LLMs help navigate large systems and generate adversarial hypotheses. They do not decide whether a candidate is reachable, exploitable, impactful, or novel.</p>
+<section class="page-hero shell">
+  <span class="section-number">02 / Process</span>
+  <h1>Curiosity first.<br><em>Evidence always.</em></h1>
+  <p>LLMs help me navigate large systems and generate adversarial hypotheses. They never get the final vote—runtime proof does.</p>
 </section>
 
-<section class="method-detail shell">
-  <article><span>01 / Scope</span><h2>Start with the security promise.</h2><p>Define the target, authorized attacker, controlled inputs, protected assets, and concrete consequences that matter before searching for code.</p></article>
-  <article><span>02 / Threat model</span><h2>Rank boundaries, not buzzwords.</h2><p>Map product journeys, identities, capabilities, data lifetimes, and guard conditions. Select a narrow slice where failure would cross real authority.</p></article>
-  <article><span>03 / LLM assistance</span><h2>Use models for focused reasoning.</h2><p>Ask the model to trace one source, one guard, and one sensitive sink. Ground every claim in implementation evidence and keep disproved assumptions.</p></article>
-  <article><span>04 / Verification</span><h2>Build the cheapest decisive oracle.</h2><p>Reproduce on the exact version, include a positive control, test the direct boundary, and verify that the expected guard blocks a negative case.</p></article>
-  <article><span>05 / Impact</span><h2>Separate a primitive from a vulnerability.</h2><p>Require attacker-observable confidentiality, integrity, account, or code-execution consequences. UI oddities and hypothetical escalation remain explicitly limited.</p></article>
-  <article><span>06 / Disclosure</span><h2>Publish only after coordination.</h2><p>Give vendors time to investigate and patch. The public record links canonical CVE entries and vendor advisories without exposing premature research details.</p></article>
+<section class="process-list shell">
+  <article><span>01</span><div><h2>Understand the promise</h2><p>I start with people, assets, authority, and the boundary that is supposed to hold. A threat model keeps the hunt pointed at consequences that matter.</p></div><small class="hand-note">what must stay true?</small></article>
+  <article><span>02</span><div><h2>Trace one thin path</h2><p>I follow one attacker-controlled source through its guards and transformations to one sensitive sink. Focus makes assumptions visible.</p></div><small class="hand-note">source → sink</small></article>
+  <article><span>03</span><div><h2>Build the cheapest oracle</h2><p>Exact artifacts, positive controls, direct-boundary probes, and guarded negatives separate product behavior from a persuasive-looking coincidence.</p></div><small class="hand-note">try to kill the idea</small></article>
+  <article><span>04</span><div><h2>Prove the human impact</h2><p>A primitive becomes a finding only when the attacker gains something and the victim demonstrably loses something. Limitations belong in the report.</p></div><small class="hand-note">proof, not theatre</small></article>
+  <article><span>05</span><div><h2>Disclose responsibly</h2><p>I package a reproducible path, evidence, root cause, and a practical fix—then give the vendor room to investigate before anything becomes public.</p></div><small class="hand-note">make fixing easier</small></article>
 </section>
 
-<section class="principle-band">
-  <div class="shell principle-grid"><span>attacker source</span><b>→</b><span>trust boundary</span><b>→</b><span>missing guard</span><b>→</b><span>sensitive sink</span><b>→</b><span>proven impact</span></div>
+<section class="paper-quote">
+  <div class="shell"><p>“The model can suggest where to look.<br><em>The evidence decides what is real.</em>”</p></div>
 </section>

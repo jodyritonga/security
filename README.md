@@ -1,8 +1,8 @@
-# RETAK Security
+# Jody Ritonga — Personal Portfolio
 
-Static GitHub Pages publication site for RETAK, an independent browser and mobile security research studio. The public site contains coordinated CVE records only.
+Static GitHub Pages portfolio for Jody Ritonga, an independent browser, mobile, and web application security researcher. The site combines a personal introduction, selected work, research process, and public CVE records.
 
-## Update the CVE record
+## Update the portfolio
 
 Edit `content/data/discoveries.json`, then rebuild the static pages:
 

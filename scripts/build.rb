@@ -41,7 +41,7 @@ class SiteBuilder
     number = index ? format("%02d", index) : discovery.fetch("id")
     <<~HTML
       <article class="discovery-row" id="#{h(discovery.fetch("id").downcase)}">
-        <div class="card-index">#{h(number)}</div>
+        <div class="card-index">#{h(number)} <span aria-hidden="true">↘</span></div>
         <div class="discovery-main">
           <div class="card-meta">
             <span>#{h(discovery.fetch("vendor"))}</span>
@@ -52,8 +52,8 @@ class SiteBuilder
           <p>#{h(discovery.fetch("summary"))}</p>
         </div>
         <div class="discovery-links">
-          <a href="#{h(discovery.fetch("cve_url"))}" target="_blank" rel="noreferrer">#{h(discovery.fetch("id"))}</a>
-          <a href="#{h(discovery.fetch("reference"))}" target="_blank" rel="noreferrer">Vendor advisory ↗</a>
+          <a href="#{h(discovery.fetch("cve_url"))}" target="_blank" rel="noreferrer">#{h(discovery.fetch("id"))} ↗</a>
+          <a href="#{h(discovery.fetch("reference"))}" target="_blank" rel="noreferrer">Vendor note ↗</a>
         </div>
       </article>
     HTML
@@ -93,7 +93,7 @@ class SiteBuilder
         </item>
       XML
     end.join
-    File.write(File.join(ROOT, "feed.xml"), %(<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>RETAK Security CVE Record</title><link>#{absolute("/discoveries/")}</link><description>Public CVE records and coordinated disclosures from RETAK Security.</description>#{items}</channel></rss>\n))
+    File.write(File.join(ROOT, "feed.xml"), %(<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Jody Ritonga — Selected Work</title><link>#{absolute("/discoveries/")}</link><description>Public CVE records and coordinated vulnerability disclosures by Jody Ritonga.</description>#{items}</channel></rss>\n))
     File.write(File.join(ROOT, "robots.txt"), "User-agent: *\nAllow: /\nSitemap: #{absolute("/sitemap.xml")}\n")
   end
 
@@ -108,8 +108,8 @@ class SiteBuilder
     write_page(
       output: "index.html",
       template: "home",
-      title: "RETAK Security — Public CVE Record",
-      description: "The coordinated CVE record of RETAK Security across browser and mobile trust boundaries.",
+      title: "Jody Ritonga — Security Researcher & Builder",
+      description: "The personal portfolio of Jody Ritonga, an independent security researcher and builder in Indonesia.",
       active: "home",
       canonical: "/",
       body_class: "home-page"
@@ -117,38 +117,38 @@ class SiteBuilder
     write_page(
       output: "discoveries/index.html",
       template: "discoveries",
-      title: "CVE Record — RETAK Security",
-      description: "Public CVE records and coordinated vulnerability disclosures across major browser engines.",
+      title: "Selected Work — Jody Ritonga",
+      description: "Public CVE records and coordinated vulnerability disclosures by Jody Ritonga.",
       active: "discoveries",
       canonical: "/discoveries/"
     )
     write_page(
       output: "method/index.html",
       template: "method",
-      title: "Method — RETAK Security",
-      description: "A human-led, LLM-accelerated vulnerability research workflow built around threat models, source-to-sink proof, and impact validation.",
+      title: "Process — Jody Ritonga",
+      description: "How Jody Ritonga approaches human-led, LLM-assisted vulnerability research and evidence-driven validation.",
       active: "method",
       canonical: "/method/"
     )
     write_page(
       output: "about/index.html",
       template: "about",
-      title: "About — RETAK Security",
-      description: "About RETAK Security, an independent browser, mobile, and web application security research studio based in Indonesia.",
+      title: "About — Jody Ritonga",
+      description: "About Jody Ritonga, an independent browser, mobile, and web application security researcher in Indonesia.",
       active: "about",
       canonical: "/about/"
     )
     write_page(
       output: "404.html",
       template: "not_found",
-      title: "Page not found — RETAK Security",
-      description: "The requested research page could not be found.",
+      title: "Page not found — Jody Ritonga",
+      description: "The requested portfolio page could not be found.",
       active: nil,
       canonical: "/404.html",
       body_class: "not-found-page"
     )
     build_feeds
-    puts "Built CVE-only site with #{@discoveries.length} public records."
+    puts "Built Jody Ritonga portfolio with #{@discoveries.length} public records."
   end
 end
 

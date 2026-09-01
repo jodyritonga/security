@@ -1,16 +1,16 @@
-<section class="archive-hero shell">
-  <span class="eyebrow">Fracture archive / coordinated disclosure</span>
-  <h1>Five marks in the surface. All traceable.</h1>
-  <p>No blog posts and no inflated claims—only public CVE records linked to canonical entries and vendor advisories. Vendor wording remains the source of truth.</p>
+<section class="page-hero shell">
+  <span class="section-number">01 / Work</span>
+  <h1>Things I found<br><em>by looking closer.</em></h1>
+  <p>Public vulnerability work across browsers and mobile platforms. Each item points to its canonical CVE and vendor advisory.</p>
 </section>
 
 <section class="archive-layout shell">
   <aside class="archive-aside">
-    <span class="mini-label">Record</span>
-    <div class="archive-count"><strong><%= @discoveries.length %></strong><span>public CVEs</span></div>
-    <p>Microsoft Edge, Mozilla Firefox, Safari, and related Apple platforms.</p>
+    <span class="hand-note">the public shelf</span>
+    <div class="archive-count"><strong><%= @discoveries.length %></strong><span>coordinated CVEs</span></div>
+    <p>Only disclosed and publicly verifiable work lives here.</p>
   </aside>
-  <div class="discovery-list full-list">
+  <div class="work-list full-list">
     <% @discoveries.each_with_index do |discovery, index| %>
       <%= discovery_row(discovery, index: index + 1) %>
     <% end %>
