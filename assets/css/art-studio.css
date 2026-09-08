@@ -1,48 +1,52 @@
-/* Illustration sizing is kept separate from the reading layouts. */
-.folio-hero .folio-stage { min-height: 480px; }
-.folio-hero .folio-bloom { height: 480px; width: 49%; right: 0; }
-.folio-hero-sketch { position: absolute; width: 185px; height: 145px; object-fit: contain; left: 37%; bottom: 5px; transform: rotate(-12deg); }
-.art-ribbon { padding-top: 25px; }
-.art-ribbon img { width: 100%; height: 65px; object-fit: contain; }
-.work-section .folio-work-layout { grid-template-columns: 340px minmax(0, 1fr); gap: 50px; }
-.folio-work-art::after { content: ''; display: block; width: 210px; height: 235px; margin: 45px auto 0; background: url('../images/editorial/magnolia-branch.svg') center / contain no-repeat; transform: rotate(13deg); }
-.folio-writing > .shell { position: relative; }
-.writing-sketch { position: absolute; width: 170px; height: 135px; object-fit: contain; right: 95px; top: -43px; transform: rotate(8deg); }
-.folio-writing .section-heading { padding-right: 280px; }
-.folio-writing .section-heading > .text-link { position: absolute; right: 0; top: 110px; }
-.folio-process .folio-process-list figure { height: 295px; }
-.folio-process .folio-process-list img { height: 275px; max-width: none; }
-.research-garden { margin-block: 0 85px; }
-.research-garden img { width: 100%; max-height: 680px; object-fit: contain; mix-blend-mode: multiply; }
-.research-garden figcaption { display: flex; justify-content: space-between; gap: 20px; padding-block: 18px; border-block: 1px solid var(--hair); color: var(--muted); font: italic 21px/1.4 var(--serif); }
-.folio-personal > figure { transform: rotate(-7deg); }
-.page-hero-illustrated .page-art { width: 385px; }
-.page-hero-illustrated { min-height: 475px; }
-.contact-band { position: relative; overflow: hidden; }
-.contact-band::after { content: ''; position: absolute; width: 235px; height: 270px; right: -90px; bottom: -100px; background: url('../images/editorial/magnolia-branch.svg') center / contain no-repeat; transform: rotate(-25deg); pointer-events: none; }
+/* Illustrations are anchored to the same columns as the text. */
+.generated-study { mix-blend-mode: multiply; filter: brightness(1.1); }
+.folio-hero .folio-stage { min-height: 480px; background: var(--paper); }
+.folio-hero .folio-bloom { height: 450px; width: 47%; right: 1%; top: 15px; mix-blend-mode: multiply; transform: rotate(-7deg); }
+.work-section .folio-work-layout { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 70px; align-items: center; }
+.work-section .folio-work-art { position: static; }
+.work-section .folio-work-art img { width: 100%; margin: 0; }
+.work-section .folio-work-art figcaption, .process-study figcaption { margin-top: 22px; padding: 12px 0 0; border-top: 1px solid var(--hair); color: var(--muted); font: 11px/1.5 var(--mono); }
+.folio-process .practice-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 90px; align-items: center; }
+.folio-process .process-study { grid-column: 2; grid-row: 1; }
+.process-study img { width: 100%; }
+.folio-process .folio-process-list { grid-column: 1; grid-row: 1; display: block; }
+.folio-process .folio-process-list li { padding: 24px 0; border-top: 1px solid var(--hair); }
+.folio-process .folio-process-list li:first-child { padding-top: 0; border-top: 0; }
+.folio-process .folio-process-list h3 { margin: 8px 0 10px; }
+.folio-process .folio-process-list p { max-width: 44ch; }
+.folio-personal.shell { grid-template-columns: .8fr 1.2fr; gap: 90px; padding-block: 80px; }
+.folio-personal.shell > figure { grid-column: 2; grid-row: 1; max-width: none; transform: none; }
+.folio-personal.shell > div { grid-column: 1; grid-row: 1; }
+.page-hero-illustrated .page-art.generated-study { width: 43%; }
+.page-hero.page-hero-illustrated { padding-right: 49%; min-height: 440px; }
+.page-hero-illustrated h1 { max-width: 640px; }
 @media (max-width: 1050px) {
-  .folio-hero-sketch { left: 36%; width: 130px; height: 110px; }
-  .work-section .folio-work-layout { grid-template-columns: 250px minmax(0,1fr); gap: 30px; }
-  .page-hero-illustrated .page-art { width: 295px; }
-  .writing-sketch { width: 135px; right: 15px; }
-  .folio-writing .section-heading { padding-right: 160px; }
+  .work-section .folio-work-layout, .folio-process .practice-layout { gap: 36px; }
+  .folio-personal.shell { gap: 40px; }
+  .folio-hero .folio-bloom { height: 400px; }
 }
 @media (max-width: 760px) {
-  .folio-hero .folio-stage { min-height: 440px; }
-  .folio-hero .folio-bloom { width: 52%; height: 240px; top: 185px; right: 0; }
-  .folio-hero-sketch { left: 0; bottom: 6px; width: 145px; height: 110px; }
-  .art-ribbon { padding-top: 12px; }
-  .art-ribbon img { height: 35px; }
-  .work-section .folio-work-layout { grid-template-columns: 1fr; }
-  .work-section .folio-work-art img { width: 58%; }
-  .folio-work-art::after { display: none; }
-  .writing-sketch { width: 95px; height: 85px; right: 0; top: -24px; }
-  .folio-writing .section-heading { padding-right: 95px; }
-  .folio-writing .section-heading > .text-link { position: static; }
-  .folio-process .folio-process-list figure { height: 255px; }
-  .folio-process .folio-process-list img { height: 245px; }
-  .research-garden { width: 100%; margin-bottom: 45px; }
-  .research-garden figcaption { margin-inline: 20px; flex-direction: column; gap: 8px; font-size: 19px; }
-  .page-hero-illustrated .page-art { width: min(370px, 100%); }
-  .page-hero-illustrated { min-height: 0; }
+  .folio-hero .folio-stage { min-height: 375px; }
+  .folio-hero .folio-bloom { width: 47%; height: 180px; top: 180px; right: 0; }
+  .work-section .folio-work-layout { grid-template-columns: 1fr; gap: 28px; }
+  .work-section .folio-work-art { display: block; }
+  .work-section .folio-work-art img { width: 100%; }
+  .work-section .folio-work-art figcaption { font-size: 10px; margin-top: 12px; }
+  .folio-process .practice-layout { grid-template-columns: 1fr; gap: 35px; }
+  .folio-process .process-study { grid-column: 1; grid-row: 1; }
+  .folio-process .folio-process-list { grid-column: 1; grid-row: 2; }
+  .folio-personal.shell { grid-template-columns: 1fr; gap: 28px; padding-block: 50px; }
+  .folio-personal.shell > figure { grid-column: 1; grid-row: 2; max-width: 100%; }
+  .folio-personal.shell > div { grid-column: 1; grid-row: 1; }
+  .page-hero.page-hero-illustrated { padding-right: 0; min-height: 0; }
+  .page-hero-illustrated .page-art.generated-study { width: 100%; margin: 30px 0 0; }
+}
+
+/* Keep the original laptop-and-magnolia artwork as a full-width plate. */
+.research-garden { margin-block: 0 64px; }
+.research-garden img { width: 100%; max-height: 680px; object-fit: contain; mix-blend-mode: multiply; }
+.research-garden figcaption { display: flex; justify-content: space-between; gap: 20px; padding-block: 18px; border-block: 1px solid var(--hair); color: var(--muted); font: italic 21px/1.4 var(--serif); }
+@media (max-width: 760px) {
+  .research-garden { margin-bottom: 40px; }
+  .research-garden figcaption { flex-direction: column; gap: 8px; font-size: 19px; }
 }
