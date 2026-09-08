@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel><title>Jody Ritonga — Selected Work</title><link>https://jodyritonga.github.io/security/discoveries/</link><description>Public CVE records and coordinated vulnerability disclosures by Jody Ritonga.</description><item>
+<rss version="2.0"><channel><title>Jody Ritonga — Security Research</title><link>https://jodyritonga.github.io/security/discoveries/</link><description>Public CVE records and coordinated vulnerability disclosures by Jody Ritonga.</description><item>
   <title>CVE-2026-43713: Permission restriction issue in Safari and Apple platforms</title>
   <link>https://jodyritonga.github.io/security/discoveries/#cve-2026-43713</link>
   <guid>https://jodyritonga.github.io/security/discoveries/#cve-2026-43713</guid>

@@ -3,3 +3,10 @@ _site/
 .sass-cache/
 vendor/
 .DS_Store
+
+# Unpublished writing and associated assets remain local.
+/blog/
+/content/data/writeups.json
+/content/articles/*
+/assets/images/posts/*
+/templates/blog.erb

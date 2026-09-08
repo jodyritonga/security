@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 470" fill="none">
+  <defs>
+    <g id="magnolia" stroke="#76584F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-7 17C-34-8-46-59-24-109 7-92 22-45 11 4Z" fill="#EDD5D0"/>
+      <path d="M-7 6C-58-8-92-43-91-78-40-83-8-50 5-10Z" fill="#E6EBDD"/>
+      <path d="M5 12C17-37 37-73 79-84 87-44 50-5 15 23Z" fill="#E9CBC9"/>
+      <path d="M-2 16C-27-17-36-65-8-101 24-78 34-35 11 9Z" fill="#FBF9F3"/>
+      <path d="M-9 26C-57 17-93-13-111-58-65-75-16-34 4 5Z" fill="#FBF9F3"/>
+      <path d="M4 27C18-14 58-44 101-42 95 4 52 28 15 35Z" fill="#FBF9F3"/>
+      <path d="M-9 31C-58 27-82 5-87-27-40-26-8-13 11 13Z" fill="#E9EDE1"/>
+      <path d="M-7 17C-26 4-48-10-55-31-18-34 7-12 13 9Z" fill="#FBF9F3"/>
+      <path d="M1 19C2-9 15-30 39-36 48-12 28 11 10 29Z" fill="#EEF1E6"/>
+      <path d="M-5 27C-2 8-5-8 6-17 17-7 16 10 11 28Z" fill="#CDA86E"/>
+      <path d="m1 16 10-2m-11-5 12-2m-9-6 8-1" stroke="#96703E" stroke-width=".9"/>
+      <path d="M-12 29C-30 13-50 3-71 1-63 25-37 41-8 42Z" fill="#E4EADA"/>
+      <path d="M-8 41C-11 21-6 2 6-7 28 7 38 26 25 44 14 50 3 48-8 41Z" fill="#FBF9F3"/>
+      <path d="M17 43C36 32 55 9 53-9 22-3 9 20 9 41Z" fill="#ECEFE4"/>
+      <g stroke="#D2B2AC" stroke-width=".75">
+        <path d="M-13 15C-24-10-43-39-80-54M-5 5C-14-23-18-47-13-75M13 21C30 0 52-15 74-24M-16 27C-42 10-57 2-71-6M5 39C0 21 3 10 6 6M20 34C34 20 40 10 42 4"/>
+      </g>
+      <path d="m-8 43 4 11 19 1 10-11" fill="#819078" stroke="#56634D"/>
+    </g>
+  </defs>
+  <g stroke="#6B574A" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M96 446C154 394 191 327 196 257c4-70 41-99 77-161M103 447c59-53 99-126 101-184 3-64 35-101 72-163" fill="#967760" stroke-width="1.8"/>
+    <path d="M192 310c-43-27-58-72-51-108m60 114c43-7 73-28 102-62M201 213c-27-25-39-45-42-63" stroke-width="4"/>
+    <path d="M190 345c35-40 72-40 89-28-21 37-52 46-89 28Z" fill="#849177" stroke-width="1.4"/>
+    <path d="M191 345c30-7 55-17 77-26m-44 19 8-12m6 8 12-13" stroke="#56634D" stroke-width="1"/>
+    <path d="M164 367c-35-15-53-47-47-68 38 6 58 33 47 68Z" fill="#A2AB8E" stroke-width="1.4"/>
+    <path d="m165 368-40-56m24 37-21-9m14 0-5-15" stroke="#56634D" stroke-width="1"/>
+    <path d="M232 177c3-36 31-63 60-63-6 37-29 57-60 63Z" fill="#A2AB8E" stroke-width="1.2"/>
+    <path d="m234 175 45-49" stroke="#56634D" stroke-width="1"/>
+    <path d="M274 102c-17-16-17-42-3-58 23 12 31 37 11 61Z" fill="#EAD0CD" stroke-width="1.1"/>
+    <path d="M278 101c-8-14-7-33-7-43m0 44 3 13 9-11" stroke-width="1"/>
+  </g>
+  <use href="#magnolia" transform="translate(147 166) rotate(-15) scale(1.03)"/>
+  <use href="#magnolia" transform="translate(307 226) rotate(27) scale(.69)"/>
+  <path d="M101 456c35 4 77 3 101-2" stroke="#6B574A" stroke-width="1" opacity=".3"/>
+</svg>

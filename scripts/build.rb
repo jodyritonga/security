@@ -13,6 +13,7 @@ SITE_ORIGIN = "https://jodyritonga.github.io"
 class SiteBuilder
   def initialize
     @discoveries = JSON.parse(File.read(File.join(ROOT, "content", "data", "discoveries.json")))
+    @writeups = [] # Draft write-ups stay local until publication is authorized.
   end
 
   def h(value)
@@ -34,7 +35,8 @@ class SiteBuilder
 
   def nav_link(label, path, key)
     active = @active_nav == key ? " is-active" : ""
-    %(<a class="nav-link#{active}" href="#{base(path)}">#{h(label)}</a>)
+    current = @active_nav == key ? ' aria-current="page"' : ""
+    %(<a class="nav-link#{active}" href="#{base(path)}"#{current}>#{h(label)}</a>)
   end
 
   def discovery_row(discovery, index: nil)
@@ -64,12 +66,15 @@ class SiteBuilder
     ERB.new(File.read(path), trim_mode: "-").result(binding)
   end
 
-  def write_page(output:, template:, title:, description:, active:, canonical:, body_class: "")
+  def write_page(output:, template:, title:, description:, active:, canonical:, body_class: "", social_image: nil, og_type: "website", article: nil)
     @page_title = title
     @page_description = description
     @active_nav = active
     @canonical_path = canonical
     @body_class = body_class
+    @social_image = social_image
+    @og_type = og_type
+    @article = article
     @content = render(template)
     destination = File.join(ROOT, output)
     FileUtils.mkdir_p(File.dirname(destination))
@@ -78,10 +83,24 @@ class SiteBuilder
 
   def build_feeds
     routes = ["/", "/discoveries/", "/method/", "/about/"]
+    routes.concat(@writeups.map { |writeup| "/blog/#{writeup.fetch("slug")}/" })
     sitemap = routes.map { |route| "  <url><loc>#{h(absolute(route))}</loc></url>" }.join("\n")
     File.write(File.join(ROOT, "sitemap.xml"), %(<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n#{sitemap}\n</urlset>\n))
 
-    items = @discoveries.map do |discovery|
+    writeup_items = @writeups.map do |writeup|
+      article_url = absolute("/blog/#{writeup.fetch("slug")}/")
+      <<~XML
+        <item>
+          <title>#{h(writeup.fetch("title"))}</title>
+          <link>#{h(article_url)}</link>
+          <guid>#{h(article_url)}</guid>
+          <pubDate>#{Time.parse(writeup.fetch("date")).rfc2822}</pubDate>
+          <description>#{h(writeup.fetch("excerpt"))}</description>
+        </item>
+      XML
+    end
+
+    discovery_items = @discoveries.map do |discovery|
       record_url = absolute("/discoveries/##{discovery.fetch("id").downcase}")
       <<~XML
         <item>
@@ -92,8 +111,9 @@ class SiteBuilder
           <description>#{h(discovery.fetch("summary"))}</description>
         </item>
       XML
-    end.join
-    File.write(File.join(ROOT, "feed.xml"), %(<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Jody Ritonga — Selected Work</title><link>#{absolute("/discoveries/")}</link><description>Public CVE records and coordinated vulnerability disclosures by Jody Ritonga.</description>#{items}</channel></rss>\n))
+    end
+    items = (writeup_items + discovery_items).join
+    File.write(File.join(ROOT, "feed.xml"), %(<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Jody Ritonga — Security Research</title><link>#{absolute("/discoveries/")}</link><description>Public CVE records and coordinated vulnerability disclosures by Jody Ritonga.</description>#{items}</channel></rss>\n))
     File.write(File.join(ROOT, "robots.txt"), "User-agent: *\nAllow: /\nSitemap: #{absolute("/sitemap.xml")}\n")
   end
 
@@ -122,6 +142,21 @@ class SiteBuilder
       active: "discoveries",
       canonical: "/discoveries/"
     )
+    @writeups.each do |writeup|
+      @article_content = File.read(File.join(ROOT, writeup.fetch("content_file")))
+      write_page(
+        output: "blog/#{writeup.fetch("slug")}/index.html",
+        template: "article",
+        title: "#{writeup.fetch("title")} — Jody Ritonga",
+        description: writeup.fetch("excerpt"),
+        active: "blog",
+        canonical: "/blog/#{writeup.fetch("slug")}/",
+        body_class: "article-page",
+        social_image: writeup.fetch("cover"),
+        og_type: "article",
+        article: writeup
+      )
+    end
     write_page(
       output: "method/index.html",
       template: "method",
@@ -148,7 +183,7 @@ class SiteBuilder
       body_class: "not-found-page"
     )
     build_feeds
-    puts "Built Jody Ritonga portfolio with #{@discoveries.length} public records."
+    puts "Built Jody Ritonga portfolio with #{@discoveries.length} public records and #{@writeups.length} write-up."
   end
 end
 

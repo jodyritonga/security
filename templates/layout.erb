@@ -6,21 +6,33 @@
     <title><%= h(@page_title) %></title>
     <meta name="description" content="<%= h(@page_description) %>">
     <meta name="author" content="Jody Ritonga">
-    <meta name="theme-color" content="#f7f5ef">
-    <link rel="icon" type="image/svg+xml" href="<%= base('/assets/images/favicon.svg') %>">
+    <meta name="theme-color" content="#f4f1e8">
+    <link rel="icon" type="image/svg+xml" href="<%= base('/assets/images/monogram.svg') %>">
     <link rel="canonical" href="<%= absolute(@canonical_path) %>">
-    <link rel="alternate" type="application/rss+xml" title="Jody Ritonga — Selected Work" href="<%= base('/feed.xml') %>">
-    <meta property="og:type" content="website">
+    <link rel="alternate" type="application/rss+xml" title="Jody Ritonga — Security Research" href="<%= base('/feed.xml') %>">
+    <meta property="og:type" content="<%= h(@og_type || 'website') %>">
     <meta property="og:title" content="<%= h(@page_title) %>">
     <meta property="og:description" content="<%= h(@page_description) %>">
     <meta property="og:url" content="<%= absolute(@canonical_path) %>">
+<% if @social_image %>
+    <meta property="og:image" content="<%= absolute(@social_image) %>">
+    <meta property="og:image:alt" content="<%= h(@article && @article['cover_alt']) %>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="<%= absolute(@social_image) %>">
+<% else %>
     <meta name="twitter:card" content="summary">
+<% end %>
     <meta name="twitter:title" content="<%= h(@page_title) %>">
     <meta name="twitter:description" content="<%= h(@page_description) %>">
+<% if @og_type == 'article' && @article %>
+    <meta property="article:published_time" content="<%= h(@article['date']) %>">
+    <meta property="article:author" content="Jody Ritonga">
+<% end %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<%= base('/assets/css/abyss.css') %>">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<%= base('/assets/css/editorial.css') %>">
+    <link rel="stylesheet" href="<%= base('/assets/css/folio.css') %>">
     <script defer src="<%= base('/assets/js/site.js') %>"></script>
   </head>
   <body class="<%= h(@body_class) %>">
@@ -28,24 +40,25 @@
     <header class="site-header">
       <div class="shell header-inner">
         <a class="site-brand" href="<%= base('/') %>" aria-label="Jody Ritonga home">
-          <span class="brand-scribble" aria-hidden="true">JR</span>
-          <span class="brand-copy"><strong>Jody Ritonga</strong><small>security researcher + builder</small></span>
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M 16,24.6 C 9.6,22.8 3.9,17.8 4.2,11.4 C 4.4,7.6 8.6,8.2 11.6,11.4 C 14.2,14.2 15.6,19.4 16,24.6 Z"/><path d="M 16,24.6 C 9.6,22.8 3.9,17.8 4.2,11.4 C 4.4,7.6 8.6,8.2 11.6,11.4 C 14.2,14.2 15.6,19.4 16,24.6 Z" transform="matrix(-1 0 0 1 32 0)"/><path d="M 16,25.2 C 11.2,19.6 11.0,10.2 16,3.2 C 21.0,10.2 20.8,19.6 16,25.2 Z"/><path d="M 15.1,24.2 C 15.1,27.4 15.4,28.8 16,30.4 C 16.6,28.8 16.9,27.4 16.9,24.2 Z"/></svg>
+          <span class="brand-copy"><strong>Jody Ritonga<span>.</span></strong></span>
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Menu</button>
         <nav id="site-navigation" class="site-nav" aria-label="Primary navigation">
           <%= nav_link('Work', '/discoveries/', 'discoveries') %>
           <%= nav_link('Process', '/method/', 'method') %>
           <%= nav_link('About', '/about/', 'about') %>
-          <a class="nav-link nav-contact" href="mailto:jodyritonga@gmail.com">Say hello ↗</a>
+          <a class="nav-link nav-contact" href="mailto:jodyritonga@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a>
         </nav>
       </div>
     </header>
     <main id="content"><%= @content %></main>
     <footer class="site-footer">
+      <img class="footer-magnolia" src="<%= base('/assets/images/editorial/magnolia-branch.svg') %>" width="420" height="470" alt="" aria-hidden="true" loading="lazy">
       <div class="shell footer-grid">
         <div>
-          <span class="hand-note">Thanks for stopping by.</span>
-          <p>Built by Jody, with curiosity and too many browser tabs.</p>
+          <a class="footer-brand" href="<%= base('/') %>">Jody Ritonga<span>.</span></a>
+          <p>Stay curious. Look a little closer.</p>
         </div>
         <div class="footer-links">
           <a href="mailto:jodyritonga@gmail.com">Email</a>

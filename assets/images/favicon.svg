@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
   <rect width="72" height="72" rx="18" fill="#f7f5ef"/>
-  <path d="M16 17c13-7 31-7 42 1M13 53c14 5 35 4 47-3" fill="none" stroke="#2d64db" stroke-width="3" stroke-linecap="round"/>
+  <path d="M16 17c13-7 31-7 42 1M13 53c14 5 35 4 47-3" fill="none" stroke="#56634d" stroke-width="3" stroke-linecap="round"/>
   <text x="36" y="47" text-anchor="middle" font-family="Georgia,serif" font-size="35" font-style="italic" fill="#171714">JR</text>
 </svg>

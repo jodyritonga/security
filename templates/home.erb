@@ -1,63 +1,36 @@
-<section class="hero paper-section">
-  <div class="shell hero-grid">
-    <div class="hero-copy">
-      <span class="kicker">Hello from Tangerang <span aria-hidden="true">☺</span></span>
-      <h1>I’m Jody.<br>I find the things<br><em>software tries to hide.</em></h1>
-      <p class="hero-lede">Security researcher, bug hunter, and curious builder. I use source code, LLMs, and a stubborn amount of testing to turn odd behavior into clear, reproducible proof.</p>
-      <div class="hero-actions">
-        <a class="button primary" href="<%= base('/discoveries/') %>">See selected work <span>↘</span></a>
-        <a class="text-link" href="mailto:jodyritonga@gmail.com">jodyritonga@gmail.com ↗</a>
-      </div>
-    </div>
-    <aside class="hero-note" aria-label="A note about Jody">
-      <svg class="portrait-doodle" viewBox="0 0 420 360" role="img" aria-label="Hand-drawn desk with a laptop, coffee, and curious eyes">
-        <path d="M38 282c78-13 182-16 340 0M112 278l-16 54m218-54 22 54M128 144h170l-18 113H146zM174 257v22m79-22v22m-96 1h112"/>
-        <path d="M162 175c16-18 35-18 50 0 16-18 35-18 50 0-14 30-35 42-50 45-17-3-37-15-50-45Z"/>
-        <circle cx="195" cy="180" r="4"/><circle cx="229" cy="180" r="4"/>
-        <path d="M57 218c5-18 13-27 27-27s23 9 27 27v38H57zM63 191c2-19 9-29 21-29s20 10 22 29M57 232H40m71 0h18"/>
-        <path d="M321 159c24 10 37 27 40 51m-44-24c27 8 41 22 46 40" class="blue-line"/>
-        <path d="M339 139l14 18-22 2" class="blue-line"/>
-      </svg>
-      <p class="hand-note">currently looking at<br><strong>browser + Android boundaries</strong></p>
-      <span class="tape" aria-hidden="true"></span>
-    </aside>
+<section class="folio-hero shell">
+  <div class="folio-topline"><span class="eyebrow">Independent security researcher</span><span class="eyebrow">Tangerang, Indonesia / <%= Time.now.year %></span></div>
+  <div class="folio-stage">
+    <img class="folio-hero-sketch" src="<%= base('/assets/images/editorial/field-notes.svg') %>" width="400" height="300" alt="" aria-hidden="true">
+    <img class="folio-bloom" src="<%= base('/assets/images/editorial/magnolia-branch.svg') %>" width="420" height="470" alt="A magnolia branch in bloom, with ivory flowers and sage leaves.">
+    <div class="folio-title"><h1>Jody<br><em>Ritonga.</em></h1><p class="folio-caption">A curious mind. A closer look.</p></div>
+    <span class="folio-annotation" aria-hidden="true">Magnolia / a study in attention</span>
   </div>
-  <div class="shell quick-facts" aria-label="Quick facts">
-    <span><b><%= @discoveries.length %></b> public CVEs</span>
-    <span>browser · mobile · web</span>
-    <span>human-led, LLM-assisted</span>
-  </div>
+  <div class="folio-intro"><p>I look for the small assumptions<br>that become <em>real vulnerabilities.</em></p><div><p>Browser and Android security research, guided by curiosity and grounded in reproducible evidence.</p><a class="text-link" href="#selected-work">Explore my work <span aria-hidden="true">↓</span></a></div></div>
 </section>
-
-<section class="section work-section">
-  <div class="shell">
-    <div class="section-heading">
-      <div><span class="section-number">01</span><h2>Selected work</h2></div>
-      <p>A few vulnerabilities I found and disclosed responsibly. The official vendor records are linked—receipts are better than adjectives.</p>
-    </div>
-    <div class="work-list">
-<% @discoveries.first(3).each_with_index do |discovery, index| %>
-<%= discovery_row(discovery, index: index + 1) %>
+<section class="folio-record-band"><div class="shell folio-records"><span><strong><%= format('%02d', @discoveries.length) %></strong> public CVE disclosures</span><span class="eyebrow">Disclosures across</span><div><span>Apple</span><span>Microsoft</span><span>Mozilla</span></div></div></section>
+<div class="art-ribbon shell" aria-hidden="true"><img src="<%= base('/assets/images/editorial/botanical-rule.svg') %>" width="1200" height="60" alt=""></div>
+<section class="section work-section shell" id="selected-work">
+  <div class="section-heading"><div><span class="section-number">01 / Selected research</span><h2>Small details.<br><em>Lasting impact.</em></h2></div><div class="folio-heading-note"><p>Permission boundaries, browser interfaces, and the trust we place in software.</p><a class="text-link" href="<%= base('/discoveries/') %>">All public work <span aria-hidden="true">↗</span></a></div></div>
+  <div class="folio-work-layout"><figure class="folio-work-art"><img src="<%= base('/assets/images/editorial/browser-orbit.svg') %>" width="400" height="300" alt="An eye studying a browser window." loading="lazy"><figcaption>Look again.<br>There is usually more to it.</figcaption></figure><div class="work-list"><% @discoveries.first(3).each_with_index do |discovery, index| %><%= discovery_row(discovery, index: index + 1) %><% end %></div></div>
+  <p class="section-footnote">Responsibly disclosed. Linked to public CVE and vendor records.</p>
+</section>
+<% if @writeups.any? %>
+<% latest = @writeups.first %>
+<section class="section folio-writing"><div class="shell">
+  <img class="writing-sketch" src="<%= base('/assets/images/editorial/field-notes.svg') %>" width="400" height="300" alt="An open field notebook and pencil." loading="lazy">
+  <div class="section-heading"><div><span class="section-number">02 / Field notes</span><h2>Behind the <em>finding.</em></h2></div><a class="text-link" href="<%= base('/blog/') %>">All writing <span aria-hidden="true">↗</span></a></div>
+  <a class="home-blog-feature" href="<%= base("/blog/#{latest['slug']}/") %>"><figure><img src="<%= base(latest['cover']) %>" alt="<%= h(latest['cover_alt']) %>" width="<%= latest['cover_width'] %>" height="<%= latest['cover_height'] %>" loading="lazy"></figure><div><div class="card-meta"><span><%= h(latest['label']) %></span><span><%= latest['reading_time'] %> min read</span></div><h3><%= h(latest['title']) %></h3><p><%= h(latest['excerpt']) %></p><span class="blog-card-link">Read the story <span aria-hidden="true">↗</span></span></div></a>
+</div></section>
 <% end %>
-    </div>
-    <a class="button quiet" href="<%= base('/discoveries/') %>">View all public work <span>→</span></a>
-  </div>
+<section class="section shell folio-process">
+  <div class="section-heading"><div><span class="section-number">03 / The practice</span><h2>Curiosity meets<br><em>conviction.</em></h2></div><div class="folio-heading-note"><p>I use LLMs to explore possibilities, then test those ideas against the code. The evidence gets the final word.</p><a class="text-link" href="<%= base('/method/') %>">My process <span aria-hidden="true">↗</span></a></div></div>
+  <ol class="folio-process-list">
+    <li><figure><img src="<%= base('/assets/images/editorial/boundary-thread.svg') %>" width="400" height="280" alt="A thread passing through a boundary." loading="lazy"></figure><span class="section-number">I / Observe</span><h3>Follow the boundaries.</h3><p>Trace how applications handle trust, and where an assumption starts to break.</p></li>
+    <li><figure><img src="<%= base('/assets/images/editorial/evidence-lens.svg') %>" width="400" height="280" alt="A microscope examining evidence." loading="lazy"></figure><span class="section-number">II / Verify</span><h3>Make the proof clear.</h3><p>Build focused tools and reproducible tests that show what an attacker can actually do.</p></li>
+    <li><figure><img src="<%= base('/assets/images/editorial/disclosure-letter.svg') %>" width="400" height="280" alt="A report and flower tucked into an envelope." loading="lazy"></figure><span class="section-number">III / Disclose</span><h3>Help the fix happen.</h3><p>Share precise evidence, explain the impact, and work through responsible disclosure.</p></li>
+  </ol>
 </section>
-
-<section class="section about-preview">
-  <div class="shell about-preview-grid">
-    <div class="section-heading stacked"><div><span class="section-number">02</span><h2>What I do</h2></div></div>
-    <div class="service-notes">
-      <article><span class="hand-note">look closer</span><h3>Vulnerability research</h3><p>I trace attacker-controlled input across trust boundaries until the code either proves a real impact—or proves me wrong.</p></article>
-      <article><span class="hand-note">make it useful</span><h3>Security tooling</h3><p>I build small, practical workflows that make source review, Android testing, and evidence collection more dependable.</p></article>
-      <article><span class="hand-note">stay honest</span><h3>Responsible disclosure</h3><p>I care about exact versions, clean reproduction, guarded controls, and reports that make a fix easier to ship.</p></article>
-    </div>
-  </div>
-</section>
-
-<section class="contact-band">
-  <div class="shell contact-grid">
-    <div><span class="hand-note">a tiny internet door →</span><h2>Have an interesting<br>problem to pull apart?</h2></div>
-    <div><p>I’m open to thoughtful security research, source review, and collaborations where proof matters.</p><a class="button primary" href="mailto:jodyritonga@gmail.com">Write me a note <span>↗</span></a></div>
-  </div>
-</section>
+<figure class="research-garden shell"><img src="<%= base('/assets/images/editorial/research-garden.png') %>" width="1536" height="1024" alt="A hand-drawn research garden: magnolias growing through a laptop, a magnifying glass, an open notebook, and a cup of coffee." loading="lazy"><figcaption><span class="section-number">From the notebook</span><span>A few things that keep me curious.</span></figcaption></figure>
+<section class="folio-personal shell"><figure><img src="<%= base('/assets/images/editorial/magnolia-plate.svg') %>" width="560" height="440" alt="A magnolia flower drawn in ivory, blush, and sage." loading="lazy"></figure><div><span class="section-number">A note in the margin</span><h2>Always a little<br><em>curious.</em></h2><p>About software. About the details most people pass by. And, yes, about magnolias.</p><a class="text-link" href="<%= base('/about/') %>">A little about me <span aria-hidden="true">↗</span></a></div></section>
+<section class="contact-band"><div class="shell folio-contact"><div><span class="section-number">Good work starts with a conversation</span><h2>Something worth<br><em>looking into?</em></h2></div><div><img src="<%= base('/assets/images/editorial/flying-letter.svg') %>" width="400" height="320" alt="A winged letter." loading="lazy"><p>Security research, source review, or something useful we could build together.</p><a class="text-link" href="mailto:jodyritonga@gmail.com">jodyritonga@gmail.com <span aria-hidden="true">↗</span></a></div></div></section>
