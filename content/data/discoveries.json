@@ -1,5 +1,16 @@
 [
   {
+    "id": "CVE-2026-91717",
+    "date": "2026-09-15",
+    "vendor": "Google",
+    "product": "Google Chrome for Android",
+    "class": "Missing authorization",
+    "title": "Missing authorization in Chrome for Android",
+    "summary": "A missing authorization issue in Chrome for Android before 153.0.8010.47 could allow a local attacker with a co-installed app to obtain sensitive information.",
+    "reference": "https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_0541751186.html",
+    "cve_url": "https://www.cve.org/CVERecord?id=CVE-2026-91717"
+  },
+  {
     "id": "CVE-2026-43713",
     "date": "2026-06-29",
     "vendor": "Apple",

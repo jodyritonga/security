@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"><channel><title>Jody Ritonga — Security Research</title><link>https://jodyritonga.github.io/security/discoveries/</link><description>Public CVE records and coordinated vulnerability disclosures by Jody Ritonga.</description><item>
+  <title>CVE-2026-91717: Missing authorization in Chrome for Android</title>
+  <link>https://jodyritonga.github.io/security/discoveries/#cve-2026-91717</link>
+  <guid>https://jodyritonga.github.io/security/discoveries/#cve-2026-91717</guid>
+  <pubDate>Tue, 15 Sep 2026 00:00:00 +0700</pubDate>
+  <description>A missing authorization issue in Chrome for Android before 153.0.8010.47 could allow a local attacker with a co-installed app to obtain sensitive information.</description>
+</item>
+<item>
   <title>CVE-2026-43713: Permission restriction issue in Safari and Apple platforms</title>
   <link>https://jodyritonga.github.io/security/discoveries/#cve-2026-43713</link>
   <guid>https://jodyritonga.github.io/security/discoveries/#cve-2026-43713</guid>
