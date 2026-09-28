@@ -39,25 +39,58 @@ class SiteBuilder
     %(<a class="nav-link#{active}" href="#{base(path)}"#{current}>#{h(label)}</a>)
   end
 
-  def discovery_row(discovery, index: nil)
+  def discovery_card(discovery, index: nil)
     number = index ? format("%02d", index) : discovery.fetch("id")
     <<~HTML
-      <article class="discovery-row" id="#{h(discovery.fetch("id").downcase)}">
-        <div class="card-index">#{h(number)} <span aria-hidden="true">↘</span></div>
-        <div class="discovery-main">
-          <div class="card-meta">
-            <span>#{h(discovery.fetch("vendor"))}</span>
-            <span>#{h(discovery.fetch("class"))}</span>
-            <span>#{h(format_date(discovery.fetch("date")))}</span>
-          </div>
-          <h3>#{h(discovery.fetch("title"))}</h3>
-          <p>#{h(discovery.fetch("summary"))}</p>
+      <article class="card" id="#{h(discovery.fetch("id").downcase)}">
+        <span class="pin" aria-hidden="true"></span>
+        <span class="card-index" aria-hidden="true">#{h(number)}</span>
+        <div class="card-meta">
+          <span class="vendor">#{h(discovery.fetch("vendor"))}</span>
+          <span>#{h(discovery.fetch("class"))}</span>
+          <time datetime="#{h(discovery.fetch("date"))}">#{h(format_date(discovery.fetch("date")))}</time>
         </div>
-        <div class="discovery-links">
-          <a href="#{h(discovery.fetch("cve_url"))}" target="_blank" rel="noreferrer">#{h(discovery.fetch("id"))} ↗</a>
-          <a href="#{h(discovery.fetch("reference"))}" target="_blank" rel="noreferrer">Vendor note ↗</a>
+        <h3>#{h(discovery.fetch("title"))}</h3>
+        <p>#{h(discovery.fetch("summary"))}</p>
+        <div class="card-links">
+          <a class="pill pill-cve" href="#{h(discovery.fetch("cve_url"))}" target="_blank" rel="noreferrer">#{h(discovery.fetch("id"))} <span aria-hidden="true">↗</span></a>
+          <a class="pill" href="#{h(discovery.fetch("reference"))}" target="_blank" rel="noreferrer">Vendor note <span aria-hidden="true">↗</span></a>
         </div>
       </article>
+    HTML
+  end
+
+  def ticker
+    vendors = @discoveries.map { |d| d.fetch("vendor") }.uniq.sort
+    items = ["<b>#{format('%02d', @discoveries.length)}</b> public CVE disclosures"]
+    items.concat(vendors.map { |v| h(v) })
+    items.concat(@discoveries.map { |d| "<b>#{h(d.fetch('id'))}</b> #{h(d.fetch('product'))}" })
+    items << "Browser &amp; Android security"
+    items << "Reproducible evidence, responsibly disclosed"
+    items << "Tangerang, Indonesia"
+    track = (items * 2).map { |item| "<span>#{item}</span>" }.join
+    %(<div class="ticker" aria-hidden="true"><div class="ticker-track">#{track}</div></div>)
+  end
+
+  def practice_steps
+    <<~HTML
+      <ol class="triptych-steps reveal">
+        <li><span class="step-mark" aria-hidden="true">I</span><span class="section-number">Observe</span><h3>Follow the boundaries.</h3><p>Trace how applications handle trust, and where an assumption starts to break.</p></li>
+        <li><span class="step-mark" aria-hidden="true">II</span><span class="section-number">Verify</span><h3>Make the proof clear.</h3><p>Build focused tools and reproducible tests that show what an attacker can actually do.</p></li>
+        <li><span class="step-mark" aria-hidden="true">III</span><span class="section-number">Disclose</span><h3>Help the fix happen.</h3><p>Share precise evidence, explain the impact, and work through responsible disclosure.</p></li>
+      </ol>
+    HTML
+  end
+
+  def contact_band
+    <<~HTML
+      <section class="contact-band">
+        <div class="contact-field" aria-hidden="true"></div>
+        <div class="shell contact-grid">
+          <div class="reveal"><span class="section-number">Good work starts with a conversation</span><h2>Something worth<br><em>looking into?</em></h2><p>Security research, source review, or something useful we could build together.</p><a class="contact-mail" href="mailto:jodyritonga@gmail.com">jodyritonga@gmail.com</a></div>
+          <div class="contact-side reveal"><img src="#{base('/assets/images/editorial/flying-letter.svg')}" width="400" height="320" alt="A winged letter." loading="lazy"><div class="contact-links"><a class="pill" href="https://github.com/jodyritonga" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a><a class="pill" href="https://www.linkedin.com/in/jodyritonga" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div></div>
+        </div>
+      </section>
     HTML
   end
 

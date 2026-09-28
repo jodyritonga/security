@@ -1,18 +1,24 @@
-<section class="page-hero page-hero-illustrated shell">
-  <span class="section-number">02 / Process</span>
-  <h1>Curiosity first.<br><em>Evidence always.</em></h1>
-  <p>LLMs help me navigate large systems and generate adversarial hypotheses. They never get the final vote—runtime proof does.</p>
-  <img class="page-art generated-study" src="<%= base('/assets/images/editorial/process-study.webp') %>" width="1536" height="1024" alt="A sage ribbon winds through paper doorways above an open notebook.">
+<section class="page-hero banner-hero shell">
+  <div class="page-hero-copy">
+    <div>
+      <span class="section-number">02 / Process</span>
+      <h1>Curiosity first.<br><em>Evidence always.</em></h1>
+      <p>LLMs help me navigate large systems and generate adversarial hypotheses. They never get the final vote—runtime proof does.</p>
+    </div>
+  </div>
+  <figure class="page-banner triptych"><img src="<%= base('/assets/images/editorial/research-process-triptych.webp') %>" width="1536" height="1024" alt="Three connected paper scenes show observing, verifying, and responsibly disclosing a security issue." fetchpriority="high"></figure>
+  <%= practice_steps %>
 </section>
 
-<section class="process-list shell">
-  <article><span>01</span><div><h2>Understand the promise</h2><p>I start with people, assets, authority, and the boundary that is supposed to hold. A threat model keeps the hunt pointed at consequences that matter.</p></div><small class="hand-note">what must stay true?</small></article>
-  <article><span>02</span><div><h2>Trace one thin path</h2><p>I follow one attacker-controlled source through its guards and transformations to one sensitive sink. Focus makes assumptions visible.</p></div><small class="hand-note">source → sink</small></article>
-  <article><span>03</span><div><h2>Build the cheapest oracle</h2><p>Exact artifacts, positive controls, direct-boundary probes, and guarded negatives separate product behavior from a persuasive-looking coincidence.</p></div><small class="hand-note">try to kill the idea</small></article>
-  <article><span>04</span><div><h2>Prove the human impact</h2><p>A primitive becomes a finding only when the attacker gains something and the victim demonstrably loses something. Limitations belong in the report.</p></div><small class="hand-note">proof, not theatre</small></article>
-  <article><span>05</span><div><h2>Disclose responsibly</h2><p>I package a reproducible path, evidence, root cause, and a practical fix—then give the vendor room to investigate before anything becomes public.</p></div><small class="hand-note">make fixing easier</small></article>
+<section class="method-list shell">
+  <article class="reveal"><span>01</span><div><h2>Understand the promise</h2><p>I start with people, assets, authority, and the boundary that is supposed to hold. A threat model keeps the hunt pointed at consequences that matter.</p></div><small class="hand-note">what must stay true?</small></article>
+  <article class="reveal"><span>02</span><div><h2>Trace one thin path</h2><p>I follow one attacker-controlled source through its guards and transformations to one sensitive sink. Focus makes assumptions visible.</p></div><small class="hand-note">source → sink</small></article>
+  <article class="reveal"><span>03</span><div><h2>Build the cheapest oracle</h2><p>Exact artifacts, positive controls, direct-boundary probes, and guarded negatives separate product behavior from a persuasive-looking coincidence.</p></div><small class="hand-note">try to kill the idea</small></article>
+  <article class="reveal"><span>04</span><div><h2>Prove the human impact</h2><p>A primitive becomes a finding only when the attacker gains something and the victim demonstrably loses something. Limitations belong in the report.</p></div><small class="hand-note">proof, not theatre</small></article>
+  <article class="reveal"><span>05</span><div><h2>Disclose responsibly</h2><p>I package a reproducible path, evidence, root cause, and a practical fix—then give the vendor room to investigate before anything becomes public.</p></div><small class="hand-note">make fixing easier</small></article>
 </section>
 
-<section class="paper-quote">
-  <div class="shell"><p>“The model can suggest where to look.<br><em>The evidence decides what is real.</em>”</p></div>
+<section class="quote-band">
+  <img class="quote-branch" src="<%= base('/assets/images/editorial/magnolia-branch.svg') %>" width="420" height="470" alt="" aria-hidden="true" loading="lazy">
+  <div class="shell reveal"><p>The model can suggest where to look.<br><em>The evidence decides what is real.</em></p><span class="quote-note">On working with LLMs</span></div>
 </section>

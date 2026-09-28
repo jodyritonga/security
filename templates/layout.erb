@@ -6,7 +6,7 @@
     <title><%= h(@page_title) %></title>
     <meta name="description" content="<%= h(@page_description) %>">
     <meta name="author" content="Jody Ritonga">
-    <meta name="theme-color" content="#f4f1e8">
+    <meta name="theme-color" content="#f5f2ea">
     <link rel="icon" type="image/svg+xml" href="<%= base('/assets/images/monogram.svg') %>">
     <link rel="canonical" href="<%= absolute(@canonical_path) %>">
     <link rel="alternate" type="application/rss+xml" title="Jody Ritonga — Security Research" href="<%= base('/feed.xml') %>">
@@ -14,14 +14,12 @@
     <meta property="og:title" content="<%= h(@page_title) %>">
     <meta property="og:description" content="<%= h(@page_description) %>">
     <meta property="og:url" content="<%= absolute(@canonical_path) %>">
-<% if @social_image %>
-    <meta property="og:image" content="<%= absolute(@social_image) %>">
-    <meta property="og:image:alt" content="<%= h(@article && @article['cover_alt']) %>">
+<% share_image = @social_image || '/assets/images/editorial/research-garden.png' %>
+<% share_alt = (@article && @article['cover_alt']) || 'A hand-drawn research garden: magnolias growing through a laptop beside a magnifying glass and an open notebook.' %>
+    <meta property="og:image" content="<%= absolute(share_image) %>">
+    <meta property="og:image:alt" content="<%= h(share_alt) %>">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="<%= absolute(@social_image) %>">
-<% else %>
-    <meta name="twitter:card" content="summary">
-<% end %>
+    <meta name="twitter:image" content="<%= absolute(share_image) %>">
     <meta name="twitter:title" content="<%= h(@page_title) %>">
     <meta name="twitter:description" content="<%= h(@page_description) %>">
 <% if @og_type == 'article' && @article %>
@@ -32,7 +30,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<%= base('/assets/css/editorial.css') %>">
-    <link rel="stylesheet" href="<%= base('/assets/css/folio.css') %>">
     <script defer src="<%= base('/assets/js/site.js') %>"></script>
   </head>
   <body class="<%= h(@body_class) %>">

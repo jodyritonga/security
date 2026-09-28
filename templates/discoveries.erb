@@ -1,19 +1,19 @@
-<section class="page-hero page-hero-illustrated shell">
-  <span class="section-number">01 / Work</span>
-  <h1>Things I found<br><em>by looking closer.</em></h1>
-  <p>Public vulnerability work across browsers and mobile platforms. Each item points to its canonical CVE and vendor advisory.</p>
-  <img class="page-art generated-study" src="<%= base('/assets/images/editorial/research-study.webp') %>" width="1536" height="1024" alt="A magnifying glass, magnolias, and a curious bird studying a browser window.">
+<section class="page-hero banner-hero shell">
+  <div class="page-hero-copy">
+    <div>
+      <span class="section-number">01 / Work</span>
+      <h1>Things I found<br><em>by looking closer.</em></h1>
+      <p>Public vulnerability work across browsers and mobile platforms. Each card points to its canonical CVE and vendor advisory. Only disclosed and publicly verifiable work lives here.</p>
+    </div>
+    <div class="page-stat"><strong><%= format('%02d', @discoveries.length) %></strong><span>coordinated CVEs</span></div>
+  </div>
+  <figure class="page-banner"><img src="<%= base('/assets/images/editorial/disclosure-collage.webp') %>" width="1536" height="1024" alt="Six paper evidence clusters connected by red thread, with browser, phone, database, bug, and lock motifs." fetchpriority="high"></figure>
 </section>
 
-<section class="archive-layout shell">
-  <aside class="archive-aside">
-    <span class="hand-note">the public shelf</span>
-    <div class="archive-count"><strong><%= @discoveries.length %></strong><span>coordinated CVEs</span></div>
-    <p>Only disclosed and publicly verifiable work lives here.</p>
-  </aside>
-  <div class="work-list full-list">
-    <% @discoveries.each_with_index do |discovery, index| %>
-      <%= discovery_row(discovery, index: index + 1) %>
-    <% end %>
+<section class="archive-board shell">
+  <div class="board" data-board>
+    <svg class="board-thread" aria-hidden="true"><path d=""/></svg>
+    <% @discoveries.each_with_index do |discovery, index| %><%= discovery_card(discovery, index: index + 1) %><% end %>
   </div>
+  <p class="section-footnote">Responsibly disclosed. Linked to public CVE and vendor records.</p>
 </section>

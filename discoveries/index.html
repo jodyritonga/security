@@ -6,7 +6,7 @@
     <title>Selected Work — Jody Ritonga</title>
     <meta name="description" content="Public CVE records and coordinated vulnerability disclosures by Jody Ritonga.">
     <meta name="author" content="Jody Ritonga">
-    <meta name="theme-color" content="#f4f1e8">
+    <meta name="theme-color" content="#f5f2ea">
     <link rel="icon" type="image/svg+xml" href="/security/assets/images/monogram.svg">
     <link rel="canonical" href="https://jodyritonga.github.io/security/discoveries/">
     <link rel="alternate" type="application/rss+xml" title="Jody Ritonga — Security Research" href="/security/feed.xml">
@@ -15,8 +15,11 @@
     <meta property="og:description" content="Public CVE records and coordinated vulnerability disclosures by Jody Ritonga.">
     <meta property="og:url" content="https://jodyritonga.github.io/security/discoveries/">
 
-    <meta name="twitter:card" content="summary">
 
+    <meta property="og:image" content="https://jodyritonga.github.io/security/assets/images/editorial/research-garden.png">
+    <meta property="og:image:alt" content="A hand-drawn research garden: magnolias growing through a laptop beside a magnifying glass and an open notebook.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://jodyritonga.github.io/security/assets/images/editorial/research-garden.png">
     <meta name="twitter:title" content="Selected Work — Jody Ritonga">
     <meta name="twitter:description" content="Public CVE records and coordinated vulnerability disclosures by Jody Ritonga.">
 
@@ -24,7 +27,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/security/assets/css/editorial.css">
-    <link rel="stylesheet" href="/security/assets/css/folio.css">
     <script defer src="/security/assets/js/site.js"></script>
   </head>
   <body class="">
@@ -44,130 +46,114 @@
         </nav>
       </div>
     </header>
-    <main id="content"><section class="page-hero page-hero-illustrated shell">
-  <span class="section-number">01 / Work</span>
-  <h1>Things I found<br><em>by looking closer.</em></h1>
-  <p>Public vulnerability work across browsers and mobile platforms. Each item points to its canonical CVE and vendor advisory.</p>
-  <img class="page-art generated-study" src="/security/assets/images/editorial/research-study.webp" width="1536" height="1024" alt="A magnifying glass, magnolias, and a curious bird studying a browser window.">
+    <main id="content"><section class="page-hero banner-hero shell">
+  <div class="page-hero-copy">
+    <div>
+      <span class="section-number">01 / Work</span>
+      <h1>Things I found<br><em>by looking closer.</em></h1>
+      <p>Public vulnerability work across browsers and mobile platforms. Each card points to its canonical CVE and vendor advisory. Only disclosed and publicly verifiable work lives here.</p>
+    </div>
+    <div class="page-stat"><strong>06</strong><span>coordinated CVEs</span></div>
+  </div>
+  <figure class="page-banner"><img src="/security/assets/images/editorial/disclosure-collage.webp" width="1536" height="1024" alt="Six paper evidence clusters connected by red thread, with browser, phone, database, bug, and lock motifs." fetchpriority="high"></figure>
 </section>
 
-<section class="archive-layout shell">
-  <aside class="archive-aside">
-    <span class="hand-note">the public shelf</span>
-    <div class="archive-count"><strong>6</strong><span>coordinated CVEs</span></div>
-    <p>Only disclosed and publicly verifiable work lives here.</p>
-  </aside>
-  <div class="work-list full-list">
-    
-      <article class="discovery-row" id="cve-2026-91717">
-  <div class="card-index">01 <span aria-hidden="true">↘</span></div>
-  <div class="discovery-main">
-    <div class="card-meta">
-      <span>Google</span>
-      <span>Missing authorization</span>
-      <span>Sep 15, 2026</span>
-    </div>
-    <h3>Missing authorization in Chrome for Android</h3>
-    <p>A missing authorization issue in Chrome for Android before 153.0.8010.47 could allow a local attacker with a co-installed app to obtain sensitive information.</p>
+<section class="archive-board shell">
+  <div class="board" data-board>
+    <svg class="board-thread" aria-hidden="true"><path d=""/></svg>
+    <article class="card" id="cve-2026-91717">
+  <span class="pin" aria-hidden="true"></span>
+  <span class="card-index" aria-hidden="true">01</span>
+  <div class="card-meta">
+    <span class="vendor">Google</span>
+    <span>Missing authorization</span>
+    <time datetime="2026-09-15">Sep 15, 2026</time>
   </div>
-  <div class="discovery-links">
-    <a href="https://www.cve.org/CVERecord?id=CVE-2026-91717" target="_blank" rel="noreferrer">CVE-2026-91717 ↗</a>
-    <a href="https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_0541751186.html" target="_blank" rel="noreferrer">Vendor note ↗</a>
+  <h3>Missing authorization in Chrome for Android</h3>
+  <p>A missing authorization issue in Chrome for Android before 153.0.8010.47 could allow a local attacker with a co-installed app to obtain sensitive information.</p>
+  <div class="card-links">
+    <a class="pill pill-cve" href="https://www.cve.org/CVERecord?id=CVE-2026-91717" target="_blank" rel="noreferrer">CVE-2026-91717 <span aria-hidden="true">↗</span></a>
+    <a class="pill" href="https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_0541751186.html" target="_blank" rel="noreferrer">Vendor note <span aria-hidden="true">↗</span></a>
+  </div>
+</article>
+<article class="card" id="cve-2026-43713">
+  <span class="pin" aria-hidden="true"></span>
+  <span class="card-index" aria-hidden="true">02</span>
+  <div class="card-meta">
+    <span class="vendor">Apple</span>
+    <span>Permission boundary</span>
+    <time datetime="2026-06-29">Jun 29, 2026</time>
+  </div>
+  <h3>Permission restriction issue in Safari and Apple platforms</h3>
+  <p>A permissions issue affecting Safari and multiple Apple platforms was addressed with additional restrictions.</p>
+  <div class="card-links">
+    <a class="pill pill-cve" href="https://www.cve.org/CVERecord?id=CVE-2026-43713" target="_blank" rel="noreferrer">CVE-2026-43713 <span aria-hidden="true">↗</span></a>
+    <a class="pill" href="https://support.apple.com/en-us/127594" target="_blank" rel="noreferrer">Vendor note <span aria-hidden="true">↗</span></a>
+  </div>
+</article>
+<article class="card" id="cve-2026-12323">
+  <span class="pin" aria-hidden="true"></span>
+  <span class="card-index" aria-hidden="true">03</span>
+  <div class="card-meta">
+    <span class="vendor">Mozilla</span>
+    <span>Browser spoofing</span>
+    <time datetime="2026-06-16">Jun 16, 2026</time>
+  </div>
+  <h3>DOM and HTML spoofing issue in Firefox</h3>
+  <p>A spoofing issue in the DOM Core and HTML component was fixed in Firefox 152 and Thunderbird 152.</p>
+  <div class="card-links">
+    <a class="pill pill-cve" href="https://www.cve.org/CVERecord?id=CVE-2026-12323" target="_blank" rel="noreferrer">CVE-2026-12323 <span aria-hidden="true">↗</span></a>
+    <a class="pill" href="https://www.mozilla.org/security/advisories/mfsa2026-57/" target="_blank" rel="noreferrer">Vendor note <span aria-hidden="true">↗</span></a>
+  </div>
+</article>
+<article class="card" id="cve-2026-40416">
+  <span class="pin" aria-hidden="true"></span>
+  <span class="card-index" aria-hidden="true">04</span>
+  <div class="card-meta">
+    <span class="vendor">Microsoft</span>
+    <span>UI misrepresentation</span>
+    <time datetime="2026-05-12">May 12, 2026</time>
+  </div>
+  <h3>UI misrepresentation and network spoofing in Microsoft Edge</h3>
+  <p>A user-interface misrepresentation issue could allow an unauthenticated remote attacker to perform spoofing over a network.</p>
+  <div class="card-links">
+    <a class="pill pill-cve" href="https://www.cve.org/CVERecord?id=CVE-2026-40416" target="_blank" rel="noreferrer">CVE-2026-40416 <span aria-hidden="true">↗</span></a>
+    <a class="pill" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-40416" target="_blank" rel="noreferrer">Vendor note <span aria-hidden="true">↗</span></a>
+  </div>
+</article>
+<article class="card" id="cve-2026-35429">
+  <span class="pin" aria-hidden="true"></span>
+  <span class="card-index" aria-hidden="true">05</span>
+  <div class="card-meta">
+    <span class="vendor">Microsoft</span>
+    <span>UI misrepresentation</span>
+    <time datetime="2026-05-12">May 12, 2026</time>
+  </div>
+  <h3>UI misrepresentation and network spoofing in Edge for Android</h3>
+  <p>A user-interface misrepresentation issue in Edge for Android could allow an unauthenticated remote attacker to perform spoofing.</p>
+  <div class="card-links">
+    <a class="pill pill-cve" href="https://www.cve.org/CVERecord?id=CVE-2026-35429" target="_blank" rel="noreferrer">CVE-2026-35429 <span aria-hidden="true">↗</span></a>
+    <a class="pill" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-35429" target="_blank" rel="noreferrer">Vendor note <span aria-hidden="true">↗</span></a>
+  </div>
+</article>
+<article class="card" id="cve-2026-33119">
+  <span class="pin" aria-hidden="true"></span>
+  <span class="card-index" aria-hidden="true">06</span>
+  <div class="card-meta">
+    <span class="vendor">Microsoft</span>
+    <span>UI misrepresentation</span>
+    <time datetime="2026-04-10">Apr 10, 2026</time>
+  </div>
+  <h3>UI misrepresentation and network spoofing in Edge for Android</h3>
+  <p>A user-interface misrepresentation issue in Edge for Android could allow an unauthenticated remote attacker to perform spoofing.</p>
+  <div class="card-links">
+    <a class="pill pill-cve" href="https://www.cve.org/CVERecord?id=CVE-2026-33119" target="_blank" rel="noreferrer">CVE-2026-33119 <span aria-hidden="true">↗</span></a>
+    <a class="pill" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-33119" target="_blank" rel="noreferrer">Vendor note <span aria-hidden="true">↗</span></a>
   </div>
 </article>
 
-    
-      <article class="discovery-row" id="cve-2026-43713">
-  <div class="card-index">02 <span aria-hidden="true">↘</span></div>
-  <div class="discovery-main">
-    <div class="card-meta">
-      <span>Apple</span>
-      <span>Permission boundary</span>
-      <span>Jun 29, 2026</span>
-    </div>
-    <h3>Permission restriction issue in Safari and Apple platforms</h3>
-    <p>A permissions issue affecting Safari and multiple Apple platforms was addressed with additional restrictions.</p>
   </div>
-  <div class="discovery-links">
-    <a href="https://www.cve.org/CVERecord?id=CVE-2026-43713" target="_blank" rel="noreferrer">CVE-2026-43713 ↗</a>
-    <a href="https://support.apple.com/en-us/127594" target="_blank" rel="noreferrer">Vendor note ↗</a>
-  </div>
-</article>
-
-    
-      <article class="discovery-row" id="cve-2026-12323">
-  <div class="card-index">03 <span aria-hidden="true">↘</span></div>
-  <div class="discovery-main">
-    <div class="card-meta">
-      <span>Mozilla</span>
-      <span>Browser spoofing</span>
-      <span>Jun 16, 2026</span>
-    </div>
-    <h3>DOM and HTML spoofing issue in Firefox</h3>
-    <p>A spoofing issue in the DOM Core and HTML component was fixed in Firefox 152 and Thunderbird 152.</p>
-  </div>
-  <div class="discovery-links">
-    <a href="https://www.cve.org/CVERecord?id=CVE-2026-12323" target="_blank" rel="noreferrer">CVE-2026-12323 ↗</a>
-    <a href="https://www.mozilla.org/security/advisories/mfsa2026-57/" target="_blank" rel="noreferrer">Vendor note ↗</a>
-  </div>
-</article>
-
-    
-      <article class="discovery-row" id="cve-2026-40416">
-  <div class="card-index">04 <span aria-hidden="true">↘</span></div>
-  <div class="discovery-main">
-    <div class="card-meta">
-      <span>Microsoft</span>
-      <span>UI misrepresentation</span>
-      <span>May 12, 2026</span>
-    </div>
-    <h3>UI misrepresentation and network spoofing in Microsoft Edge</h3>
-    <p>A user-interface misrepresentation issue could allow an unauthenticated remote attacker to perform spoofing over a network.</p>
-  </div>
-  <div class="discovery-links">
-    <a href="https://www.cve.org/CVERecord?id=CVE-2026-40416" target="_blank" rel="noreferrer">CVE-2026-40416 ↗</a>
-    <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-40416" target="_blank" rel="noreferrer">Vendor note ↗</a>
-  </div>
-</article>
-
-    
-      <article class="discovery-row" id="cve-2026-35429">
-  <div class="card-index">05 <span aria-hidden="true">↘</span></div>
-  <div class="discovery-main">
-    <div class="card-meta">
-      <span>Microsoft</span>
-      <span>UI misrepresentation</span>
-      <span>May 12, 2026</span>
-    </div>
-    <h3>UI misrepresentation and network spoofing in Edge for Android</h3>
-    <p>A user-interface misrepresentation issue in Edge for Android could allow an unauthenticated remote attacker to perform spoofing.</p>
-  </div>
-  <div class="discovery-links">
-    <a href="https://www.cve.org/CVERecord?id=CVE-2026-35429" target="_blank" rel="noreferrer">CVE-2026-35429 ↗</a>
-    <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-35429" target="_blank" rel="noreferrer">Vendor note ↗</a>
-  </div>
-</article>
-
-    
-      <article class="discovery-row" id="cve-2026-33119">
-  <div class="card-index">06 <span aria-hidden="true">↘</span></div>
-  <div class="discovery-main">
-    <div class="card-meta">
-      <span>Microsoft</span>
-      <span>UI misrepresentation</span>
-      <span>Apr 10, 2026</span>
-    </div>
-    <h3>UI misrepresentation and network spoofing in Edge for Android</h3>
-    <p>A user-interface misrepresentation issue in Edge for Android could allow an unauthenticated remote attacker to perform spoofing.</p>
-  </div>
-  <div class="discovery-links">
-    <a href="https://www.cve.org/CVERecord?id=CVE-2026-33119" target="_blank" rel="noreferrer">CVE-2026-33119 ↗</a>
-    <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-33119" target="_blank" rel="noreferrer">Vendor note ↗</a>
-  </div>
-</article>
-
-    
-  </div>
+  <p class="section-footnote">Responsibly disclosed. Linked to public CVE and vendor records.</p>
 </section>
 </main>
     <footer class="site-footer">
