@@ -1,5 +1,16 @@
 [
   {
+    "id": "CVE-2026-95321",
+    "date": "2026-09-22",
+    "vendor": "Google",
+    "product": "Google Chrome",
+    "class": "UI misrepresentation",
+    "title": "UI misrepresentation in Chrome Payments",
+    "summary": "A user-interface misrepresentation issue in the Payments component of Chrome before 154.0.8037.57 could allow a remote attacker to spoof payment UI via a crafted HTML page. Rated Medium by Google.",
+    "reference": "https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_0856730748.html",
+    "cve_url": "https://www.cve.org/CVERecord?id=CVE-2026-95321"
+  },
+  {
     "id": "CVE-2026-91717",
     "date": "2026-09-15",
     "vendor": "Google",

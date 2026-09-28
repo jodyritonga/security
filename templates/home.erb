@@ -22,7 +22,7 @@
 <section class="section board-section" id="selected-work">
   <div class="shell">
     <div class="section-heading reveal"><div><span class="section-number">01 / Selected research</span><h2>Small details.<br><em>Lasting impact.</em></h2></div><div class="heading-note"><p><%= @discoveries.length %> coordinated disclosures across Apple, Google, Microsoft and Mozilla. Every card is pinned to its public record.</p><a class="text-link" href="<%= base('/discoveries/') %>">All public work <span aria-hidden="true">↗</span></a></div></div>
-    <figure class="board-banner reveal"><img src="<%= base('/assets/images/editorial/disclosure-collage.webp') %>" width="1536" height="1024" alt="Six paper evidence clusters connected by red thread, with browser, phone, database, bug, and lock motifs." loading="lazy"><figcaption class="plate-label"><span>Fig. 01 / The board</span><em>six disclosures, one habit: look closer</em></figcaption></figure>
+    <figure class="board-banner reveal"><img src="<%= base('/assets/images/editorial/disclosure-collage.webp') %>" width="1536" height="1024" alt="Six paper evidence clusters connected by red thread, with browser, phone, database, bug, and lock motifs." loading="lazy"><figcaption class="plate-label"><span>Fig. 01 / The board</span><em><%= @discoveries.length %> disclosures, one habit: look closer</em></figcaption></figure>
     <div class="board" data-board>
       <svg class="board-thread" aria-hidden="true"><path d=""/></svg>
       <% @discoveries.first(3).each_with_index do |discovery, index| %><%= discovery_card(discovery, index: index + 1) %><% end %>
