@@ -186,12 +186,12 @@ p { color: var(--muted); }
 .board-thread { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 .board-thread path { fill: none; stroke: var(--thread); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: var(--len, 4000); stroke-dashoffset: var(--len, 4000); transition: stroke-dashoffset 2.2s var(--ease); }
 .board.is-visible .board-thread path { stroke-dashoffset: 0; }
-.card { --tilt: -1.1deg; --drop: 0px; position: relative; z-index: 1; display: flex; flex-direction: column; padding: 36px 32px 30px; background: var(--paper-lift); border: 1px solid var(--hair-strong); border-radius: 12px; box-shadow: var(--shadow-card); transform: rotate(var(--tilt)) translateY(var(--drop)); transition: transform .55s var(--ease), box-shadow .55s var(--ease); }
-.card:nth-child(3n+2) { --tilt: .9deg; --drop: 64px; }
-.card:nth-child(3n+3) { --tilt: -.5deg; }
-.card:nth-child(3n+4) { --tilt: .7deg; }
-.card:nth-child(6n+5) { --drop: 24px; }
-.card:hover { z-index: 2; transform: rotate(0) translateY(var(--drop)) scale(1.012); box-shadow: 0 1px 0 rgba(31, 33, 28, .05), 0 34px 60px -30px rgba(31, 33, 28, .5); }
+.card { --tilt: -1.1deg; --drop: 0px; position: relative; z-index: 1; display: flex; flex-direction: column; padding: 36px 32px 30px; background: var(--paper-lift); border: 1px solid var(--hair-strong); border-radius: 12px; box-shadow: var(--shadow-card); margin-top: var(--drop); transform: rotate(var(--tilt)); transition: transform .55s var(--ease), box-shadow .55s var(--ease); }
+.card:nth-of-type(3n+2) { --tilt: .9deg; --drop: 64px; }
+.card:nth-of-type(3n+3) { --tilt: -.5deg; }
+.card:nth-of-type(3n+4) { --tilt: .7deg; }
+.card:nth-of-type(6n+5) { --drop: 24px; }
+.card:hover { z-index: 2; transform: rotate(0) scale(1.012); box-shadow: 0 1px 0 rgba(31, 33, 28, .05), 0 34px 60px -30px rgba(31, 33, 28, .5); }
 .card-index { position: absolute; right: 26px; top: 18px; font: italic 400 54px/1 var(--serif); letter-spacing: -.04em; color: var(--sage-pale); transition: color .4s; }
 .card:hover .card-index { color: var(--sage); }
 .card-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; padding-right: 64px; color: var(--muted); letter-spacing: .05em; }
@@ -371,7 +371,7 @@ p { color: var(--muted); }
   .hero { --art-w: clamp(280px, calc(min(70vh, 640px) * 2 / 3), 440px); }
   .board { gap: 44px 32px; }
   .card { padding: 30px 26px 26px; }
-  .card:nth-child(3n+2) { --drop: 40px; }
+  .card:nth-of-type(3n+2) { --drop: 40px; }
   .triptych-steps { gap: 24px; }
   .personal, .contact-grid, .about-layout { gap: 44px; }
   .method-list article { grid-template-columns: 64px minmax(0, 1fr) 170px; gap: 22px; }
@@ -405,8 +405,8 @@ p { color: var(--muted); }
   .section-heading h2 { font-size: clamp(38px, 11vw, 52px); }
   .board-banner img { aspect-ratio: 1536 / 900; }
   .board { grid-template-columns: 1fr; gap: 30px; padding: 28px 0 40px; }
-  .card, .card:nth-child(n) { --drop: 0px; --tilt: -.6deg; }
-  .card:nth-child(even) { --tilt: .6deg; }
+  .card, .card:nth-of-type(n) { --drop: 0px; --tilt: -.6deg; }
+  .card:nth-of-type(even) { --tilt: .6deg; }
   .card-index { font-size: 44px; right: 20px; top: 14px; }
   .card h3 { font-size: 25px; }
   .section-footnote { text-align: left; }
